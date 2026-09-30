@@ -60,23 +60,35 @@
 ### `search_listings`
 
 - **What it does:**
+Searches the listings dataset for items matching a description, with an optional size, and an optional maximum price.
 - **Inputs:** <!-- name and type each: `max_price` (float), not "a price" -->
+description (str), size (str | None), max_price (float | None)
 - **Returns:**
+A list of matching listing dictionaries, sorted by relevance. Each listing contains id, title, description, category, style_tags (list), size, condition, price (float), colors (list), brand (str | None), and platform.
 - **When it has nothing:**
+Returns an empty list when nothing matches.
 
 ### `suggest_outfit`
 
 - **What it does:**
+Uses a selected listing and the user's wardrobe to generate outfit suggestions.
 - **Inputs:**
+new_item (dict), wardrobe (dict)
 - **Returns:**
+A non-empty string with outfit suggestions, including specific items from the user's wardrobe.
 - **When it has nothing:**
-
+Returns general styling advice, and states they are general, because there is no wardrobe saved.
 ### `create_fit_card`
 
 - **What it does:**
+Creates a short social-media-style caption describing the selected item and suggested outfit.
 - **Inputs:**
+outfit (str), new_item (dict)
 - **Returns:**
+A two-to-four sentence caption string that names the item, the price, and the platform.
 - **When it has nothing:**
+If outfit is empty, returns a descriptive message instead of calling the model.
+
 
 ---
 
