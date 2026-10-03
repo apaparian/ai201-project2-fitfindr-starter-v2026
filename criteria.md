@@ -54,7 +54,7 @@ Given a query that matches no listings, the agent stops before calling
      compares session["selected_item"] against what actually reached
      suggest_outfit is the shape you're after. -->
 
-
+The id of the item stored in state, in session["selected_item"] matches the id passed to suggest_outfit -- in 5 of 5 tries.
 
 **Why this target:**
 
@@ -75,7 +75,7 @@ Given a query that matches no listings, the agent stops before calling
      sentence? A card longer than a caption anyone would post? Any of those can
      be turned into a number. -->
 
-
+The caption for the generated fit card includes the item's price and platform -- in 5 of 5 tries
 
 **Why this target:**
 
@@ -92,7 +92,7 @@ Given a query that matches no listings, the agent stops before calling
      search respects a price ceiling — anything, as long as it names a number
      or an observable outcome. -->
 
-
+Given an empty wardrobe, suggest_outfit returns general styling advice, and continues to create_fit_card -- in 5 of 5 tries
 
 **Why this target:**
 
