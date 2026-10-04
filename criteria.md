@@ -29,7 +29,7 @@ tool calls and returns a fit card — in at least 4 of 5 tries.
      "my search is a plain keyword match and some phrasings will miss" is a
      real answer. -->
 
-Query matching relies on the choice of words used. The keywords may not match all variations of a term. It is reasonable fo some phrasings to miss.
+Query matching relies on the choice of words used. The keywords may not match all variations of a term. It is reasonable for some phrasings to miss.
 
 ---
 
@@ -100,7 +100,7 @@ Given an empty wardrobe, suggest_outfit returns general styling advice, and cont
 
 **Why this target:**
 
-An emtpy wardrobe is a realistic branch of behavior discussed in the scope of the project. It can and should be controlled by an objective test, without breaking the pipeline.
+An empty wardrobe is a realistic branch of behavior discussed in the scope of the project. It can and should be controlled by an objective test, without breaking the pipeline.
 
 ---
 
