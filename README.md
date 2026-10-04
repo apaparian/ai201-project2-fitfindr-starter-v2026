@@ -41,7 +41,7 @@
 
 <!-- Three or four sentences: what a user asks for, and what they get back. -->
 
-
+FitFindr helps users find secondhand clothing. A user types in a requested item in plain language, such as "vintage graphic tee under $30, size M". The app finds the best matching item from a dataset of provided listings. It generates one or two outfits that combine it with pieces from the user's wardrobe. The app then follows up with a social-media-friendly caption that can be shared in a post. If no matching item is found, the agent stops and asks the user to broaden the search.
 
 ---
 
@@ -216,14 +216,20 @@ Scored these vintage Levi's 501 jeans on depop for $38 and I am never taking the
 **Moment 1**
 
 - *What I asked for:*
+I asked Claude to review my search_listings implementation and the size-filtering logic.
 - *What came back:*
+Claude proposed a more complex matching approach intended to handle specific size formats found within the dataset. The logic seemed complicated and hard to review, explain, or maintain.
 - *What I changed:*
+I changed the size filtering to use whole-word matching and documented that behavior in the Tool Inventory. The goal was to continue to avoid matching "S" on "US" while simplifying the behavior.
 
 **Moment 2**
 
 - *What I asked for:*
+I asked Claude to fill in run_agent following the branch rule in the README.
 - *What came back:*
+An implementation that relied on a string splitter that read "size X" and "under $N" from the query. It ran correctly, but appeared to be restricted by a rigid format in the provided query.
 - *What I changed:*
+I switched the parser to use a model based approach. I added instructions for model to convert sizes to uppercase abbreviations, prices to numbers, and follow a provided example format for its response.
 
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
