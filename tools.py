@@ -20,7 +20,9 @@ That last line is what your loop branches on. "Returns a list" earns nothing —
 the description has to say what is *in* the list.
 """
 
-import config  # noqa: F401 — you'll use this in search_listings
+import re
+
+import config
 from generate import generate
 from utils.data_loader import load_listings
 
@@ -78,8 +80,43 @@ def search_listings(
     Test it from a terminal before you move on:
         python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
     """
-    # TODO: replace this with your implementation
-    return []
+    query_words = _words(description)
+    wanted_size = _words(size) if size else None
+
+    scored = []
+    for listing in load_listings():
+        if max_price is not None and listing["price"] > max_price:
+            continue
+
+        # Size matches on whole tokens, so "M" matches "S/M" and "M/L" but
+        # never "XL" or "US 9"; "W30" matches "W30 L30".
+        if wanted_size and not wanted_size <= _words(listing["size"]):
+            continue
+
+        searchable = _words(
+            " ".join(
+                [
+                    listing["title"],
+                    listing["description"],
+                    listing["category"],
+                    " ".join(listing["style_tags"]),
+                    " ".join(listing["colors"]),
+                    listing["brand"] or "",
+                ]
+            )
+        )
+        score = len(query_words & searchable)
+        if score > 0:
+            scored.append((score, listing))
+
+    # sorted() is stable, so ties keep their order in the data.
+    scored.sort(key=lambda pair: pair[0], reverse=True)
+    return [listing for _, listing in scored[: config.SEARCH_RESULT_LIMIT]]
+
+
+def _words(text: str) -> set[str]:
+    """Lowercase alphanumeric tokens ('S/M' -> {'s', 'm'}, 'US 8.5' -> {'us', '8.5'})."""
+    return set(re.findall(r"[a-z0-9]+(?:\.[0-9]+)?", text.lower()))
 
 
 # ── Tool 2: suggest_outfit ────────────────────────────────────────────────────
@@ -112,8 +149,49 @@ def suggest_outfit(new_item: dict, wardrobe: dict) -> str:
     Test it from a terminal before you move on:
         python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
     """
-    # TODO: replace this with your implementation
-    return ""
+    items = (wardrobe or {}).get("items") or []
+
+    item_lines = (
+        f"Title: {new_item['title']}\n"
+        f"Category: {new_item['category']}\n"
+        f"Colors: {', '.join(new_item['colors'])}\n"
+        f"Style: {', '.join(new_item['style_tags'])}\n"
+        f"Description: {new_item['description']}"
+    )
+
+    if not items:
+        prompt = (
+            "A thrifter is considering this secondhand item:\n\n"
+            f"{item_lines}\n\n"
+            "They haven't saved any wardrobe, so you don't know what they own. "
+            "Suggest one or two outfits built around this item with general "
+            "styling advice. Begin by saying these are general suggestions "
+            "because no wardrobe has been saved. Do not invent pieces they "
+            "own; describe the kinds of pieces that would pair well."
+        )
+    else:
+        wardrobe_lines = "\n".join(
+            f"- {w['name']} ({w['category']}; {', '.join(w['colors'])}; "
+            f"{', '.join(w['style_tags'])})"
+            + (f" — {w['notes']}" if w.get("notes") else "")
+            for w in items
+        )
+        prompt = (
+            "A thrifter is considering this secondhand item:\n\n"
+            f"{item_lines}\n\n"
+            f"Their wardrobe:\n{wardrobe_lines}\n\n"
+            "Suggest one or two outfits that combine the new item with pieces "
+            "from their wardrobe. Name the specific wardrobe pieces by name, "
+            "and only use pieces from the list above."
+        )
+
+    outfit = generate(prompt).strip()
+    if not outfit:
+        return (
+            "No outfit suggestion could be generated right now. "
+            "Try again in a moment."
+        )
+    return outfit
 
 
 # ── Tool 3: create_fit_card ───────────────────────────────────────────────────
@@ -152,5 +230,30 @@ def create_fit_card(outfit: str, new_item: dict) -> str:
     Test it from a terminal before you move on:
         python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"
     """
-    # TODO: replace this with your implementation
-    return ""
+    if not outfit or not outfit.strip():
+        return (
+            "No fit card was created because there is no outfit suggestion "
+            "to write about. Get an outfit suggestion first, then try again."
+        )
+
+    prompt = (
+        "Write a short social media caption for a thrift find, the way a real "
+        "person would post it, not a product description.\n\n"
+        f"Item: {new_item['title']}\n"
+        f"Price: ${new_item['price']:.2f}\n"
+        f"Platform: {new_item['platform']}\n"
+        f"Style: {', '.join(new_item['style_tags'])}\n\n"
+        f"Outfit it's styled in:\n{outfit}\n\n"
+        "Rules:\n"
+        "- Two to four sentences, no more.\n"
+        "- Mention the item, its price, and the platform exactly once each.\n"
+        "- The poster is the buyer who found it on that platform, not the seller.\n"
+        "- Be specific about the vibe of the outfit.\n"
+        "- Output only the caption, with no heading or options."
+    )
+
+    # cache=False: repeat runs on the same item should give fresh captions.
+    caption = generate(prompt, cache=False).strip()
+    if not caption:
+        return "No fit card could be generated right now. Try again in a moment."
+    return caption
