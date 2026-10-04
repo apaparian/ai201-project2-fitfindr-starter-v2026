@@ -82,7 +82,7 @@ Returns general styling advice, and states that they are general, because there 
 ### `create_fit_card`
 
 - **What it does:**
-Creates a short social-media-style caption describing the selected item and suggested outfit. The caption is different each time it is run.
+Creates a short social-media-style caption describing the selected item and suggested outfit. The caption can vary each time it is run.
 - **Inputs:**
 outfit (str), new_item (dict)
 - **Returns:**
