@@ -130,15 +130,11 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     )
     description, size, max_price = json.loads(reply)
 
-    session["parsed"] = {
-        "description": description,
-        "size": size,
-        "max_price": max_price,
-    }
+    session["parsed"] = {"description": description, "size": size, "max_price": max_price}
 
     count += 1
     trace.check_iterations(count)
-    session["search_results"] = search_listings(description=description, size=size, max_price=max_price)
+    session["search_results"] = search_listings(session["parsed"]["description"], session["parsed"]["size"], session["parsed"]["max_price"])
 
     if not session["search_results"]:
         session["error"] = "No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price."
