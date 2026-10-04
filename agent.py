@@ -13,10 +13,12 @@ Build and test your three tools in `tools.py` first. Then come here.
     python agent.py          runs both example paths below
 """
 
+import json
+
 import config
 import trace
 from tools import search_listings, suggest_outfit, create_fit_card
-from generate import ModelUnavailable
+from generate import generate, ModelUnavailable
 
 
 # ── session state ─────────────────────────────────────────────────────────────
@@ -106,9 +108,52 @@ def run_agent(query: str, wardrobe: dict) -> dict:
         than a stack trace. The import is already at the top of this file.
     """
     session = new_session(query, wardrobe)
+    count = 0
 
-    # TODO: delete these two lines and build the loop.
-    session["error"] = "The planning loop isn't built yet — see the TODO in agent.py."
+    count += 1
+    trace.check_iterations(count)
+    reply = generate(
+        f'''
+        Extract the description, size, and maximum price from this request.
+        Reply with only a JSON array: [description, size, max_price]
+        
+        Use null if size or price is not specified.
+        Convert sizes to uppercase abbreviations.
+        Convert prices to numbers.
+
+        For example, when given: "looking for a vintage graphic tee under $30"
+        reply: ["vintage graphic tee", null, 30]
+
+        Request: {query}
+        ''',
+        temperature=0.0,
+    )
+    description, size, max_price = json.loads(reply)
+
+    session["parsed"] = {
+        "description": description,
+        "size": size,
+        "max_price": max_price,
+    }
+
+    count += 1
+    trace.check_iterations(count)
+    session["search_results"] = search_listings(description=description, size=size, max_price=max_price)
+
+    if not session["search_results"]:
+        session["error"] = "No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price."
+        return session
+
+    session["selected_item"] = session["search_results"][0]
+
+    count += 1
+    trace.check_iterations(count)
+    session["outfit_suggestion"] = suggest_outfit(session["selected_item"], session["wardrobe"])
+
+    count += 1
+    trace.check_iterations(count)
+    session["fit_card"] = create_fit_card(session["outfit_suggestion"], session["selected_item"])
+
     return session
 
 
