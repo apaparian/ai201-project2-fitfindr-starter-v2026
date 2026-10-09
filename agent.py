@@ -129,15 +129,17 @@ def run_agent(query: str, wardrobe: dict) -> dict:
         temperature=0.0,
     )
     description, size, max_price = json.loads(reply)
-
     session["parsed"] = {"description": description, "size": size, "max_price": max_price}
+    trace.step("parse_request", inputs={"query": query}, returned=session["parsed"])
 
     count += 1
     trace.check_iterations(count)
     session["search_results"] = search_listings(session["parsed"]["description"], session["parsed"]["size"], session["parsed"]["max_price"])
+    trace.step("search_listings", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
 
     if not session["search_results"]:
         session["error"] = "No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price."
+        trace.step("no_search_results", inputs={"parsed": session["parsed"]}, returned={"error": session["error"]})
         return session
 
     session["selected_item"] = session["search_results"][0]
@@ -145,10 +147,12 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     count += 1
     trace.check_iterations(count)
     session["outfit_suggestion"] = suggest_outfit(session["selected_item"], session["wardrobe"])
+    trace.step("suggest_outfit", inputs={"selected_item": session["selected_item"], "wardrobe": session["wardrobe"]}, returned=session["outfit_suggestion"])
 
     count += 1
     trace.check_iterations(count)
     session["fit_card"] = create_fit_card(session["outfit_suggestion"], session["selected_item"])
+    trace.step("create_fit_card", inputs={"outfit_suggestion": session["outfit_suggestion"], "selected_item": session["selected_item"]}, returned=session["fit_card"])
 
     return session
 
