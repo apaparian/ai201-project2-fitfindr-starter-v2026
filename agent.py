@@ -19,7 +19,7 @@ import config
 import trace
 from tools import search_listings, suggest_outfit, create_fit_card
 from generate import generate, ModelUnavailable
-
+import mcp_client
 
 # ── session state ─────────────────────────────────────────────────────────────
 
@@ -134,7 +134,11 @@ def run_agent(query: str, wardrobe: dict) -> dict:
 
     count += 1
     trace.check_iterations(count)
-    session["search_results"] = search_listings(session["parsed"]["description"], session["parsed"]["size"], session["parsed"]["max_price"])
+    session["search_results"] = mcp_client.call_tool("search_listings", {
+        "description": session["parsed"]["description"],
+        "size": session["parsed"]["size"],
+        "max_price": session["parsed"]["max_price"],
+    })
     trace.step("search_listings", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
 
     if not session["search_results"]:
