@@ -140,7 +140,7 @@ def run_agent(query: str, wardrobe: dict) -> dict:
             "size": session["parsed"]["size"],
             "max_price": session["parsed"]["max_price"],
         })
-        trace.step("search_listings", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
+        trace.step("search_listings (via MCP)", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
 
         if not session["search_results"]:
             session["error"] = "No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price."

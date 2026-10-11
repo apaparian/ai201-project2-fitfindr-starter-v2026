@@ -317,7 +317,7 @@ python app.py ask 'vintage graphic tee under $30' --trace
 [1] parse_request
       in:  dict with keys: query
       out: dict with keys: description, size, max_price
-[2] search_listings
+[2] search_listings (via MCP)
       in:  dict with keys: description, size, max_price
       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
 [3] suggest_outfit
@@ -325,7 +325,7 @@ python app.py ask 'vintage graphic tee under $30' --trace
       out: Here are two outfit suggestions using the Y2K Baby Tee and pieces from your wardrobe:  **Outfit 1: Casual Stre…
 [4] create_fit_card
       in:  dict with keys: outfit_suggestion, selected_item
-      out: Just scored this absolute dream of a butterfly baby tee on depop for only $18, and I am obsessed. I threw it o…
+      out: Just scored this adorable butterfly tee on depop for $18 and I am obsessed. I threw it on with baggy dark jean…
 
   Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
 
@@ -347,11 +347,11 @@ python app.py ask 'vintage graphic tee under $30' --trace
 *   **Shoes:** Black combat boots
 *   **Accessories:** Brown leather belt
 
-*Why it works:* This outfit pairs the ultra-feminine, pastel butterfly tee with the structured, minimal earth tones of the wide-leg khaki trousers and brown belt. Throwing on the vintage black denim jacketand black combat boots adds a touch of grunge, grounding the sweet Y2K top with classic, tougher textures.
+*Why it works:* This outfit pairs the ultra-feminine, pastel butterfly tee with the structured, minimal earth tones of the wide-leg khaki trousers and brown belt. Throwing on the vintage black denim jacket and black combat boots adds a touch of grunge, grounding the sweet Y2K top with classic, tougher textures.
 
-  Fit card: Just scored this absolute dream of a butterfly baby tee on depop for only $18, and I am obsessed. I threw it on with baggy dark-wash jeans and a cropped zip hoodie for the ultimate Y2K streetwear vibe.
+  Fit card: Just scored this adorable butterfly tee on depop for $18 and I am obsessed. I threw it on with baggy dark jeans and a cropped hoodie for the ultimate Y2K street style.
 
-1 model calls this session, 2 served from cache, 443 prompt + 48 output tokens
+1 model calls this session, 2 served from cache, 443 prompt + 39 output tokens
 ```
 
 **Empty search**
@@ -361,7 +361,7 @@ python app.py ask 'a ballgown size XL under $200' --trace
 [1] parse_request
       in:  dict with keys: query
       out: dict with keys: description, size, max_price
-[2] search_listings
+[2] search_listings (via MCP)
       in:  dict with keys: description, size, max_price
       out: [] (empty)
 [3] no_search_results
