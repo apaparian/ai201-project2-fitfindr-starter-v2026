@@ -110,54 +110,57 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     session = new_session(query, wardrobe)
     count = 0
 
-    count += 1
-    trace.check_iterations(count)
-    reply = generate(
-        f'''
-        Extract the description, size, and maximum price from this request.
-        Reply with only a JSON array: [description, size, max_price]
-        
-        Use null if size or price is not specified.
-        Convert sizes to uppercase abbreviations.
-        Convert prices to numbers.
+    try:
+        count += 1
+        trace.check_iterations(count)
+        reply = generate(
+            f'''
+            Extract the description, size, and maximum price from this request.
+            Reply with only a JSON array: [description, size, max_price]
+            
+            Use null if size or price is not specified.
+            Convert sizes to uppercase abbreviations.
+            Convert prices to numbers.
 
-        For example, when given: "looking for a vintage graphic tee under $30"
-        reply: ["vintage graphic tee", null, 30]
+            For example, when given: "looking for a vintage graphic tee under $30"
+            reply: ["vintage graphic tee", null, 30]
 
-        Request: {query}
-        ''',
-        temperature=0.0,
-    )
-    description, size, max_price = json.loads(reply)
-    session["parsed"] = {"description": description, "size": size, "max_price": max_price}
-    trace.step("parse_request", inputs={"query": query}, returned=session["parsed"])
+            Request: {query}
+            ''',
+            temperature=0.0,
+        )
+        description, size, max_price = json.loads(reply)
+        session["parsed"] = {"description": description, "size": size, "max_price": max_price}
+        trace.step("parse_request", inputs={"query": query}, returned=session["parsed"])
 
-    count += 1
-    trace.check_iterations(count)
-    session["search_results"] = mcp_client.call_tool("search_listings", {
-        "description": session["parsed"]["description"],
-        "size": session["parsed"]["size"],
-        "max_price": session["parsed"]["max_price"],
-    })
-    trace.step("search_listings", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
+        count += 1
+        trace.check_iterations(count)
+        session["search_results"] = mcp_client.call_tool("search_listings", {
+            "description": session["parsed"]["description"],
+            "size": session["parsed"]["size"],
+            "max_price": session["parsed"]["max_price"],
+        })
+        trace.step("search_listings", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
 
-    if not session["search_results"]:
-        session["error"] = "No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price."
-        trace.step("no_search_results", inputs={"parsed": session["parsed"]}, returned={"error": session["error"]})
-        return session
+        if not session["search_results"]:
+            session["error"] = "No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price."
+            trace.step("no_search_results", inputs={"parsed": session["parsed"]}, returned={"error": session["error"]})
+            return session
 
-    session["selected_item"] = session["search_results"][0]
+        session["selected_item"] = session["search_results"][0]
 
-    count += 1
-    trace.check_iterations(count)
-    session["outfit_suggestion"] = suggest_outfit(session["selected_item"], session["wardrobe"])
-    trace.step("suggest_outfit", inputs={"selected_item": session["selected_item"], "wardrobe": session["wardrobe"]}, returned=session["outfit_suggestion"])
+        count += 1
+        trace.check_iterations(count)
+        session["outfit_suggestion"] = suggest_outfit(session["selected_item"], session["wardrobe"])
+        trace.step("suggest_outfit", inputs={"selected_item": session["selected_item"], "wardrobe": session["wardrobe"]}, returned=session["outfit_suggestion"])
 
-    count += 1
-    trace.check_iterations(count)
-    session["fit_card"] = create_fit_card(session["outfit_suggestion"], session["selected_item"])
-    trace.step("create_fit_card", inputs={"outfit_suggestion": session["outfit_suggestion"], "selected_item": session["selected_item"]}, returned=session["fit_card"])
-
+        count += 1
+        trace.check_iterations(count)
+        session["fit_card"] = create_fit_card(session["outfit_suggestion"], session["selected_item"])
+        trace.step("create_fit_card", inputs={"outfit_suggestion": session["outfit_suggestion"], "selected_item": session["selected_item"]}, returned=session["fit_card"])
+    except ModelUnavailable:
+        session["error"] = "The model is currently unavailable. Check your API key and try again."
+        trace.step("model_unavailable", inputs={"query": query}, returned={"error": session["error"]})
     return session
 
 
