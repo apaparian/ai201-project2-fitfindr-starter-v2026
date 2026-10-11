@@ -251,17 +251,55 @@ I switched the parser to use a model based approach. I added instructions for mo
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. A matching query completes all three tools | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. An impossible query stops before the second tool | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. The id of `selected_item` matches the item passed on | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. The fit card includes the item's price and platform | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. Empty wardrobe: general advice, then a fit card | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
 
 **Real output from one try**, pasted as text, naming the file and function
 that produced it:
 
 ```
+Criterion 1, matching query completes:
+agent.py::run_agent
 
+selected_item: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+Found this insanely cute Y2K butterfly baby tee on depop for just $18.00 and I am obsessed. I just styled it with wide-leg khaki trousers and a leather belt for that perfect earthy-minimalist casual vibe.
+
+
+Criterion 2, impossible query stops early:
+agent.py::run_agent
+
+stopped early: yes — No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price.
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+
+
+Criterion 3, selected item preserved in session:
+agent.py::run_agent
+
+selected_item: Knit Cardigan — Chunky Brown ($35.0, depop)
+[2] search_listings (via MCP)
+      out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+[3] suggest_outfit
+      in:  dict with keys: selected_item, wardrobe
+      out: Here are two outfit combinations using the new knit cardigan and items from the wardrobe...
+
+
+Criterion 4, fit card includes price and platform:
+tools.py::create_fit_card
+
+selected_item: Mesh Long-Sleeve Top — Black ($15.0, depop)
+Score on depop: this absolute steal of a mesh long-sleeve top for just $15.00. I layered it over a white tank with baggy denim and combat boots for the ultimate y2k grunge streetwear fit. Can't wait to style it under my oversized crewneck next!
+
+
+Criterion 5, empty wardrobe still completes:
+tools.py::suggest_outfit
+
+These are general suggestions because no wardrobe has been saved. 
+Finally scored the ultimate vintage denim shorts on Poshmark for just $24, and they fit like an absolute dream. I threw them on with an unbuttoned linen shirt over a bralette and some leather slides for the easiest, breeziest summer dinner fit.
 ```
 
 ---

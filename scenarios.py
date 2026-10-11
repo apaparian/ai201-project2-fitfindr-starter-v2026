@@ -47,6 +47,27 @@ SCENARIOS = [
     # For a fit-card criterion, you probably want the SAME query listed more
     # than once, or several different items, depending on what your criterion
     # actually says.
+    {
+        # Criterion 3
+        "name": "selected item preserved in session",
+        "query": "printed knit tank under $45",
+        "wardrobe": "example",
+        "criterion": 3,
+    },
+    {
+        # Criterion 4
+        "name": "fit card includes price and platform",
+        "query": "linen jersey sweat top under $50",
+        "wardrobe": "example",
+        "criterion": 4,
+    },
+    {
+        # Criterion 5
+        "name": "empty wardrobe still completes",
+        "query": "draw string shorts under $40",
+        "wardrobe": "empty",
+        "criterion": 5,
+    },
 ]
 
 WARDROBES = ("example", "empty")
