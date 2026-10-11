@@ -313,20 +313,72 @@ that produced it:
 **Happy path**
 
 ```
+python app.py ask 'vintage graphic tee under $30' --trace
+[1] parse_request
+      in:  dict with keys: query
+      out: dict with keys: description, size, max_price
+[2] search_listings
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+[3] suggest_outfit
+      in:  dict with keys: selected_item, wardrobe
+      out: Here are two outfit suggestions using the Y2K Baby Tee and pieces from your wardrobe:  **Outfit 1: Casual Stre…
+[4] create_fit_card
+      in:  dict with keys: outfit_suggestion, selected_item
+      out: Just scored this absolute dream of a butterfly baby tee on depop for only $18, and I am obsessed. I threw it o…
 
+  Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
+
+  Outfit:   Here are two outfit suggestions using the Y2K Baby Tee and pieces from your wardrobe:
+
+**Outfit 1: Casual Streetwear (Y2K & Edgy)**
+*   **Top:** Y2K Baby Tee — Butterfly Print
+*   **Bottoms:** Baggy straight-leg jeans, dark wash
+*   **Outerwear:** Black cropped zip hoodie
+*   **Shoes:** Chunky white sneakers
+*   **Accessories:** Black crossbody bag
+
+*Why it works:* The fitted crop of the baby tee balances the volume of the baggy dark-wash jeans. Layering the black cropped zip hoodie on top keeps the silhouette short and fitted at the waist while leaning into the Y2K streetwear aesthetic, finished off with chunky sneakers and a crossbody bag.
+
+**Outfit 2: Contrast Mix (Earth Tones & Vintage)**
+*   **Top:** Y2K Baby Tee — Butterfly Print
+*   **Bottoms:** Wide-leg khaki trousers
+*   **Outerwear:** Vintage black denim jacket (slightly cropped)
+*   **Shoes:** Black combat boots
+*   **Accessories:** Brown leather belt
+
+*Why it works:* This outfit pairs the ultra-feminine, pastel butterfly tee with the structured, minimal earth tones of the wide-leg khaki trousers and brown belt. Throwing on the vintage black denim jacketand black combat boots adds a touch of grunge, grounding the sweet Y2K top with classic, tougher textures.
+
+  Fit card: Just scored this absolute dream of a butterfly baby tee on depop for only $18, and I am obsessed. I threw it on with baggy dark-wash jeans and a cropped zip hoodie for the ultimate Y2K streetwear vibe.
+
+1 model calls this session, 2 served from cache, 443 prompt + 48 output tokens
 ```
 
 **Empty search**
 
 ```
+python app.py ask 'a ballgown size XL under $200' --trace   
+[1] parse_request
+      in:  dict with keys: query
+      out: dict with keys: description, size, max_price
+[2] search_listings
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] no_search_results
+      in:  dict with keys: parsed
+      out: dict with keys: error
 
+  No listings matched your request. Try a different set of keywords, a different size, or a higher maximum price.
+
+1 model calls this session, 114 prompt + 12 output tokens
 ```
 
-**On the MCP move:** <!-- what changed in your code, and whether anything
+**On the MCP move:**
+<!-- what changed in your code, and whether anything
 behaved differently afterwards. If the rewire didn't work, say exactly where it
 broke — the error text and the last thing that worked. That earns the point in
 full. -->
-
+I wrapped search_listings in an MCP tool call inside of run_agent and added a doc string description for it in mcp_server. The behavior and results of the agent remained unchanged.
 
 
 ---
