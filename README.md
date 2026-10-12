@@ -431,8 +431,10 @@ I wrapped search_listings in an MCP tool call inside of run_agent and added a do
      `python run_eval.py --label after` -->
 
 **What I changed:**
+I updated the trace in agent.py::run_agent to record the selected item's id both when it is stored in session and  when it is passed to suggest_outfit. This required adding a new step in the trace, and passing strings in place of dictionaries so that the output could be recorded to the terminal.
 
 **Which failure it was meant to fix:**
+I didn't have any failures to address per se, but this was a noticeable disconnect between the concrete wording of the criterion set and the following evaluation, which shifted from reading id's to looking for matching name
 
 ### Run Log — After
 
