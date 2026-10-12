@@ -431,22 +431,28 @@ I wrapped search_listings in an MCP tool call inside of run_agent and added a do
      `python run_eval.py --label after` -->
 
 **What I changed:**
-I updated the trace in agent.py::run_agent to record the selected item's id both when it is stored in session and  when it is passed to suggest_outfit. This required adding a new step in the trace, and passing strings in place of dictionaries so that the output could be recorded to the terminal.
+I updated the trace in agent.py::run_agent to record the selected item's id both when it is stored in session and when it is passed to suggest_outfit. This required adding a new step in the trace, and passing strings in place of dictionaries so that the output could be recorded to the terminal.
 
 **Which failure it was meant to fix:**
-I didn't have any failures to address per se, but this was a noticeable disconnect between the concrete wording of the criterion set and the following evaluation, which shifted from reading id's to looking for matching name
+I didn't have any failures to address per se, but this was a noticeable disconnect between the concrete wording of the criterion set and the following evaluation, which shifted from reading id's to looking for a matching name.
 
 ### Run Log — After
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. matching query completes | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. impossible query stops early | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. selected item preserved in session | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. fit card includes price and platform | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. empty wardrobe still completes | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+
 
 **Did it help, and how do I know:**
+My criteria were met before and they are still met now. Nothing changed in the final verdicts or pass rates. What did change was that I addressed a noticeable failure in the integrity of the evaluation, as I had switched from reading id in state towards looking for clues in matching titles, which does not necessarily guarantee that same listing is being read (although there isn't much gap between steps that would allow it to change).
+
+The trace now records the id of item across two steps, allowing for firm measurement that state is behaving correctly. The ids match in all 5 tries. All in all it feels like a weak test, but it now firmly follows its own guidelines.
+
+There is now one extra step in the trace.
 
 <!-- If it made things worse, say that. Honestly reported, that earns full
      credit and is more interesting than one that worked. -->
