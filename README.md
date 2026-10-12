@@ -469,7 +469,7 @@ There is now one extra step in the trace.
      you did. "I ran out of time" is fine if it's true. Pretending nothing is
      left is not. -->
 
-The citeria were all met before and are met still. The biggest area I see for improvement is the lack of guard or protection on the return from the first model request, the parse_request. Currently, the model is asked to return a very specific shape for its response-- A JSON array of three values. Nothing is ever done to check, clean, and fix an odd return.
+The criteria were all met before and are met still. The biggest area I see for improvement is the lack of guard or protection on the return from the first model request, the parse_request. Currently, the model is asked to return a very specific shape for its response-- A JSON array of three values. Nothing is ever done to check, clean, and fix an odd return.
 
 This was a weakness I identified in the code, expecting it to be an opportunity for future improvement. However, the model seems to be handling the query surprisingly well. I couldn't trigger a failure. Further, there wasn't anything I could extract from the output or evaluation process as justification the way I could for the logged id shortcoming in criterion 3. My one thought is that perhaps next time I could set up a test that would target the failure more specifically when I see a shortcoming during the coding phase.
 
@@ -477,7 +477,7 @@ This was a weakness I identified in the code, expecting it to be an opportunity 
 
 ## How I Used AI
 
-I used AI to help draft potential fixes in the code. Since the metrics were all met, it was less apparent where to put my focus. AI was helpful in investigating errors, weaknesses, and incosistencies. I neglected to keep track of id as the source of truth, and shifted my attention to reading name, which was not the criterion I had initially set, and it pointed that out.
+I used AI to help draft potential fixes in the code. Since the metrics were all met, it was less apparent where to put my focus. AI was helpful in investigating errors, weaknesses, and inconsistencies. I neglected to keep track of id as the source of truth, and shifted my attention to reading name, which was not the criterion I had initially set, and it pointed that out.
 
 It also drew my attention towards other fixes, such as weak matches being passed on as proper matches. However, the changes it proposed felt like a reimagining of the pipeline, by introducing a new reason for an early return. Further, the strength of match was subjective. For example, "linen jersey sweat top" was perceived as a weak match to "mesh long-sleeve top", yet the example I drew from in my own wardrobe for that query was indeed a mesh long sleeve top that is marketed as a sweat top but isn't.
 
