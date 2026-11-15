@@ -1,0 +1,988 @@
+2026-11-15T21:47:13.188980268Z [2026-11-15 21:47:13 +0000] [59] [INFO] Handling signal: term
+2026-11-15T21:47:13.189356114Z [2026-11-15 21:47:13 +0000] [60] [INFO] Worker exiting (pid: 60)
+2026-11-15T21:47:13.589691302Z [2026-11-15 21:47:13 +0000] [59] [INFO] Shutting down: Master
+2026-11-15T22:19:49.934528352Z ==> Deploying...
+2026-11-15T22:19:50.007985443Z ==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+2026-11-15T22:20:04.503146202Z ==> Running 'gunicorn serve:app'
+2026-11-15T22:20:11.098751707Z [2026-11-15 22:20:11 +0000] [59] [INFO] Starting gunicorn 23.0.0
+2026-11-15T22:20:11.099078123Z [2026-11-15 22:20:11 +0000] [59] [INFO] Listening at: http://0.0.0.0:10000 (59)
+2026-11-15T22:20:11.099118475Z [2026-11-15 22:20:11 +0000] [59] [INFO] Using worker: sync
+2026-11-15T22:20:11.102612605Z [2026-11-15 22:20:11 +0000] [60] [INFO] Booting worker with pid: 60
+2026-11-15T22:20:11.646125003Z 127.0.0.1 - - [15/Nov/2026:22:20:11 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Go-http-client/1.1"
+2026-11-15T22:20:21.243948529Z ==> Your service is live 🎉
+2026-11-15T22:20:21.315469152Z 127.0.0.1 - - [15/Nov/2026:22:20:21 +0000] "GET / HTTP/1.1" 404 207 "-" "Go-http-client/2.0"
+2026-11-15T22:20:21.484045549Z ==> 
+2026-11-15T22:20:21.48921574Z ==> ///////////////////////////////////////////////////////////
+2026-11-15T22:20:21.496046818Z ==> 
+2026-11-15T22:20:21.502485961Z ==> Available at your primary URL https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com
+2026-11-15T22:20:21.509203537Z ==> 
+2026-11-15T22:20:21.513587271Z ==> ///////////////////////////////////////////////////////////
+2026-11-15T22:25:12.895682425Z ==> Detected service running on port 10000
+2026-11-15T22:25:12.99040657Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+2026-11-15T22:28:10.779771084Z 127.0.0.1 - - [15/Nov/2026:22:28:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:28:21.521587354Z [1] parse_request
+2026-11-15T22:28:21.521605954Z       in:  dict with keys: query
+2026-11-15T22:28:21.521610335Z       out: dict with keys: description, size, max_price
+2026-11-15T22:28:25.794219037Z [2] search_listings (via MCP)
+2026-11-15T22:28:25.794254099Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:28:25.794260269Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:28:25.794267269Z [3] selected_item
+2026-11-15T22:28:25.79427192Z       out: id=lst_002
+2026-11-15T22:28:26.997149253Z [4] suggest_outfit
+2026-11-15T22:28:26.997170914Z       in:  id=lst_002, wardrobe
+2026-11-15T22:28:26.997177194Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:28:27.856666395Z [5] create_fit_card
+2026-11-15T22:28:27.856697357Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:28:27.856704777Z       out: Just scored this absolute dream of a butterfly print baby tee on depop for only $18, and I'm obsessed. I threw…
+2026-11-15T22:28:27.85676713Z {"timestamp": "2026-11-15T22:28:27.856+00:00", "request_id": "d6654347", "input": "vintage graphic tee under $30", "output": "Just scored this absolute dream of a butterfly print baby tee on depop for only $18, and I'm obsessed. I threw it on with baggy dark-wash jeans, a black denim jacket, and chunky sneakers for the ultimate casual streetwear vibe.", "duration_ms": 16910.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 797, "output_tokens": 265}
+2026-11-15T22:28:27.864044586Z 127.0.0.1 - - [15/Nov/2026:22:28:27 +0000] "POST /ask HTTP/1.1" 200 7197 "-" "Python-urllib/3.13"
+2026-11-15T22:28:28.880901633Z [6] parse_request
+2026-11-15T22:28:28.880920354Z       in:  dict with keys: query
+2026-11-15T22:28:28.880927344Z       out: dict with keys: description, size, max_price
+2026-11-15T22:28:33.001459698Z [7] search_listings (via MCP)
+2026-11-15T22:28:33.001487059Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:28:33.001494029Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:28:33.001524181Z [8] selected_item
+2026-11-15T22:28:33.001532211Z       out: id=lst_007
+2026-11-15T22:28:34.890715596Z [9] suggest_outfit
+2026-11-15T22:28:34.890752388Z       in:  id=lst_007, wardrobe
+2026-11-15T22:28:34.890758988Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:28:35.651039673Z [10] create_fit_card
+2026-11-15T22:28:35.651073235Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:28:35.651078555Z       out: Scored this cropped light wash denim jacket on Poshmark for just $42, and it's already doing heavy lifting for…
+2026-11-15T22:28:35.651146389Z {"timestamp": "2026-11-15T22:28:35.650+00:00", "request_id": "6c811b80", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for just $42, and it's already doing heavy lifting for my streetwear looks. I love how the boxy fit balances out baggy dark wash jeans and a white tank. Absolute closet win!", "duration_ms": 7473.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 863, "output_tokens": 345}
+2026-11-15T22:28:35.651874294Z 127.0.0.1 - - [15/Nov/2026:22:28:35 +0000] "POST /ask HTTP/1.1" 200 6473 "-" "Python-urllib/3.13"
+2026-11-15T22:28:36.305160343Z [11] parse_request
+2026-11-15T22:28:36.305176144Z       in:  dict with keys: query
+2026-11-15T22:28:36.305180724Z       out: dict with keys: description, size, max_price
+2026-11-15T22:28:40.394722723Z [12] search_listings (via MCP)
+2026-11-15T22:28:40.394749074Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:28:40.394755125Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:28:40.394760135Z [13] selected_item
+2026-11-15T22:28:40.394765055Z       out: id=lst_008
+2026-11-15T22:28:41.671070805Z [14] suggest_outfit
+2026-11-15T22:28:41.671092026Z       in:  id=lst_008, wardrobe
+2026-11-15T22:28:41.671096726Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:28:42.392616837Z [15] create_fit_card
+2026-11-15T22:28:42.392642709Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:28:42.392649219Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I am so obsessed with it. I threw it on over …
+2026-11-15T22:28:42.392748134Z {"timestamp": "2026-11-15T22:28:42.392+00:00", "request_id": "0c6352c1", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I am so obsessed with it. I threw it on over a ribbed tank and baggy dark wash denim with black combat boots for that perfect mix of cozy cottagecore and grunge. Honestly never taking this off now that fall weather is finally hitting.", "duration_ms": 6626.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 840, "output_tokens": 325}
+2026-11-15T22:28:42.393403196Z 127.0.0.1 - - [15/Nov/2026:22:28:42 +0000] "POST /ask HTTP/1.1" 200 4807 "-" "Python-urllib/3.13"
+2026-11-15T22:28:43.141248444Z [16] parse_request
+2026-11-15T22:28:43.141269085Z       in:  dict with keys: query
+2026-11-15T22:28:43.141275855Z       out: dict with keys: description, size, max_price
+2026-11-15T22:28:47.198242772Z [17] search_listings (via MCP)
+2026-11-15T22:28:47.198270363Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:28:47.198276243Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:28:47.198281693Z [18] selected_item
+2026-11-15T22:28:47.198286094Z       out: id=lst_017
+2026-11-15T22:28:47.965905817Z [19] suggest_outfit
+2026-11-15T22:28:47.965929538Z       in:  id=lst_017, wardrobe
+2026-11-15T22:28:47.965935088Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:28:48.574667651Z [20] create_fit_card
+2026-11-15T22:28:48.574698002Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:28:48.574704472Z       out: Finally scored this black mesh long-sleeve top on depop for just $15, and it's the ultimate layering piece for…
+2026-11-15T22:28:48.574730934Z {"timestamp": "2026-11-15T22:28:48.574+00:00", "request_id": "eeeb95f1", "input": "linen jersey sweat top under $50", "output": "Finally scored this black mesh long-sleeve top on depop for just $15, and it's the ultimate layering piece for my grungy Y2K fits. I threw it over a ribbed white tank and under my oversized denim jacket with some baggy jeans and combat boots. It totally pulls the whole edgy look together!", "duration_ms": 6016.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 760, "output_tokens": 245}
+2026-11-15T22:28:48.576929801Z 127.0.0.1 - - [15/Nov/2026:22:28:48 +0000] "POST /ask HTTP/1.1" 200 5141 "-" "Python-urllib/3.13"
+2026-11-15T22:28:49.215531143Z [21] parse_request
+2026-11-15T22:28:49.215553464Z       in:  dict with keys: query
+2026-11-15T22:28:49.215557524Z       out: dict with keys: description, size, max_price
+2026-11-15T22:28:53.696926579Z [22] search_listings (via MCP)
+2026-11-15T22:28:53.69695492Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:28:53.696960271Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:28:53.696964941Z [23] selected_item
+2026-11-15T22:28:53.696968821Z       out: id=lst_032
+2026-11-15T22:28:54.99557933Z [24] suggest_outfit
+2026-11-15T22:28:54.995602161Z       in:  id=lst_032, wardrobe
+2026-11-15T22:28:54.995607691Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:28:56.414729175Z [25] create_fit_card
+2026-11-15T22:28:56.414762436Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:28:56.414769197Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my closet. …
+2026-11-15T22:28:56.414786638Z {"timestamp": "2026-11-15T22:28:56.414+00:00", "request_id": "fba9d7c3", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my closet. I threw it over wide-leg khaki trousers and combat boots for an easy, earth-tone minimalist look. It's the ultimate layering piece for transitional weather.", "duration_ms": 7729.4, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 829, "output_tokens": 322}
+2026-11-15T22:28:56.415353645Z 127.0.0.1 - - [15/Nov/2026:22:28:56 +0000] "POST /ask HTTP/1.1" 200 3942 "-" "Python-urllib/3.13"
+2026-11-15T22:28:56.519548314Z [26] parse_request
+2026-11-15T22:28:56.519567755Z       in:  dict with keys: query
+2026-11-15T22:28:56.519571925Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:00.593222075Z [27] search_listings (via MCP)
+2026-11-15T22:29:00.593249367Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:00.593254817Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:29:00.593259607Z [28] selected_item
+2026-11-15T22:29:00.593263517Z       out: id=lst_002
+2026-11-15T22:29:00.593479728Z [29] suggest_outfit
+2026-11-15T22:29:00.593487798Z       in:  id=lst_002, wardrobe
+2026-11-15T22:29:00.593492848Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:29:00.593552781Z   [rate limit] 15 requests used this minute. Waiting 20s. This is normal.
+2026-11-15T22:29:21.677157671Z [30] create_fit_card
+2026-11-15T22:29:21.677184103Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:21.677188593Z       out: Just scored this precious butterfly baby tee for $18 on depop and I am obsessed. I threw it on with baggy dark…
+2026-11-15T22:29:21.677199193Z {"timestamp": "2026-11-15T22:29:21.677+00:00", "request_id": "d0adbf89", "input": "vintage graphic tee under $30", "output": "Just scored this precious butterfly baby tee for $18 on depop and I am obsessed. I threw it on with baggy dark wash jeans and chunky sneakers for the ultimate casual Y2K streetwear vibe.", "duration_ms": 25158.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 41}
+2026-11-15T22:29:21.677892067Z 127.0.0.1 - - [15/Nov/2026:22:29:21 +0000] "POST /ask HTTP/1.1" 200 7156 "-" "Python-urllib/3.13"
+2026-11-15T22:29:21.820828608Z [31] parse_request
+2026-11-15T22:29:21.820847419Z       in:  dict with keys: query
+2026-11-15T22:29:21.8208504Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:25.896523485Z [32] search_listings (via MCP)
+2026-11-15T22:29:25.896552226Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:25.896556876Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:29:25.896560797Z [33] selected_item
+2026-11-15T22:29:25.896563787Z       out: id=lst_007
+2026-11-15T22:29:25.896765747Z [34] suggest_outfit
+2026-11-15T22:29:25.896774297Z       in:  id=lst_007, wardrobe
+2026-11-15T22:29:25.896778047Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:29:26.593802141Z [35] create_fit_card
+2026-11-15T22:29:26.593819192Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:26.593823152Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I’m already obsessed. It seriously makes t…
+2026-11-15T22:29:26.593911547Z {"timestamp": "2026-11-15T22:29:26.593+00:00", "request_id": "1c354fe2", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I’m already obsessed. It seriously makes throwing together effortless streetwear fits way too easy, whether I'm styling a double denim look or dressing down some wide-leg trousers.", "duration_ms": 4773.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 53}
+2026-11-15T22:29:26.59459643Z 127.0.0.1 - - [15/Nov/2026:22:29:26 +0000] "POST /ask HTTP/1.1" 200 6497 "-" "Python-urllib/3.13"
+2026-11-15T22:29:26.828794209Z [36] parse_request
+2026-11-15T22:29:26.82881793Z       in:  dict with keys: query
+2026-11-15T22:29:26.82882314Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:31.213443304Z [37] search_listings (via MCP)
+2026-11-15T22:29:31.213472246Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:31.213546109Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:29:31.2154097Z [38] selected_item
+2026-11-15T22:29:31.215422311Z       out: id=lst_008
+2026-11-15T22:29:31.215426741Z [39] suggest_outfit
+2026-11-15T22:29:31.215431291Z       in:  id=lst_008, wardrobe
+2026-11-15T22:29:31.215436102Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:29:32.846930797Z [40] create_fit_card
+2026-11-15T22:29:32.846965969Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:32.846972489Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I'm obsessed. I've been living in oversized e…
+2026-11-15T22:29:32.84699808Z {"timestamp": "2026-11-15T22:29:32.846+00:00", "request_id": "927329b2", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I'm obsessed. I've been living in oversized earth tones lately, so styling it with baggy dark wash denim and chunky black boots gives it the exact cozy-meets-grunge vibe I wanted.", "duration_ms": 6018.6, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 56}
+2026-11-15T22:29:32.847683494Z 127.0.0.1 - - [15/Nov/2026:22:29:32 +0000] "POST /ask HTTP/1.1" 200 4752 "-" "Python-urllib/3.13"
+2026-11-15T22:29:33.125142235Z [41] parse_request
+2026-11-15T22:29:33.125161766Z       in:  dict with keys: query
+2026-11-15T22:29:33.125166056Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:37.699773919Z [42] search_listings (via MCP)
+2026-11-15T22:29:37.69981006Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:37.699817411Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:29:37.699824481Z [43] selected_item
+2026-11-15T22:29:37.699830681Z       out: id=lst_017
+2026-11-15T22:29:37.700081614Z [44] suggest_outfit
+2026-11-15T22:29:37.700098184Z       in:  id=lst_017, wardrobe
+2026-11-15T22:29:37.700103355Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:29:38.669704262Z [45] create_fit_card
+2026-11-15T22:29:38.669735583Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:38.669742944Z       out: Finally scored this black mesh long-sleeve top on Depop for just $15, and it's literally the ultimate layering…
+2026-11-15T22:29:38.669762585Z {"timestamp": "2026-11-15T22:29:38.669+00:00", "request_id": "e69049bf", "input": "linen jersey sweat top under $50", "output": "Finally scored this black mesh long-sleeve top on Depop for just $15, and it's literally the ultimate layering piece. I threw it on under a cropped zip hoodie with wide-leg khaki trousers and chunky white sneakers for the perfect edgy, textured fit.", "duration_ms": 5545.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 56}
+2026-11-15T22:29:38.670542153Z 127.0.0.1 - - [15/Nov/2026:22:29:38 +0000] "POST /ask HTTP/1.1" 200 5101 "-" "Python-urllib/3.13"
+2026-11-15T22:29:38.945905762Z [46] parse_request
+2026-11-15T22:29:38.945928043Z       in:  dict with keys: query
+2026-11-15T22:29:38.945933543Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:43.004916242Z [47] search_listings (via MCP)
+2026-11-15T22:29:43.004936763Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:43.004942443Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:29:43.004947813Z [48] selected_item
+2026-11-15T22:29:43.004952233Z       out: id=lst_032
+2026-11-15T22:29:43.005212946Z [49] suggest_outfit
+2026-11-15T22:29:43.005225867Z       in:  id=lst_032, wardrobe
+2026-11-15T22:29:43.005231537Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:29:43.827675006Z [50] create_fit_card
+2026-11-15T22:29:43.827693007Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:43.827698898Z       out: Scored this olive canvas shacket for $33 on Poshmark and I'm obsessed. I've been living in earth tones lately,…
+2026-11-15T22:29:43.827706678Z {"timestamp": "2026-11-15T22:29:43.826+00:00", "request_id": "daaa57b1", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket for $33 on Poshmark and I'm obsessed. I've been living in earth tones lately, so throwing it over wide-leg khaki trousers with chunky boots is officially my new uniform. Such an easy layering piece for transitional weather!", "duration_ms": 4881.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 58}
+2026-11-15T22:29:43.827723619Z 127.0.0.1 - - [15/Nov/2026:22:29:43 +0000] "POST /ask HTTP/1.1" 200 3932 "-" "Python-urllib/3.13"
+2026-11-15T22:29:44.125357696Z 127.0.0.1 - - [15/Nov/2026:22:29:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:29:44.222126412Z [51] parse_request
+2026-11-15T22:29:44.222140953Z       in:  dict with keys: query
+2026-11-15T22:29:44.222144863Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:48.402700918Z [52] search_listings (via MCP)
+2026-11-15T22:29:48.402725709Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:48.402729959Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:29:48.402733679Z [53] selected_item
+2026-11-15T22:29:48.40273673Z       out: id=lst_002
+2026-11-15T22:29:48.402973701Z [54] suggest_outfit
+2026-11-15T22:29:48.402988452Z       in:  id=lst_002, wardrobe
+2026-11-15T22:29:48.402993812Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:29:49.165696023Z [55] create_fit_card
+2026-11-15T22:29:49.165728595Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:49.165734445Z       out: Found this absolute gem of a butterfly baby tee on Depop for just $18.00! I’ve been styling it with baggy dark…
+2026-11-15T22:29:49.165742136Z {"timestamp": "2026-11-15T22:29:49.163+00:00", "request_id": "8533e7de", "input": "vintage graphic tee under $30", "output": "Found this absolute gem of a butterfly baby tee on Depop for just $18.00! I’ve been styling it with baggy dark wash jeans and chunky sneakers for an effortless streetwear look, or throwing on some khaki trousers and combat boots when I want a little edge.", "duration_ms": 4941.4, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 57}
+2026-11-15T22:29:49.165747786Z 127.0.0.1 - - [15/Nov/2026:22:29:49 +0000] "POST /ask HTTP/1.1" 200 7230 "-" "Python-urllib/3.13"
+2026-11-15T22:29:49.39800181Z [56] parse_request
+2026-11-15T22:29:49.398033941Z       in:  dict with keys: query
+2026-11-15T22:29:49.398039662Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:53.701434815Z [57] search_listings (via MCP)
+2026-11-15T22:29:53.701457486Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:53.701463056Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:29:53.701467727Z [58] selected_item
+2026-11-15T22:29:53.701472617Z       out: id=lst_007
+2026-11-15T22:29:53.701720289Z [59] suggest_outfit
+2026-11-15T22:29:53.70173477Z       in:  id=lst_007, wardrobe
+2026-11-15T22:29:53.70174037Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:29:54.381791815Z [60] create_fit_card
+2026-11-15T22:29:54.381826146Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:29:54.381835697Z       out: Scored this light wash cropped denim jacket on Poshmark for $42 and I’m already obsessed with how it looks pai…
+2026-11-15T22:29:54.381925871Z {"timestamp": "2026-11-15T22:29:54.381+00:00", "request_id": "505f4e16", "input": "denim jacket under $50", "output": "Scored this light wash cropped denim jacket on Poshmark for $42 and I’m already obsessed with how it looks paired with baggy dark wash jeans and chunky sneakers. The streetwear proportions on this piece are just too good.", "duration_ms": 4984.8, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 47}
+2026-11-15T22:29:54.382537951Z 127.0.0.1 - - [15/Nov/2026:22:29:54 +0000] "POST /ask HTTP/1.1" 200 6470 "-" "Python-urllib/3.13"
+2026-11-15T22:29:54.619311925Z [61] parse_request
+2026-11-15T22:29:54.619331086Z       in:  dict with keys: query
+2026-11-15T22:29:54.619335366Z       out: dict with keys: description, size, max_price
+2026-11-15T22:29:58.903372174Z [62] search_listings (via MCP)
+2026-11-15T22:29:58.903396625Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:29:58.903401815Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:29:58.903406895Z [63] selected_item
+2026-11-15T22:29:58.903410065Z       out: id=lst_008
+2026-11-15T22:29:58.903682339Z [64] suggest_outfit
+2026-11-15T22:29:58.903693229Z       in:  id=lst_008, wardrobe
+2026-11-15T22:29:58.90369923Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:30:00.071245904Z [65] create_fit_card
+2026-11-15T22:30:00.071269145Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:00.071273545Z       out: Score this chunky brown knit cardigan on depop for just $35, and I am already obsessed with how cozy it feels.…
+2026-11-15T22:30:00.071403551Z {"timestamp": "2026-11-15T22:30:00.071+00:00", "request_id": "4a719607", "input": "printed knit tank under $45", "output": "Score this chunky brown knit cardigan on depop for just $35, and I am already obsessed with how cozy it feels. I styled it today with baggy dark denim and combat boots for that perfect mix of cottagecore softness and grunge street style.", "duration_ms": 5452.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 50}
+2026-11-15T22:30:00.072273064Z 127.0.0.1 - - [15/Nov/2026:22:30:00 +0000] "POST /ask HTTP/1.1" 200 4745 "-" "Python-urllib/3.13"
+2026-11-15T22:30:00.396670408Z [66] parse_request
+2026-11-15T22:30:00.396691399Z       in:  dict with keys: query
+2026-11-15T22:30:00.396696689Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:05.194609894Z [67] search_listings (via MCP)
+2026-11-15T22:30:05.194651786Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:05.194659537Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:30:05.194664907Z [68] selected_item
+2026-11-15T22:30:05.194668997Z       out: id=lst_017
+2026-11-15T22:30:05.194913699Z [69] suggest_outfit
+2026-11-15T22:30:05.19492625Z       in:  id=lst_017, wardrobe
+2026-11-15T22:30:05.19493278Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:30:06.00061687Z [70] create_fit_card
+2026-11-15T22:30:06.000648942Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:06.000657122Z       out: Score this black mesh long-sleeve top for just $15 on depop and I'm already obsessed. It's the ultimate layeri…
+2026-11-15T22:30:06.000718345Z {"timestamp": "2026-11-15T22:30:06.000+00:00", "request_id": "5964b9cd", "input": "linen jersey sweat top under $50", "output": "Score this black mesh long-sleeve top for just $15 on depop and I'm already obsessed. It's the ultimate layering piece for throwing under a vintage denim jacket with baggy jeans and combat boots for total Y2K grunge vibes. So stoked on how this turned out!", "duration_ms": 5604.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 60}
+2026-11-15T22:30:06.00142164Z 127.0.0.1 - - [15/Nov/2026:22:30:05 +0000] "POST /ask HTTP/1.1" 200 5108 "-" "Python-urllib/3.13"
+2026-11-15T22:30:06.156900873Z [71] parse_request
+2026-11-15T22:30:06.156921934Z       in:  dict with keys: query
+2026-11-15T22:30:06.156926025Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:10.496831989Z [72] search_listings (via MCP)
+2026-11-15T22:30:10.496862011Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:10.496867901Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:30:10.496872781Z [73] selected_item
+2026-11-15T22:30:10.496877271Z       out: id=lst_032
+2026-11-15T22:30:10.497144054Z [74] suggest_outfit
+2026-11-15T22:30:10.497155155Z       in:  id=lst_032, wardrobe
+2026-11-15T22:30:10.497158985Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:30:11.082964886Z [75] create_fit_card
+2026-11-15T22:30:11.082990927Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:11.082996168Z       out: Scored this olive canvas shacket on Poshmark for just $33 and I'm already obsessed with it. Paired it with wid…
+2026-11-15T22:30:11.083010779Z {"timestamp": "2026-11-15T22:30:11.082+00:00", "request_id": "9586d832", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33 and I'm already obsessed with it. Paired it with wide-leg khaki trousers and combat boots for the ultimate earthy, minimalist look. Can't wait to live in this for fall layering!", "duration_ms": 4926.7, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 57}
+2026-11-15T22:30:11.083674361Z 127.0.0.1 - - [15/Nov/2026:22:30:11 +0000] "POST /ask HTTP/1.1" 200 3911 "-" "Python-urllib/3.13"
+2026-11-15T22:30:11.244196491Z [76] parse_request
+2026-11-15T22:30:11.244218682Z       in:  dict with keys: query
+2026-11-15T22:30:11.244224853Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:15.512452196Z [77] search_listings (via MCP)
+2026-11-15T22:30:15.512489507Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:15.512495418Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:30:15.512522449Z [78] selected_item
+2026-11-15T22:30:15.512529309Z       out: id=lst_002
+2026-11-15T22:30:15.512772661Z [79] suggest_outfit
+2026-11-15T22:30:15.512782302Z       in:  id=lst_002, wardrobe
+2026-11-15T22:30:15.512787422Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:30:16.188433751Z [80] create_fit_card
+2026-11-15T22:30:16.188463552Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:16.188469002Z       out: Obsessed with this little butterfly tee I just scored on depop for only $18. I've been styling it with baggy d…
+2026-11-15T22:30:16.188488423Z {"timestamp": "2026-11-15T22:30:16.188+00:00", "request_id": "47d3225d", "input": "vintage graphic tee under $30", "output": "Obsessed with this little butterfly tee I just scored on depop for only $18. I've been styling it with baggy dark-wash denim and chunky sneakers for the ultimate casual streetwear vibe, but it also looks so good paired with wide-leg khaki trousers and combat boots.", "duration_ms": 4944.7, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 58}
+2026-11-15T22:30:16.189322554Z 127.0.0.1 - - [15/Nov/2026:22:30:16 +0000] "POST /ask HTTP/1.1" 200 7235 "-" "Python-urllib/3.13"
+2026-11-15T22:30:16.305986672Z [81] parse_request
+2026-11-15T22:30:16.306006073Z       in:  dict with keys: query
+2026-11-15T22:30:16.306012874Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:20.399287642Z [82] search_listings (via MCP)
+2026-11-15T22:30:20.399308323Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:20.399312193Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:30:20.399315543Z [83] selected_item
+2026-11-15T22:30:20.399318624Z       out: id=lst_007
+2026-11-15T22:30:20.399597637Z [84] suggest_outfit
+2026-11-15T22:30:20.399613258Z       in:  id=lst_007, wardrobe
+2026-11-15T22:30:20.399618768Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:30:21.223636333Z [85] create_fit_card
+2026-11-15T22:30:21.223658235Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:21.223664485Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I’m officially obsessed. It adds the exact…
+2026-11-15T22:30:21.224744088Z {"timestamp": "2026-11-15T22:30:21.223+00:00", "request_id": "ca660a09", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I’m officially obsessed. It adds the exact right amount of 90s streetwear energy to my baggy jeans and white tank. Such a good find for transitional weather!", "duration_ms": 4918.1, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 52}
+2026-11-15T22:30:21.224758368Z 127.0.0.1 - - [15/Nov/2026:22:30:21 +0000] "POST /ask HTTP/1.1" 200 6474 "-" "Python-urllib/3.13"
+2026-11-15T22:30:21.372138856Z [86] parse_request
+2026-11-15T22:30:21.372162768Z       in:  dict with keys: query
+2026-11-15T22:30:21.372168248Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:25.800171042Z [87] search_listings (via MCP)
+2026-11-15T22:30:25.800199904Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:25.800207544Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:30:25.800214615Z [88] selected_item
+2026-11-15T22:30:25.800221025Z       out: id=lst_008
+2026-11-15T22:30:25.800405034Z [89] suggest_outfit
+2026-11-15T22:30:25.800418785Z       in:  id=lst_008, wardrobe
+2026-11-15T22:30:25.800424205Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:30:26.713430336Z [90] create_fit_card
+2026-11-15T22:30:26.713460657Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:26.713466588Z       out: Just scored this chunky brown knit cardigan on Depop for $35, and it’s basically my new favorite thing ever. I…
+2026-11-15T22:30:26.713618125Z {"timestamp": "2026-11-15T22:30:26.713+00:00", "request_id": "fb1fea1c", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on Depop for $35, and it’s basically my new favorite thing ever. I threw it on over baggy dark denim and combat boots for the ultimate cozy-meets-grunge look. Honestly never taking this off.", "duration_ms": 5341.8, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 53}
+2026-11-15T22:30:26.714250496Z 127.0.0.1 - - [15/Nov/2026:22:30:26 +0000] "POST /ask HTTP/1.1" 200 4747 "-" "Python-urllib/3.13"
+2026-11-15T22:30:26.843461607Z [91] parse_request
+2026-11-15T22:30:26.843521879Z       in:  dict with keys: query
+2026-11-15T22:30:26.84352989Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:31.194661479Z [92] search_listings (via MCP)
+2026-11-15T22:30:31.194707622Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:31.194713092Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:30:31.194716352Z [93] selected_item
+2026-11-15T22:30:31.194719002Z       out: id=lst_017
+2026-11-15T22:30:31.194901021Z [94] suggest_outfit
+2026-11-15T22:30:31.194906791Z       in:  id=lst_017, wardrobe
+2026-11-15T22:30:31.194911152Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:30:32.293170071Z [95] create_fit_card
+2026-11-15T22:30:32.293190782Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:32.293194972Z       out: scored this black mesh long-sleeve top on depop for just $15, and it’s literally the ultimate layering piece. …
+2026-11-15T22:30:32.29335396Z {"timestamp": "2026-11-15T22:30:32.293+00:00", "request_id": "3d77049f", "input": "linen jersey sweat top under $50", "output": "scored this black mesh long-sleeve top on depop for just $15, and it’s literally the ultimate layering piece. already obsessed with styling it under my cropped zip hoodie with wide-leg trousers for that perfect grungy, textured look.", "duration_ms": 5450.3, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 51}
+2026-11-15T22:30:32.294042803Z 127.0.0.1 - - [15/Nov/2026:22:30:32 +0000] "POST /ask HTTP/1.1" 200 5090 "-" "Python-urllib/3.13"
+2026-11-15T22:30:32.408376927Z [96] parse_request
+2026-11-15T22:30:32.408408159Z       in:  dict with keys: query
+2026-11-15T22:30:32.408414759Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:36.897865474Z [97] search_listings (via MCP)
+2026-11-15T22:30:36.897894425Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:36.897901675Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:30:36.897906806Z [98] selected_item
+2026-11-15T22:30:36.897911896Z       out: id=lst_032
+2026-11-15T22:30:36.898154318Z [99] suggest_outfit
+2026-11-15T22:30:36.898161878Z       in:  id=lst_032, wardrobe
+2026-11-15T22:30:36.898166478Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:30:37.699542187Z [100] create_fit_card
+2026-11-15T22:30:37.699574509Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:37.69958968Z       out: Scored this olive canvas shacket on Poshmark for just $33 and I'm already obsessed with it. It's the ultimate …
+2026-11-15T22:30:37.700488453Z {"timestamp": "2026-11-15T22:30:37.699+00:00", "request_id": "7832bb0b", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33 and I'm already obsessed with it. It's the ultimate layering piece for tying together earth-toned minimal looks with my favorite wide-leg trousers and combat boots. Such a good find!", "duration_ms": 5291.8, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 56}
+2026-11-15T22:30:37.700593838Z 127.0.0.1 - - [15/Nov/2026:22:30:37 +0000] "POST /ask HTTP/1.1" 200 3916 "-" "Python-urllib/3.13"
+2026-11-15T22:30:37.902316421Z 127.0.0.1 - - [15/Nov/2026:22:30:37 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:30:38.152469398Z [101] parse_request
+2026-11-15T22:30:38.152515361Z       in:  dict with keys: query
+2026-11-15T22:30:38.152523341Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:42.697728467Z [102] search_listings (via MCP)
+2026-11-15T22:30:42.697758919Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:42.697765159Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:30:42.69778325Z [103] selected_item
+2026-11-15T22:30:42.69778637Z       out: id=lst_002
+2026-11-15T22:30:42.697948918Z [104] suggest_outfit
+2026-11-15T22:30:42.697956158Z       in:  id=lst_002, wardrobe
+2026-11-15T22:30:42.697959288Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:30:43.411974961Z [105] create_fit_card
+2026-11-15T22:30:43.412002102Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:43.412005732Z       out: Obsessed with this little butterfly tee I just scored on depop for only $18! I’m totally living for how the pa…
+2026-11-15T22:30:43.412125918Z {"timestamp": "2026-11-15T22:30:43.411+00:00", "request_id": "e613ab9a", "input": "vintage graphic tee under $30", "output": "Obsessed with this little butterfly tee I just scored on depop for only $18! I’m totally living for how the pastel graphic looks tucked into baggy khaki trousers with combat boots for that edgy Y2K-meets-minimalist vibe.", "duration_ms": 5260.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 51}
+2026-11-15T22:30:43.412902106Z 127.0.0.1 - - [15/Nov/2026:22:30:43 +0000] "POST /ask HTTP/1.1" 200 7195 "-" "Python-urllib/3.13"
+2026-11-15T22:30:43.53664756Z [106] parse_request
+2026-11-15T22:30:43.536672361Z       in:  dict with keys: query
+2026-11-15T22:30:43.536676721Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:47.803827757Z [107] search_listings (via MCP)
+2026-11-15T22:30:47.803849228Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:47.803853598Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:30:47.803857698Z [108] selected_item
+2026-11-15T22:30:47.803861918Z       out: id=lst_007
+2026-11-15T22:30:47.804136842Z [109] suggest_outfit
+2026-11-15T22:30:47.804150853Z       in:  id=lst_007, wardrobe
+2026-11-15T22:30:47.804156533Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:30:48.459649717Z [110] create_fit_card
+2026-11-15T22:30:48.459682448Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:48.459689069Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and it’s honestly the ultimate streetwear piec…
+2026-11-15T22:30:48.45970194Z {"timestamp": "2026-11-15T22:30:48.459+00:00", "request_id": "890f6144", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and it’s honestly the ultimate streetwear piece. It looks so good with baggy dark denim for a two-tone look, but I'm obsessed with how it dresses down these tailored khaki trousers. Such a steal for how versatile it is!", "duration_ms": 4923.4, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 65}
+2026-11-15T22:30:48.460463517Z 127.0.0.1 - - [15/Nov/2026:22:30:48 +0000] "POST /ask HTTP/1.1" 200 6532 "-" "Python-urllib/3.13"
+2026-11-15T22:30:48.607427404Z [111] parse_request
+2026-11-15T22:30:48.607448095Z       in:  dict with keys: query
+2026-11-15T22:30:48.607454096Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:53.397248846Z [112] search_listings (via MCP)
+2026-11-15T22:30:53.397268637Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:53.397274577Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:30:53.397289028Z [113] selected_item
+2026-11-15T22:30:53.397292298Z       out: id=lst_008
+2026-11-15T22:30:53.397492738Z [114] suggest_outfit
+2026-11-15T22:30:53.397499678Z       in:  id=lst_008, wardrobe
+2026-11-15T22:30:53.39754296Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:30:54.636464558Z [115] create_fit_card
+2026-11-15T22:30:54.63648763Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:30:54.63649329Z       out: Found the ultimate chunky brown knit cardigan on depop for just $35.00, and it's the coziest oversized layer f…
+2026-11-15T22:30:54.636627276Z {"timestamp": "2026-11-15T22:30:54.636+00:00", "request_id": "ddbdbfea", "input": "printed knit tank under $45", "output": "Found the ultimate chunky brown knit cardigan on depop for just $35.00, and it's the coziest oversized layer for fall. I threw it on over a white tank with dark baggy jeans and black combat boots for that perfect mix of cottagecore softness and grunge streetwear. Honestly never taking this off.", "duration_ms": 6029.6, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 65}
+2026-11-15T22:30:54.637407014Z 127.0.0.1 - - [15/Nov/2026:22:30:54 +0000] "POST /ask HTTP/1.1" 200 4803 "-" "Python-urllib/3.13"
+2026-11-15T22:30:54.764927542Z [116] parse_request
+2026-11-15T22:30:54.764950673Z       in:  dict with keys: query
+2026-11-15T22:30:54.764954894Z       out: dict with keys: description, size, max_price
+2026-11-15T22:30:59.604353356Z [117] search_listings (via MCP)
+2026-11-15T22:30:59.604380407Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:30:59.604386238Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:30:59.604391278Z [118] selected_item
+2026-11-15T22:30:59.604395398Z       out: id=lst_017
+2026-11-15T22:30:59.604400068Z [119] suggest_outfit
+2026-11-15T22:30:59.604404588Z       in:  id=lst_017, wardrobe
+2026-11-15T22:30:59.604408889Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:31:01.578612587Z [120] create_fit_card
+2026-11-15T22:31:01.578636748Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:01.578643159Z       out: scored this sheer black mesh long-sleeve top on depop for only $15 and I'm already obsessed. layered it under …
+2026-11-15T22:31:01.578650979Z {"timestamp": "2026-11-15T22:31:01.577+00:00", "request_id": "b3b14c9d", "input": "linen jersey sweat top under $50", "output": "scored this sheer black mesh long-sleeve top on depop for only $15 and I'm already obsessed. layered it under my cropped zip hoodie with some wide-leg khaki trousers and chunky sneakers for the ultimate grunge-meets-streetwear look. such an easy piece to throw on when you want an outfit to look instantly edgier.", "duration_ms": 6813.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 72}
+2026-11-15T22:31:01.57968969Z 127.0.0.1 - - [15/Nov/2026:22:31:01 +0000] "POST /ask HTTP/1.1" 200 5165 "-" "Python-urllib/3.13"
+2026-11-15T22:31:01.713703844Z [121] parse_request
+2026-11-15T22:31:01.713727656Z       in:  dict with keys: query
+2026-11-15T22:31:01.713732476Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:06.095862234Z [122] search_listings (via MCP)
+2026-11-15T22:31:06.095880055Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:06.095886065Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:31:06.095891196Z [123] selected_item
+2026-11-15T22:31:06.095905836Z       out: id=lst_032
+2026-11-15T22:31:06.096140648Z [124] suggest_outfit
+2026-11-15T22:31:06.096147908Z       in:  id=lst_032, wardrobe
+2026-11-15T22:31:06.096151038Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:31:07.644379762Z [125] create_fit_card
+2026-11-15T22:31:07.644397333Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:07.644400563Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my closet. …
+2026-11-15T22:31:07.644482447Z {"timestamp": "2026-11-15T22:31:07.644+00:00", "request_id": "a212a984", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my closet. Wore it over baggy denim and chunky sneakers today for an effortless streetwear layering look. Total earth-tone perfection!", "duration_ms": 5932.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 52}
+2026-11-15T22:31:07.645585931Z 127.0.0.1 - - [15/Nov/2026:22:31:07 +0000] "POST /ask HTTP/1.1" 200 3909 "-" "Python-urllib/3.13"
+2026-11-15T22:31:07.776130297Z [126] parse_request
+2026-11-15T22:31:07.776160188Z       in:  dict with keys: query
+2026-11-15T22:31:07.776166039Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:11.895710702Z [127] search_listings (via MCP)
+2026-11-15T22:31:11.895738793Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:11.895743123Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:31:11.895746634Z [128] selected_item
+2026-11-15T22:31:11.895749444Z       out: id=lst_002
+2026-11-15T22:31:11.896057259Z [129] suggest_outfit
+2026-11-15T22:31:11.896065459Z       in:  id=lst_002, wardrobe
+2026-11-15T22:31:11.896069589Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:31:12.700792521Z [130] create_fit_card
+2026-11-15T22:31:12.700813442Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:12.700819022Z       out: Just scored the cutest butterfly print baby tee on Depop for $18, and I am obsessed. I’ve been styling it with…
+2026-11-15T22:31:12.700857314Z {"timestamp": "2026-11-15T22:31:12.700+00:00", "request_id": "4b9d81e3", "input": "vintage graphic tee under $30", "output": "Just scored the cutest butterfly print baby tee on Depop for $18, and I am obsessed. I’ve been styling it with wide-leg khaki trousers, a brown leather belt, and black combat boots for that perfect mix of sweet and edgy.", "duration_ms": 4925.1, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 52}
+2026-11-15T22:31:12.702493364Z 127.0.0.1 - - [15/Nov/2026:22:31:12 +0000] "POST /ask HTTP/1.1" 200 7195 "-" "Python-urllib/3.13"
+2026-11-15T22:31:12.796759768Z [131] parse_request
+2026-11-15T22:31:12.796780219Z       in:  dict with keys: query
+2026-11-15T22:31:12.796786959Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:17.294035259Z [132] search_listings (via MCP)
+2026-11-15T22:31:17.29405756Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:17.29406186Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:31:17.29406566Z [133] selected_item
+2026-11-15T22:31:17.29406861Z       out: id=lst_007
+2026-11-15T22:31:17.294300932Z [134] suggest_outfit
+2026-11-15T22:31:17.294316122Z       in:  id=lst_007, wardrobe
+2026-11-15T22:31:17.294320292Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:31:17.868126606Z [135] create_fit_card
+2026-11-15T22:31:17.868158698Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:17.868164878Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed. It's the ultimate pi…
+2026-11-15T22:31:17.868193189Z {"timestamp": "2026-11-15T22:31:17.868+00:00", "request_id": "727ac1e2", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed. It's the ultimate piece for throwing over wide-leg trousers or doing double-denim streetwear looks. Such a good find!", "duration_ms": 5072.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 50}
+2026-11-15T22:31:17.868883683Z 127.0.0.1 - - [15/Nov/2026:22:31:17 +0000] "POST /ask HTTP/1.1" 200 6451 "-" "Python-urllib/3.13"
+2026-11-15T22:31:17.971977278Z [136] parse_request
+2026-11-15T22:31:17.972001949Z       in:  dict with keys: query
+2026-11-15T22:31:17.972006359Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:22.292535967Z [137] search_listings (via MCP)
+2026-11-15T22:31:22.292556648Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:22.292560629Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:31:22.292563819Z [138] selected_item
+2026-11-15T22:31:22.292566169Z       out: id=lst_008
+2026-11-15T22:31:22.292824301Z [139] suggest_outfit
+2026-11-15T22:31:22.292831052Z       in:  id=lst_008, wardrobe
+2026-11-15T22:31:22.292833842Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:31:23.09646548Z [140] create_fit_card
+2026-11-15T22:31:23.096492902Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:23.096496872Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I am obsessed. I threw it on over baggy dark …
+2026-11-15T22:31:23.0966729Z {"timestamp": "2026-11-15T22:31:23.096+00:00", "request_id": "f10c8816", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I am obsessed. I threw it on over baggy dark wash denim and black combat boots for the ultimate cozy-meets-grunge look. Can't wait to live in this all autumn long!", "duration_ms": 5125.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 54}
+2026-11-15T22:31:23.097227027Z 127.0.0.1 - - [15/Nov/2026:22:31:23 +0000] "POST /ask HTTP/1.1" 200 4736 "-" "Python-urllib/3.13"
+2026-11-15T22:31:23.224273422Z [141] parse_request
+2026-11-15T22:31:23.224293893Z       in:  dict with keys: query
+2026-11-15T22:31:23.224297213Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:27.894262046Z [142] search_listings (via MCP)
+2026-11-15T22:31:27.894299978Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:27.894306178Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:31:27.894312188Z [143] selected_item
+2026-11-15T22:31:27.894317209Z       out: id=lst_017
+2026-11-15T22:31:27.894615513Z [144] suggest_outfit
+2026-11-15T22:31:27.894630594Z       in:  id=lst_017, wardrobe
+2026-11-15T22:31:27.894636584Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:31:28.506095317Z [145] create_fit_card
+2026-11-15T22:31:28.506120158Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:28.506124318Z       out: Scored this black mesh long-sleeve top on depop for just $15.00, and it’s honestly the ultimate layering piece…
+2026-11-15T22:31:28.50617307Z {"timestamp": "2026-11-15T22:31:28.506+00:00", "request_id": "3f82828c", "input": "linen jersey sweat top under $50", "output": "Scored this black mesh long-sleeve top on depop for just $15.00, and it’s honestly the ultimate layering piece for my Y2K grunge aesthetic. I threw it under my black cropped zip hoodie with wide-leg khaki trousers and chunky white sneakers for the perfect grungy contrast. So obsessed with how this turned out!", "duration_ms": 5282.3, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 72}
+2026-11-15T22:31:28.506831993Z 127.0.0.1 - - [15/Nov/2026:22:31:28 +0000] "POST /ask HTTP/1.1" 200 5167 "-" "Python-urllib/3.13"
+2026-11-15T22:31:28.644606742Z [146] parse_request
+2026-11-15T22:31:28.644628552Z       in:  dict with keys: query
+2026-11-15T22:31:28.644632793Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:33.101916608Z [147] search_listings (via MCP)
+2026-11-15T22:31:33.101936079Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:33.101939879Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:31:33.101942849Z [148] selected_item
+2026-11-15T22:31:33.101945249Z       out: id=lst_032
+2026-11-15T22:31:33.102180611Z [149] suggest_outfit
+2026-11-15T22:31:33.102189821Z       in:  id=lst_032, wardrobe
+2026-11-15T22:31:33.102194902Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:31:33.889554155Z [150] create_fit_card
+2026-11-15T22:31:33.889574576Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:33.889578406Z       out: Scored this olive canvas shacket on Poshmark for just $33 and I’m already obsessed. Styled it here with wide-l…
+2026-11-15T22:31:33.889700802Z {"timestamp": "2026-11-15T22:31:33.889+00:00", "request_id": "34c08fc7", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33 and I’m already obsessed. Styled it here with wide-leg khaki trousers and combat boots for an easy, earthy minimal look. Can't wait to live in this jacket all season long!", "duration_ms": 5245.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 56}
+2026-11-15T22:31:33.89029164Z 127.0.0.1 - - [15/Nov/2026:22:31:33 +0000] "POST /ask HTTP/1.1" 200 3910 "-" "Python-urllib/3.13"
+2026-11-15T22:31:34.220053275Z 127.0.0.1 - - [15/Nov/2026:22:31:34 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:31:34.320157994Z [151] parse_request
+2026-11-15T22:31:34.320172445Z       in:  dict with keys: query
+2026-11-15T22:31:34.320175815Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:38.803309572Z [152] search_listings (via MCP)
+2026-11-15T22:31:38.803337683Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:38.803345304Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:31:38.803349104Z [153] selected_item
+2026-11-15T22:31:38.803351884Z       out: id=lst_002
+2026-11-15T22:31:38.803597286Z [154] suggest_outfit
+2026-11-15T22:31:38.803610527Z       in:  id=lst_002, wardrobe
+2026-11-15T22:31:38.803615647Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:31:39.886674511Z [155] create_fit_card
+2026-11-15T22:31:39.886697972Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:39.886701113Z       out: Just scored this cutest butterfly baby tee on depop for $18, and I am obsessed. I’m leaning all the way into t…
+2026-11-15T22:31:39.886728544Z {"timestamp": "2026-11-15T22:31:39.886+00:00", "request_id": "6d1aa5a6", "input": "vintage graphic tee under $30", "output": "Just scored this cutest butterfly baby tee on depop for $18, and I am obsessed. I’m leaning all the way into the Y2K vibe today by pairing it with my favorite baggy dark-wash jeans, an oversized black denim jacket, and chunky sneakers.", "duration_ms": 5567.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 56}
+2026-11-15T22:31:39.887444209Z 127.0.0.1 - - [15/Nov/2026:22:31:39 +0000] "POST /ask HTTP/1.1" 200 7210 "-" "Python-urllib/3.13"
+2026-11-15T22:31:39.888342253Z [156] parse_request
+2026-11-15T22:31:39.888353893Z       in:  dict with keys: query
+2026-11-15T22:31:39.888357404Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:44.002661807Z [157] search_listings (via MCP)
+2026-11-15T22:31:44.002690778Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:44.002695539Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:31:44.002699769Z [158] selected_item
+2026-11-15T22:31:44.002701859Z       out: id=lst_007
+2026-11-15T22:31:44.002875967Z [159] suggest_outfit
+2026-11-15T22:31:44.002884258Z       in:  id=lst_007, wardrobe
+2026-11-15T22:31:44.002888678Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:31:44.816615469Z [160] create_fit_card
+2026-11-15T22:31:44.816630319Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:44.81663409Z       out: Finally scored this cropped light wash denim jacket on Poshmark for $42 and I’m obsessed with the wash. It’s b…
+2026-11-15T22:31:44.816686392Z {"timestamp": "2026-11-15T22:31:44.816+00:00", "request_id": "3cbf15b7", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I’m obsessed with the wash. It’s been my go-to lately for throwing over a white tank with baggy dark denim for that effortless double-denim streetwear look.", "duration_ms": 4928.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 54}
+2026-11-15T22:31:44.817382456Z 127.0.0.1 - - [15/Nov/2026:22:31:44 +0000] "POST /ask HTTP/1.1" 200 6486 "-" "Python-urllib/3.13"
+2026-11-15T22:31:44.952276674Z [161] parse_request
+2026-11-15T22:31:44.952296855Z       in:  dict with keys: query
+2026-11-15T22:31:44.952301396Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:49.299968415Z [162] search_listings (via MCP)
+2026-11-15T22:31:49.299995746Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:49.299999967Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:31:49.300011017Z [163] selected_item
+2026-11-15T22:31:49.300014397Z       out: id=lst_017
+2026-11-15T22:31:49.300297661Z [164] suggest_outfit
+2026-11-15T22:31:49.300308062Z       in:  id=lst_017, wardrobe
+2026-11-15T22:31:49.300315622Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:31:51.505028644Z [165] create_fit_card
+2026-11-15T22:31:51.505059426Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:51.505078127Z       out: Finally found the perfect black mesh long-sleeve top on depop for only $15, and I'm obsessed. I just layered i…
+2026-11-15T22:31:51.505123449Z {"timestamp": "2026-11-15T22:31:51.504+00:00", "request_id": "dddc1fcb", "input": "linen jersey sweat top under $50", "output": "Finally found the perfect black mesh long-sleeve top on depop for only $15, and I'm obsessed. I just layered it under my black zip hoodie with some wide-leg khaki trousers for the ultimate grungy, textured fit.", "duration_ms": 6553.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 50}
+2026-11-15T22:31:51.505865955Z 127.0.0.1 - - [15/Nov/2026:22:31:51 +0000] "POST /ask HTTP/1.1" 200 5062 "-" "Python-urllib/3.13"
+2026-11-15T22:31:51.506700296Z [166] parse_request
+2026-11-15T22:31:51.506712177Z       in:  dict with keys: query
+2026-11-15T22:31:51.506716237Z       out: dict with keys: description, size, max_price
+2026-11-15T22:31:55.702092038Z [167] search_listings (via MCP)
+2026-11-15T22:31:55.70212368Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:31:55.7021289Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:31:55.70213308Z [168] selected_item
+2026-11-15T22:31:55.70213649Z       out: id=lst_008
+2026-11-15T22:31:55.702360751Z [169] suggest_outfit
+2026-11-15T22:31:55.702367772Z       in:  id=lst_008, wardrobe
+2026-11-15T22:31:55.702371622Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:31:56.408016353Z [170] create_fit_card
+2026-11-15T22:31:56.408048725Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:31:56.408054425Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I am so obsessed with it. I threw it on over …
+2026-11-15T22:31:56.408072346Z {"timestamp": "2026-11-15T22:31:56.407+00:00", "request_id": "6948e978", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I am so obsessed with it. I threw it on over a white tank and baggy dark wash jeans with combat boots for that perfect mix of cozy cottagecore and edgy streetwear. It is literally going to be my entire personality all autumn long.", "duration_ms": 4901.7, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 63}
+2026-11-15T22:31:56.408833093Z 127.0.0.1 - - [15/Nov/2026:22:31:56 +0000] "POST /ask HTTP/1.1" 200 4803 "-" "Python-urllib/3.13"
+2026-11-15T22:31:56.730781196Z [171] parse_request
+2026-11-15T22:31:56.730799387Z       in:  dict with keys: query
+2026-11-15T22:31:56.730803467Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:01.418657689Z [172] search_listings (via MCP)
+2026-11-15T22:32:01.41868623Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:01.418691631Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:32:01.419584654Z [173] selected_item
+2026-11-15T22:32:01.419597755Z       out: id=lst_032
+2026-11-15T22:32:01.419602795Z [174] suggest_outfit
+2026-11-15T22:32:01.419607475Z       in:  id=lst_032, wardrobe
+2026-11-15T22:32:01.419612496Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:32:02.230414063Z [175] create_fit_card
+2026-11-15T22:32:02.230439604Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:02.230448044Z       out: Scored this olive canvas shacket on Poshmark for just $33 and I'm already obsessed with it. Paired it with wid…
+2026-11-15T22:32:02.230477286Z {"timestamp": "2026-11-15T22:32:02.230+00:00", "request_id": "d5ac8dd0", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33 and I'm already obsessed with it. Paired it with wide-leg khaki trousers and combat boots for the ultimate earthy, minimal look. It's officially my new favorite layering piece for fall.", "duration_ms": 5500.1, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 57}
+2026-11-15T22:32:02.231133138Z 127.0.0.1 - - [15/Nov/2026:22:32:02 +0000] "POST /ask HTTP/1.1" 200 3919 "-" "Python-urllib/3.13"
+2026-11-15T22:32:02.231902695Z [176] parse_request
+2026-11-15T22:32:02.231911906Z       in:  dict with keys: query
+2026-11-15T22:32:02.231914506Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:06.493354472Z [177] search_listings (via MCP)
+2026-11-15T22:32:06.493381123Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:06.493386164Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:32:06.493389784Z [178] selected_item
+2026-11-15T22:32:06.493392484Z       out: id=lst_002
+2026-11-15T22:32:06.493700789Z [179] suggest_outfit
+2026-11-15T22:32:06.49371288Z       in:  id=lst_002, wardrobe
+2026-11-15T22:32:06.49371666Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:32:07.193736077Z [180] create_fit_card
+2026-11-15T22:32:07.193763708Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:07.193768498Z       out: Finally scored this butterfly print baby tee on Depop for just $18, and I am obsessed. I’ve been wearing it wi…
+2026-11-15T22:32:07.193785529Z {"timestamp": "2026-11-15T22:32:07.193+00:00", "request_id": "d3828c54", "input": "vintage graphic tee under $30", "output": "Finally scored this butterfly print baby tee on Depop for just $18, and I am obsessed. I’ve been wearing it with baggy dark-wash jeans and chunky sneakers for an effortless casual streetwear vibe.", "duration_ms": 4962.1, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 43}
+2026-11-15T22:32:07.194461822Z 127.0.0.1 - - [15/Nov/2026:22:32:07 +0000] "POST /ask HTTP/1.1" 200 7171 "-" "Python-urllib/3.13"
+2026-11-15T22:32:07.328427745Z [181] parse_request
+2026-11-15T22:32:07.328448306Z       in:  dict with keys: query
+2026-11-15T22:32:07.328452646Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:11.395077827Z [182] search_listings (via MCP)
+2026-11-15T22:32:11.395101618Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:11.395105298Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:32:11.395108469Z [183] selected_item
+2026-11-15T22:32:11.395110389Z       out: id=lst_007
+2026-11-15T22:32:11.395320969Z [184] suggest_outfit
+2026-11-15T22:32:11.395327399Z       in:  id=lst_007, wardrobe
+2026-11-15T22:32:11.395332929Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:32:11.998556629Z [185] create_fit_card
+2026-11-15T22:32:11.99858897Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:11.998630652Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the wash. It hits at the…
+2026-11-15T22:32:11.998647833Z {"timestamp": "2026-11-15T22:32:11.998+00:00", "request_id": "c1411a54", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the wash. It hits at the exact right spot to wear with baggy dark denim for a 90s streetwear vibe. Can't wait to style it with wide-leg trousers and chunky sneakers too!", "duration_ms": 4670.4, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 64}
+2026-11-15T22:32:11.999438802Z 127.0.0.1 - - [15/Nov/2026:22:32:11 +0000] "POST /ask HTTP/1.1" 200 6499 "-" "Python-urllib/3.13"
+2026-11-15T22:32:12.000599149Z [186] parse_request
+2026-11-15T22:32:12.000610089Z       in:  dict with keys: query
+2026-11-15T22:32:12.000613559Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:16.497586066Z [187] search_listings (via MCP)
+2026-11-15T22:32:16.497626359Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:16.497632979Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:32:16.497639629Z [188] selected_item
+2026-11-15T22:32:16.497642919Z       out: id=lst_008
+2026-11-15T22:32:16.497824768Z [189] suggest_outfit
+2026-11-15T22:32:16.497833379Z       in:  id=lst_008, wardrobe
+2026-11-15T22:32:16.497838379Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:32:17.877112608Z [190] create_fit_card
+2026-11-15T22:32:17.877136419Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:17.877142579Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I am obsessed with it! I styled it today with…
+2026-11-15T22:32:17.877193532Z {"timestamp": "2026-11-15T22:32:17.877+00:00", "request_id": "a15424a6", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I am obsessed with it! I styled it today with baggy dark denim and black combat boots for the ultimate cozy-meets-grunge look.", "duration_ms": 5877.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 43}
+2026-11-15T22:32:17.878458144Z 127.0.0.1 - - [15/Nov/2026:22:32:17 +0000] "POST /ask HTTP/1.1" 200 4699 "-" "Python-urllib/3.13"
+2026-11-15T22:32:17.990292805Z [191] parse_request
+2026-11-15T22:32:17.990309166Z       in:  dict with keys: query
+2026-11-15T22:32:17.990313396Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:22.398427743Z [192] search_listings (via MCP)
+2026-11-15T22:32:22.398452894Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:22.398460245Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:32:22.398466905Z [193] selected_item
+2026-11-15T22:32:22.398473165Z       out: id=lst_017
+2026-11-15T22:32:22.398683666Z [194] suggest_outfit
+2026-11-15T22:32:22.398696206Z       in:  id=lst_017, wardrobe
+2026-11-15T22:32:22.398702647Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:32:23.673353766Z [195] create_fit_card
+2026-11-15T22:32:23.673383107Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:23.673389708Z       out: scored this black mesh long-sleeve top on depop for only $15 and it’s the ultimate layering piece for my grung…
+2026-11-15T22:32:23.673403719Z {"timestamp": "2026-11-15T22:32:23.673+00:00", "request_id": "9d09e896", "input": "linen jersey sweat top under $50", "output": "scored this black mesh long-sleeve top on depop for only $15 and it’s the ultimate layering piece for my grunge and y2k looks. wearing it under my vintage denim jacket with baggy jeans and combat boots for the perfect edgy texture.", "duration_ms": 5684.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 53}
+2026-11-15T22:32:23.674072071Z 127.0.0.1 - - [15/Nov/2026:22:32:23 +0000] "POST /ask HTTP/1.1" 200 5088 "-" "Python-urllib/3.13"
+2026-11-15T22:32:23.674920962Z [196] parse_request
+2026-11-15T22:32:23.674932953Z       in:  dict with keys: query
+2026-11-15T22:32:23.674936553Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:28.199441063Z [197] search_listings (via MCP)
+2026-11-15T22:32:28.199475295Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:28.199479916Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:32:28.199484036Z [198] selected_item
+2026-11-15T22:32:28.199486976Z       out: id=lst_032
+2026-11-15T22:32:28.199763499Z [199] suggest_outfit
+2026-11-15T22:32:28.19978276Z       in:  id=lst_032, wardrobe
+2026-11-15T22:32:28.199786431Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:32:29.372635388Z [200] create_fit_card
+2026-11-15T22:32:29.3726668Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:29.37267381Z       out: Scored this olive canvas shacket on Poshmark for just $33 and it is officially my new layering obsession. I’m …
+2026-11-15T22:32:29.372716882Z {"timestamp": "2026-11-15T22:32:29.372+00:00", "request_id": "6aea0096", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33 and it is officially my new layering obsession. I’m leaning all the way into the earth tones with baggy dark denim and chunky sneakers today, but tomorrow it’s getting paired with wide-leg khakis and combat boots for a minimal moment.", "duration_ms": 5698.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 66}
+2026-11-15T22:32:29.373299541Z 127.0.0.1 - - [15/Nov/2026:22:32:29 +0000] "POST /ask HTTP/1.1" 200 3978 "-" "Python-urllib/3.13"
+2026-11-15T22:32:29.777219607Z 127.0.0.1 - - [15/Nov/2026:22:32:29 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:32:29.900116278Z [201] parse_request
+2026-11-15T22:32:29.900139179Z       in:  dict with keys: query
+2026-11-15T22:32:29.90014387Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:34.103035573Z [202] search_listings (via MCP)
+2026-11-15T22:32:34.103058664Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:34.103064064Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:32:34.103068594Z [203] selected_item
+2026-11-15T22:32:34.103072275Z       out: id=lst_002
+2026-11-15T22:32:34.103277125Z [204] suggest_outfit
+2026-11-15T22:32:34.103286095Z       in:  id=lst_002, wardrobe
+2026-11-15T22:32:34.103290865Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:32:34.750004748Z [205] create_fit_card
+2026-11-15T22:32:34.750027709Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:34.75003308Z       out: Obsessed with this little butterfly tee I just scored on depop for $18! I threw it on with baggy dark denim an…
+2026-11-15T22:32:34.750086142Z {"timestamp": "2026-11-15T22:32:34.749+00:00", "request_id": "65b81a08", "input": "vintage graphic tee under $30", "output": "Obsessed with this little butterfly tee I just scored on depop for $18! I threw it on with baggy dark denim and chunky sneakers for the ultimate casual streetwear vibe.", "duration_ms": 4850.3, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 36}
+2026-11-15T22:32:34.750788277Z 127.0.0.1 - - [15/Nov/2026:22:32:34 +0000] "POST /ask HTTP/1.1" 200 7138 "-" "Python-urllib/3.13"
+2026-11-15T22:32:34.751585305Z [206] parse_request
+2026-11-15T22:32:34.751597636Z       in:  dict with keys: query
+2026-11-15T22:32:34.751601636Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:39.295951244Z [207] search_listings (via MCP)
+2026-11-15T22:32:39.295978806Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:39.295982326Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:32:39.296030468Z [208] selected_item
+2026-11-15T22:32:39.296033968Z       out: id=lst_007
+2026-11-15T22:32:39.296301881Z [209] suggest_outfit
+2026-11-15T22:32:39.296307662Z       in:  id=lst_007, wardrobe
+2026-11-15T22:32:39.296311302Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:32:40.00641689Z [210] create_fit_card
+2026-11-15T22:32:40.006438051Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:40.006442791Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I’m already obsessed with how it looks sty…
+2026-11-15T22:32:40.006448332Z {"timestamp": "2026-11-15T22:32:40.005+00:00", "request_id": "45798bd2", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I’m already obsessed with how it looks styled over wide-leg khakis. It’s got that effortless streetwear vibe, especially when paired with chunky sneakers and a fitted white tank. Can't wait to wear this non-stop this season!", "duration_ms": 5254.4, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 68}
+2026-11-15T22:32:40.006487954Z 127.0.0.1 - - [15/Nov/2026:22:32:40 +0000] "POST /ask HTTP/1.1" 200 6546 "-" "Python-urllib/3.13"
+2026-11-15T22:32:40.16429866Z [211] parse_request
+2026-11-15T22:32:40.164313271Z       in:  dict with keys: query
+2026-11-15T22:32:40.164316781Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:44.600973299Z [212] search_listings (via MCP)
+2026-11-15T22:32:44.60100305Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:44.601008371Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:32:44.601012831Z [213] selected_item
+2026-11-15T22:32:44.601017011Z       out: id=lst_008
+2026-11-15T22:32:44.601376869Z [214] suggest_outfit
+2026-11-15T22:32:44.601390379Z       in:  id=lst_008, wardrobe
+2026-11-15T22:32:44.60139683Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:32:45.373102656Z [215] create_fit_card
+2026-11-15T22:32:45.373135638Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:45.373142069Z       out: Finally managed to snag this chunky brown knit cardigan on depop for $35, and it’s honestly the ultimate cozy …
+2026-11-15T22:32:45.37317308Z {"timestamp": "2026-11-15T22:32:45.373+00:00", "request_id": "a16e90a9", "input": "printed knit tank under $45", "output": "Finally managed to snag this chunky brown knit cardigan on depop for $35, and it’s honestly the ultimate cozy cottagecore staple. I threw it on over baggy dark-wash denim and black combat boots today for that perfect mix of soft knitwear and grunge edge.", "duration_ms": 5209.3, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 56}
+2026-11-15T22:32:45.373883345Z 127.0.0.1 - - [15/Nov/2026:22:32:45 +0000] "POST /ask HTTP/1.1" 200 4767 "-" "Python-urllib/3.13"
+2026-11-15T22:32:45.374840901Z [216] parse_request
+2026-11-15T22:32:45.374850482Z       in:  dict with keys: query
+2026-11-15T22:32:45.374854812Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:49.394095894Z [217] search_listings (via MCP)
+2026-11-15T22:32:49.394121705Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:49.394126296Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:32:49.394131436Z [218] selected_item
+2026-11-15T22:32:49.394136416Z       out: id=lst_017
+2026-11-15T22:32:49.394380658Z [219] suggest_outfit
+2026-11-15T22:32:49.394392989Z       in:  id=lst_017, wardrobe
+2026-11-15T22:32:49.394397839Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:32:50.237435849Z [220] create_fit_card
+2026-11-15T22:32:50.23745854Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:50.237465401Z       out: scored this mesh long-sleeve top on depop for just $15 and I’m already obsessed with layering it. threw it und…
+2026-11-15T22:32:50.238623837Z {"timestamp": "2026-11-15T22:32:50.237+00:00", "request_id": "5bd16beb", "input": "linen jersey sweat top under $50", "output": "scored this mesh long-sleeve top on depop for just $15 and I’m already obsessed with layering it. threw it under a cropped hoodie with baggy khakis and chunky sneakers for the ultimate grunge contrast.", "duration_ms": 4862.7, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 45}
+2026-11-15T22:32:50.238637368Z 127.0.0.1 - - [15/Nov/2026:22:32:50 +0000] "POST /ask HTTP/1.1" 200 5058 "-" "Python-urllib/3.13"
+2026-11-15T22:32:50.384715762Z [221] parse_request
+2026-11-15T22:32:50.384742313Z       in:  dict with keys: query
+2026-11-15T22:32:50.384748173Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:54.507211386Z [222] search_listings (via MCP)
+2026-11-15T22:32:54.507243287Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:54.507249598Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:32:54.507255208Z [223] selected_item
+2026-11-15T22:32:54.507259728Z       out: id=lst_002
+2026-11-15T22:32:54.507409016Z [224] suggest_outfit
+2026-11-15T22:32:54.507421106Z       in:  id=lst_002, wardrobe
+2026-11-15T22:32:54.507426707Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:32:55.412976759Z [225] create_fit_card
+2026-11-15T22:32:55.413004681Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:32:55.413011511Z       out: Found this literal dream butterfly tee on depop for just $18 and I am never taking it off. Paired it with bagg…
+2026-11-15T22:32:55.413072174Z {"timestamp": "2026-11-15T22:32:55.412+00:00", "request_id": "42e3b51e", "input": "vintage graphic tee under $30", "output": "Found this literal dream butterfly tee on depop for just $18 and I am never taking it off. Paired it with baggy dark-wash denim and chunky sneaks for the ultimate casual Y2K street style.", "duration_ms": 5028.7, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 45}
+2026-11-15T22:32:55.413846462Z 127.0.0.1 - - [15/Nov/2026:22:32:55 +0000] "POST /ask HTTP/1.1" 200 7157 "-" "Python-urllib/3.13"
+2026-11-15T22:32:55.416024878Z [226] parse_request
+2026-11-15T22:32:55.416039269Z       in:  dict with keys: query
+2026-11-15T22:32:55.41606121Z       out: dict with keys: description, size, max_price
+2026-11-15T22:32:59.902425613Z [227] search_listings (via MCP)
+2026-11-15T22:32:59.902458475Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:32:59.902464805Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:32:59.902469965Z [228] selected_item
+2026-11-15T22:32:59.902474156Z       out: id=lst_032
+2026-11-15T22:32:59.902682706Z [229] suggest_outfit
+2026-11-15T22:32:59.902697756Z       in:  id=lst_032, wardrobe
+2026-11-15T22:32:59.902703707Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:33:00.533285401Z [230] create_fit_card
+2026-11-15T22:33:00.533317043Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:00.533322443Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my wardrobe…
+2026-11-15T22:33:00.53387273Z {"timestamp": "2026-11-15T22:33:00.533+00:00", "request_id": "8be2d363", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my wardrobe. I've been wearing it non-stop for casual streetwear layering with baggy jeans and chunky sneakers, but it also looks so good paired with wide-leg khakis and combat boots for an earth-tone minimal vibe.", "duration_ms": 5119.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 73}
+2026-11-15T22:33:00.534824926Z 127.0.0.1 - - [15/Nov/2026:22:33:00 +0000] "POST /ask HTTP/1.1" 200 3989 "-" "Python-urllib/3.13"
+2026-11-15T22:33:00.743054805Z [231] parse_request
+2026-11-15T22:33:00.743079087Z       in:  dict with keys: query
+2026-11-15T22:33:00.743085887Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:05.100603197Z [232] search_listings (via MCP)
+2026-11-15T22:33:05.100632308Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:05.100639269Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:33:05.100643479Z [233] selected_item
+2026-11-15T22:33:05.100646679Z       out: id=lst_007
+2026-11-15T22:33:05.100840479Z [234] suggest_outfit
+2026-11-15T22:33:05.100853579Z       in:  id=lst_007, wardrobe
+2026-11-15T22:33:05.10086036Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:33:05.890709492Z [235] create_fit_card
+2026-11-15T22:33:05.890731533Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:05.890742143Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I’m already obsessed with how it looks. Th…
+2026-11-15T22:33:05.890748294Z {"timestamp": "2026-11-15T22:33:05.889+00:00", "request_id": "f61f6f46", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I’m already obsessed with how it looks. Threw it on with some baggy dark wash jeans and chunky sneakers for the ultimate 90s streetwear vibe. Can't wait to style it with trousers next!", "duration_ms": 5146.9, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 61}
+2026-11-15T22:33:05.890753524Z 127.0.0.1 - - [15/Nov/2026:22:33:05 +0000] "POST /ask HTTP/1.1" 200 6501 "-" "Python-urllib/3.13"
+2026-11-15T22:33:05.890894911Z [236] parse_request
+2026-11-15T22:33:05.890907691Z       in:  dict with keys: query
+2026-11-15T22:33:05.890913422Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:10.404522004Z [237] search_listings (via MCP)
+2026-11-15T22:33:10.404544655Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:10.404548336Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:33:10.405395887Z [238] selected_item
+2026-11-15T22:33:10.405404337Z       out: id=lst_008
+2026-11-15T22:33:10.40586584Z [239] suggest_outfit
+2026-11-15T22:33:10.405878971Z       in:  id=lst_008, wardrobe
+2026-11-15T22:33:10.405882311Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:33:11.356186619Z [240] create_fit_card
+2026-11-15T22:33:11.35620691Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:11.35621157Z       out: Just scored this chunky brown knit cardigan on Depop for $35, and it’s honestly the ultimate cozy layer. I thr…
+2026-11-15T22:33:11.356249552Z {"timestamp": "2026-11-15T22:33:11.356+00:00", "request_id": "3302285b", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on Depop for $35, and it’s honestly the ultimate cozy layer. I threw it on over baggy dark wash denim and black combat boots for that perfect mix of soft cottagecore and grunge streetwear. So obsessed with how this earth-toned piece pulls the whole outfit together!", "duration_ms": 5465.8, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 65}
+2026-11-15T22:33:11.356871562Z 127.0.0.1 - - [15/Nov/2026:22:33:11 +0000] "POST /ask HTTP/1.1" 200 4822 "-" "Python-urllib/3.13"
+2026-11-15T22:33:11.513865859Z [241] parse_request
+2026-11-15T22:33:11.5138852Z       in:  dict with keys: query
+2026-11-15T22:33:11.51388968Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:15.803212789Z [242] search_listings (via MCP)
+2026-11-15T22:33:15.803235239Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:15.80324135Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:33:15.80324837Z [243] selected_item
+2026-11-15T22:33:15.80325446Z       out: id=lst_032
+2026-11-15T22:33:15.803469961Z [244] suggest_outfit
+2026-11-15T22:33:15.803483522Z       in:  id=lst_032, wardrobe
+2026-11-15T22:33:15.803489512Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:33:17.511063211Z [245] create_fit_card
+2026-11-15T22:33:17.511085212Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:17.511091332Z       out: Scored this olive canvas shacket on Poshmark for just $33 and I’m already obsessed with how it looks layered o…
+2026-11-15T22:33:17.511097173Z {"timestamp": "2026-11-15T22:33:17.510+00:00", "request_id": "9e2e70e7", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33 and I’m already obsessed with how it looks layered over wide-leg khakis and combat boots. It’s giving the ultimate earthy, minimalist vibe for fall.", "duration_ms": 5997.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 50}
+2026-11-15T22:33:17.51165719Z 127.0.0.1 - - [15/Nov/2026:22:33:17 +0000] "POST /ask HTTP/1.1" 200 3892 "-" "Python-urllib/3.13"
+2026-11-15T22:33:17.512415197Z [246] parse_request
+2026-11-15T22:33:17.512423697Z       in:  dict with keys: query
+2026-11-15T22:33:17.512429568Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:21.698897392Z [247] search_listings (via MCP)
+2026-11-15T22:33:21.698919913Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:21.698924454Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:33:21.698936954Z [248] selected_item
+2026-11-15T22:33:21.698939174Z       out: id=lst_017
+2026-11-15T22:33:21.699137564Z [249] suggest_outfit
+2026-11-15T22:33:21.699145395Z       in:  id=lst_017, wardrobe
+2026-11-15T22:33:21.699149155Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:33:22.465745701Z [250] create_fit_card
+2026-11-15T22:33:22.465767762Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:22.465771882Z       out: Scoreeee! I just grabbed this black mesh long-sleeve top on depop for only $15.00 and it's literally the ultim…
+2026-11-15T22:33:22.465775633Z {"timestamp": "2026-11-15T22:33:22.465+00:00", "request_id": "03255edb", "input": "linen jersey sweat top under $50", "output": "Scoreeee! I just grabbed this black mesh long-sleeve top on depop for only $15.00 and it's literally the ultimate layering piece. Already obsessed with wearing it under my zip hoodie with baggy khakis and chunky sneakers for that perfect grungy contrast.", "duration_ms": 4953.3, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 57}
+2026-11-15T22:33:22.466316879Z 127.0.0.1 - - [15/Nov/2026:22:33:22 +0000] "POST /ask HTTP/1.1" 200 5106 "-" "Python-urllib/3.13"
+2026-11-15T22:33:22.736203419Z 127.0.0.1 - - [15/Nov/2026:22:33:22 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:33:22.859049708Z [251] parse_request
+2026-11-15T22:33:22.859114271Z       in:  dict with keys: query
+2026-11-15T22:33:22.859118381Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:27.19701521Z [252] search_listings (via MCP)
+2026-11-15T22:33:27.197048592Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:27.197053912Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:33:27.197059042Z [253] selected_item
+2026-11-15T22:33:27.197063423Z       out: id=lst_007
+2026-11-15T22:33:27.197067903Z [254] suggest_outfit
+2026-11-15T22:33:27.197072203Z       in:  id=lst_007, wardrobe
+2026-11-15T22:33:27.197077613Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:33:28.067316441Z [255] create_fit_card
+2026-11-15T22:33:28.067340832Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:28.067345593Z       out: Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with how it fits. Sty…
+2026-11-15T22:33:28.067389015Z {"timestamp": "2026-11-15T22:33:28.067+00:00", "request_id": "eca5ac86", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with how it fits. Styled it here with wide-leg khakis and my go-to sneakers for a chill streetwear moment, but it looks just as good for a double-denim look. Can't wait to live in this jacket all spring!", "duration_ms": 5208.9, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 73}
+2026-11-15T22:33:28.068032706Z 127.0.0.1 - - [15/Nov/2026:22:33:28 +0000] "POST /ask HTTP/1.1" 200 6536 "-" "Python-urllib/3.13"
+2026-11-15T22:33:28.068847926Z [256] parse_request
+2026-11-15T22:33:28.068856917Z       in:  dict with keys: query
+2026-11-15T22:33:28.068861537Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:32.197556329Z [257] search_listings (via MCP)
+2026-11-15T22:33:32.197588281Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:32.197604082Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:33:32.197607232Z [258] selected_item
+2026-11-15T22:33:32.197609232Z       out: id=lst_002
+2026-11-15T22:33:32.197794341Z [259] suggest_outfit
+2026-11-15T22:33:32.197803221Z       in:  id=lst_002, wardrobe
+2026-11-15T22:33:32.197806961Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:33:32.862348094Z [260] create_fit_card
+2026-11-15T22:33:32.862374295Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:32.862377945Z       out: Just scored this adorable butterfly baby tee on depop for $18, and I am obsessed. I threw it on with baggy dar…
+2026-11-15T22:33:32.862399406Z {"timestamp": "2026-11-15T22:33:32.862+00:00", "request_id": "4978a2de", "input": "vintage graphic tee under $30", "output": "Just scored this adorable butterfly baby tee on depop for $18, and I am obsessed. I threw it on with baggy dark-wash jeans, a distressed black denim jacket, and chunky sneakers for the ultimate casual streetwear vibe.", "duration_ms": 4793.8, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 47}
+2026-11-15T22:33:32.863137923Z 127.0.0.1 - - [15/Nov/2026:22:33:32 +0000] "POST /ask HTTP/1.1" 200 7187 "-" "Python-urllib/3.13"
+2026-11-15T22:33:33.084688262Z [261] parse_request
+2026-11-15T22:33:33.084710453Z       in:  dict with keys: query
+2026-11-15T22:33:33.084714353Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:37.609197482Z [262] search_listings (via MCP)
+2026-11-15T22:33:37.609330219Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:37.609334759Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:33:37.609338399Z [263] selected_item
+2026-11-15T22:33:37.609340919Z       out: id=lst_017
+2026-11-15T22:33:37.609343649Z [264] suggest_outfit
+2026-11-15T22:33:37.609346029Z       in:  id=lst_017, wardrobe
+2026-11-15T22:33:37.6093484Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:33:38.174438735Z [265] create_fit_card
+2026-11-15T22:33:38.174465617Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:38.174472347Z       out: Found this sheer black mesh long-sleeve top on Depop for just $15, and it’s honestly the ultimate layering pie…
+2026-11-15T22:33:38.174565951Z {"timestamp": "2026-11-15T22:33:38.174+00:00", "request_id": "9a348bc6", "input": "linen jersey sweat top under $50", "output": "Found this sheer black mesh long-sleeve top on Depop for just $15, and it’s honestly the ultimate layering piece for my grunge and y2k fits. I just threw it over a white ribbed tank with baggy jeans and my trusty combat boots for the perfect edgy vibe.", "duration_ms": 5090.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 60}
+2026-11-15T22:33:38.175246295Z 127.0.0.1 - - [15/Nov/2026:22:33:38 +0000] "POST /ask HTTP/1.1" 200 5109 "-" "Python-urllib/3.13"
+2026-11-15T22:33:38.176240053Z [266] parse_request
+2026-11-15T22:33:38.176255414Z       in:  dict with keys: query
+2026-11-15T22:33:38.176260094Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:42.299821804Z [267] search_listings (via MCP)
+2026-11-15T22:33:42.299850936Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:42.299856496Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:33:42.299874297Z [268] selected_item
+2026-11-15T22:33:42.299876937Z       out: id=lst_008
+2026-11-15T22:33:42.300051665Z [269] suggest_outfit
+2026-11-15T22:33:42.300061406Z       in:  id=lst_008, wardrobe
+2026-11-15T22:33:42.300065776Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:33:43.083232141Z [270] create_fit_card
+2026-11-15T22:33:43.083258373Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:43.083262343Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I am obsessed with it! I styled it with baggy…
+2026-11-15T22:33:43.083313905Z {"timestamp": "2026-11-15T22:33:43.083+00:00", "request_id": "b78abdea", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I am obsessed with it! I styled it with baggy dark denim and combat boots for that perfect mix of cozy cottagecore and grunge streetwear. Honestly never taking this off.", "duration_ms": 4907.4, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 49}
+2026-11-15T22:33:43.083953576Z 127.0.0.1 - - [15/Nov/2026:22:33:43 +0000] "POST /ask HTTP/1.1" 200 4742 "-" "Python-urllib/3.13"
+2026-11-15T22:33:43.210181521Z [271] parse_request
+2026-11-15T22:33:43.210200121Z       in:  dict with keys: query
+2026-11-15T22:33:43.210204032Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:47.293913655Z [272] search_listings (via MCP)
+2026-11-15T22:33:47.293946287Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:47.293951857Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:33:47.293956647Z [273] selected_item
+2026-11-15T22:33:47.293960607Z       out: id=lst_002
+2026-11-15T22:33:47.294160397Z [274] suggest_outfit
+2026-11-15T22:33:47.294170088Z       in:  id=lst_002, wardrobe
+2026-11-15T22:33:47.294176878Z       out: Here are two ways to style the Y2K Baby Tee using pieces from your wardrobe:  **Outfit 1: Casual Streetwear Vi…
+2026-11-15T22:33:48.005699995Z [275] create_fit_card
+2026-11-15T22:33:48.005721446Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:48.005727266Z       out: Found this exact Y2K baby tee on depop for just $18, and I am so obsessed. I've been styling it with baggy dar…
+2026-11-15T22:33:48.005842172Z {"timestamp": "2026-11-15T22:33:48.005+00:00", "request_id": "84a34d0e", "input": "vintage graphic tee under $30", "output": "Found this exact Y2K baby tee on depop for just $18, and I am so obsessed. I've been styling it with baggy dark-wash jeans and chunky sneakers for the ultimate casual streetwear vibe.", "duration_ms": 4796.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 347, "output_tokens": 45}
+2026-11-15T22:33:48.006602729Z 127.0.0.1 - - [15/Nov/2026:22:33:48 +0000] "POST /ask HTTP/1.1" 200 7153 "-" "Python-urllib/3.13"
+2026-11-15T22:33:48.008340824Z [276] parse_request
+2026-11-15T22:33:48.008356345Z       in:  dict with keys: query
+2026-11-15T22:33:48.008361925Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:52.2968905Z [277] search_listings (via MCP)
+2026-11-15T22:33:52.296917821Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:52.296924161Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:33:52.296928322Z [278] selected_item
+2026-11-15T22:33:52.296931492Z       out: id=lst_032
+2026-11-15T22:33:52.297240517Z [279] suggest_outfit
+2026-11-15T22:33:52.297254658Z       in:  id=lst_032, wardrobe
+2026-11-15T22:33:52.297271038Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:33:53.183444794Z [280] create_fit_card
+2026-11-15T22:33:53.183469355Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:53.183473925Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it’s already doing heavy lifting in my closet. …
+2026-11-15T22:33:53.183605712Z {"timestamp": "2026-11-15T22:33:53.183+00:00", "request_id": "ed7e3f15", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it’s already doing heavy lifting in my closet. I’m obsessed with how easily it anchors a minimal earth-tone look over wide-leg trousers, or dresses down with baggy denim and chunky sneakers. Seriously such a good layering piece for the transition into fall!", "duration_ms": 5176.1, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 72}
+2026-11-15T22:33:53.184212351Z 127.0.0.1 - - [15/Nov/2026:22:33:53 +0000] "POST /ask HTTP/1.1" 200 4006 "-" "Python-urllib/3.13"
+2026-11-15T22:33:53.298802627Z [281] parse_request
+2026-11-15T22:33:53.298824558Z       in:  dict with keys: query
+2026-11-15T22:33:53.298828748Z       out: dict with keys: description, size, max_price
+2026-11-15T22:33:57.807903962Z [282] search_listings (via MCP)
+2026-11-15T22:33:57.807933114Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:33:57.807938334Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:33:57.807943154Z [283] selected_item
+2026-11-15T22:33:57.807946984Z       out: id=lst_008
+2026-11-15T22:33:57.808128863Z [284] suggest_outfit
+2026-11-15T22:33:57.808142404Z       in:  id=lst_008, wardrobe
+2026-11-15T22:33:57.808147364Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:33:58.602640652Z [285] create_fit_card
+2026-11-15T22:33:58.602668633Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:33:58.602674404Z       out: Finally scored this chunky brown knit cardigan on Depop for $35, and it’s honestly the ultimate cozy layer. I …
+2026-11-15T22:33:58.602739487Z {"timestamp": "2026-11-15T22:33:58.602+00:00", "request_id": "c4968789", "input": "printed knit tank under $45", "output": "Finally scored this chunky brown knit cardigan on Depop for $35, and it’s honestly the ultimate cozy layer. I threw it on with baggy dark-wash jeans and black combat boots for that perfect mix of soft cottagecore and grunge streetwear. So obsessed with how this earth-toned vibe turned out!", "duration_ms": 5304.3, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 396, "output_tokens": 63}
+2026-11-15T22:33:58.603459362Z 127.0.0.1 - - [15/Nov/2026:22:33:58 +0000] "POST /ask HTTP/1.1" 200 4803 "-" "Python-urllib/3.13"
+2026-11-15T22:33:58.604927643Z [286] parse_request
+2026-11-15T22:33:58.604942344Z       in:  dict with keys: query
+2026-11-15T22:33:58.604947615Z       out: dict with keys: description, size, max_price
+2026-11-15T22:34:03.099578182Z [287] search_listings (via MCP)
+2026-11-15T22:34:03.099608914Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:34:03.099614464Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:34:03.099619184Z [288] selected_item
+2026-11-15T22:34:03.099623054Z       out: id=lst_007
+2026-11-15T22:34:03.099865806Z [289] suggest_outfit
+2026-11-15T22:34:03.099879357Z       in:  id=lst_007, wardrobe
+2026-11-15T22:34:03.099901248Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:34:03.836159852Z [290] create_fit_card
+2026-11-15T22:34:03.836190543Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:34:03.836194464Z       out: Finally scored this light wash cropped denim jacket on Poshmark for $42 and I’m obsessed with how it looks sty…
+2026-11-15T22:34:03.836212964Z {"timestamp": "2026-11-15T22:34:03.836+00:00", "request_id": "05e1c2cd", "input": "denim jacket under $50", "output": "Finally scored this light wash cropped denim jacket on Poshmark for $42 and I’m obsessed with how it looks styled over wide-leg khakis. It’s giving that perfect casual streetwear vibe without trying too hard. Can't wait to wear this non-stop all spring!", "duration_ms": 5232.2, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 422, "output_tokens": 60}
+2026-11-15T22:34:03.836990402Z 127.0.0.1 - - [15/Nov/2026:22:34:03 +0000] "POST /ask HTTP/1.1" 200 6507 "-" "Python-urllib/3.13"
+2026-11-15T22:34:03.950702686Z [291] parse_request
+2026-11-15T22:34:03.950722536Z       in:  dict with keys: query
+2026-11-15T22:34:03.950726167Z       out: dict with keys: description, size, max_price
+2026-11-15T22:34:08.700277562Z [292] search_listings (via MCP)
+2026-11-15T22:34:08.700322785Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:34:08.700329825Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:34:08.70044035Z [293] selected_item
+2026-11-15T22:34:08.700447401Z       out: id=lst_017
+2026-11-15T22:34:08.701115713Z [294] suggest_outfit
+2026-11-15T22:34:08.701126324Z       in:  id=lst_017, wardrobe
+2026-11-15T22:34:08.701130994Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:34:09.463721693Z [295] create_fit_card
+2026-11-15T22:34:09.463742005Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:34:09.463747285Z       out: scored this black mesh long-sleeve top on depop for just $15 and it’s about to be my entire personality for la…
+2026-11-15T22:34:09.463754215Z {"timestamp": "2026-11-15T22:34:09.462+00:00", "request_id": "e637b2d1", "input": "linen jersey sweat top under $50", "output": "scored this black mesh long-sleeve top on depop for just $15 and it’s about to be my entire personality for layering. obsessed with how it looks under my cropped zip hoodie with wide-leg trousers for that perfect grunge-meets-y2k contrast.", "duration_ms": 5513.0, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 310, "output_tokens": 57}
+2026-11-15T22:34:09.464113383Z 127.0.0.1 - - [15/Nov/2026:22:34:09 +0000] "POST /ask HTTP/1.1" 200 5096 "-" "Python-urllib/3.13"
+2026-11-15T22:34:09.464924652Z [296] parse_request
+2026-11-15T22:34:09.464935103Z       in:  dict with keys: query
+2026-11-15T22:34:09.464940003Z       out: dict with keys: description, size, max_price
+2026-11-15T22:34:13.899260074Z [297] search_listings (via MCP)
+2026-11-15T22:34:13.899280145Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:34:13.899284405Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:34:13.899288186Z [298] selected_item
+2026-11-15T22:34:13.899291246Z       out: id=lst_032
+2026-11-15T22:34:13.899565929Z [299] suggest_outfit
+2026-11-15T22:34:13.89958163Z       in:  id=lst_032, wardrobe
+2026-11-15T22:34:13.89958742Z       out: Here are two ways to style the olive canvas shacket using only pieces from your current wardrobe:  **Outfit 1:…
+2026-11-15T22:34:14.68409877Z [300] create_fit_card
+2026-11-15T22:34:14.684141822Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:34:14.684146273Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my wardrobe…
+2026-11-15T22:34:14.684151603Z {"timestamp": "2026-11-15T22:34:14.683+00:00", "request_id": "09b20e7d", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it's already doing heavy lifting in my wardrobe. I've been wearing it non-stop for easy earth-tone layering, whether I'm throwing it over baggy denim and chunky sneakers or styling it with khaki trousers and combat boots.", "duration_ms": 5219.5, "status": "ok", "error": null, "model_calls": 1, "prompt_tokens": 387, "output_tokens": 67}
+2026-11-15T22:34:14.684732771Z 127.0.0.1 - - [15/Nov/2026:22:34:14 +0000] "POST /ask HTTP/1.1" 200 3960 "-" "Python-urllib/3.13"

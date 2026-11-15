@@ -1,0 +1,1681 @@
+2026-11-15T22:47:25.100075156Z ==> Deploying...
+2026-11-15T22:47:25.151498831Z ==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+2026-11-15T22:47:40.36182066Z ==> Running 'gunicorn serve:app'
+2026-11-15T22:47:46.15357283Z [2026-11-15 22:47:46 +0000] [58] [INFO] Starting gunicorn 23.0.0
+2026-11-15T22:47:46.153859017Z [2026-11-15 22:47:46 +0000] [58] [INFO] Listening at: http://0.0.0.0:10000 (58)
+2026-11-15T22:47:46.153871728Z [2026-11-15 22:47:46 +0000] [58] [INFO] Using worker: sync
+2026-11-15T22:47:46.156978538Z [2026-11-15 22:47:46 +0000] [60] [INFO] Booting worker with pid: 60
+2026-11-15T22:47:46.727386153Z 127.0.0.1 - - [15/Nov/2026:22:47:46 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Go-http-client/1.1"
+2026-11-15T22:47:55.610209139Z [2026-11-15 22:47:55 +0000] [59] [INFO] Handling signal: term
+2026-11-15T22:47:55.610768886Z [2026-11-15 22:47:55 +0000] [60] [INFO] Worker exiting (pid: 60)
+2026-11-15T22:47:55.993771331Z ==> Your service is live 🎉
+2026-11-15T22:47:56.088235902Z ==> 
+2026-11-15T22:47:56.090534968Z ==> ///////////////////////////////////////////////////////////
+2026-11-15T22:47:56.092062523Z 127.0.0.1 - - [15/Nov/2026:22:47:56 +0000] "GET / HTTP/1.1" 404 207 "-" "Go-http-client/2.0"
+2026-11-15T22:47:56.092899036Z ==> 
+2026-11-15T22:47:56.095443737Z ==> Available at your primary URL https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com
+2026-11-15T22:47:56.09800881Z ==> 
+2026-11-15T22:47:56.100329326Z ==> ///////////////////////////////////////////////////////////
+2026-11-15T22:47:58.294286795Z [2026-11-15 22:47:58 +0000] [59] [INFO] Shutting down: Master
+2026-11-15T22:48:21.593223582Z 127.0.0.1 - - [15/Nov/2026:22:48:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "curl/8.7.1"
+2026-11-15T22:48:22.80380732Z 127.0.0.1 - - [15/Nov/2026:22:48:22 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:48:33.67834226Z [1] parse_request
+2026-11-15T22:48:33.678367091Z       in:  dict with keys: query
+2026-11-15T22:48:33.678372731Z       out: dict with keys: description, size, max_price
+2026-11-15T22:48:37.463610664Z [2] search_listings (via MCP)
+2026-11-15T22:48:37.463640506Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:48:37.463648056Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:48:37.463655647Z [3] selected_item
+2026-11-15T22:48:37.463658837Z       out: id=lst_002
+2026-11-15T22:48:38.867202204Z [4] suggest_outfit
+2026-11-15T22:48:38.867230265Z       in:  id=lst_002, wardrobe
+2026-11-15T22:48:38.867238936Z       out: Here are two outfit combinations using the Y2K Baby Tee and pieces from your wardrobe:  **Outfit 1: Y2K Street…
+2026-11-15T22:48:39.675122177Z [5] create_fit_card
+2026-11-15T22:48:39.677332366Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:48:39.677340287Z       out: Scooped up this adorable butterfly baby tee for just $18 on Depop and I’m so obsessed. I paired it with baggy …
+2026-11-15T22:48:39.677346507Z {"timestamp": "2026-11-15T22:48:39.674+00:00", "request_id": "50d8b6bd", "input": "vintage graphic tee under $30", "output": "Scooped up this adorable butterfly baby tee for just $18 on Depop and I’m so obsessed. I paired it with baggy dark wash jeans and chunky sneakers for the ultimate Y2K streetwear edge.", "duration_ms": 16732.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 893, "output_tokens": 352}
+2026-11-15T22:48:39.682502997Z 127.0.0.1 - - [15/Nov/2026:22:48:39 +0000] "POST /ask HTTP/1.1" 200 7660 "-" "Python-urllib/3.13"
+2026-11-15T22:48:40.336116616Z [6] parse_request
+2026-11-15T22:48:40.336138907Z       in:  dict with keys: query
+2026-11-15T22:48:40.336143338Z       out: dict with keys: description, size, max_price
+2026-11-15T22:48:44.057627992Z [7] search_listings (via MCP)
+2026-11-15T22:48:44.057664934Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:48:44.057673284Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:48:44.057678504Z [8] selected_item
+2026-11-15T22:48:44.057682355Z       out: id=lst_007
+2026-11-15T22:48:45.497737855Z [9] suggest_outfit
+2026-11-15T22:48:45.497757546Z       in:  id=lst_007, wardrobe
+2026-11-15T22:48:45.497771387Z       out: Here are two outfits combining the new light wash cropped denim jacket with pieces from the wardrobe:  **Outfi…
+2026-11-15T22:48:46.654794986Z [10] create_fit_card
+2026-11-15T22:48:46.654813167Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:48:46.654833359Z       out: Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the double denim…
+2026-11-15T22:48:46.654837019Z {"timestamp": "2026-11-15T22:48:46.653+00:00", "request_id": "972e26cc", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the double denim look. Paired it with dark baggy jeans and chunky sneakers for the ultimate streetwear fit.", "duration_ms": 6850.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 884, "output_tokens": 356}
+2026-11-15T22:48:46.654849449Z 127.0.0.1 - - [15/Nov/2026:22:48:46 +0000] "POST /ask HTTP/1.1" 200 6572 "-" "Python-urllib/3.13"
+2026-11-15T22:48:47.359767684Z [11] parse_request
+2026-11-15T22:48:47.359797326Z       in:  dict with keys: query
+2026-11-15T22:48:47.359801666Z       out: dict with keys: description, size, max_price
+2026-11-15T22:48:51.253822486Z [12] search_listings (via MCP)
+2026-11-15T22:48:51.253846388Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:48:51.253849768Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:48:51.253852418Z [13] selected_item
+2026-11-15T22:48:51.253854379Z       out: id=lst_008
+2026-11-15T22:48:52.589965972Z [14] suggest_outfit
+2026-11-15T22:48:52.589991283Z       in:  id=lst_008, wardrobe
+2026-11-15T22:48:52.589997664Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:48:53.340780448Z [15] create_fit_card
+2026-11-15T22:48:53.340800379Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:48:53.340805699Z       out: Finally snagged this chunky brown knit cardigan on depop for $35 and it instantly completed my cozy earth-tone…
+2026-11-15T22:48:53.340886124Z {"timestamp": "2026-11-15T22:48:53.340+00:00", "request_id": "e6b78a35", "input": "printed knit tank under $45", "output": "Finally snagged this chunky brown knit cardigan on depop for $35 and it instantly completed my cozy earth-tone aesthetic. I've been living in it layered over a ribbed tank with wide-leg trousers, but it looks just as good toughened up with dark wash denim and combat boots.", "duration_ms": 6546.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 874, "output_tokens": 357}
+2026-11-15T22:48:53.341442306Z 127.0.0.1 - - [15/Nov/2026:22:48:53 +0000] "POST /ask HTTP/1.1" 200 4936 "-" "Python-urllib/3.13"
+2026-11-15T22:48:53.876412714Z [16] parse_request
+2026-11-15T22:48:53.876447116Z       in:  dict with keys: query
+2026-11-15T22:48:53.876453926Z       out: dict with keys: description, size, max_price
+2026-11-15T22:48:57.556429095Z [17] search_listings (via MCP)
+2026-11-15T22:48:57.556466017Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:48:57.556478008Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:48:57.556485678Z [18] selected_item
+2026-11-15T22:48:57.556492188Z       out: id=lst_017
+2026-11-15T22:48:58.901726001Z [19] suggest_outfit
+2026-11-15T22:48:58.901754783Z       in:  id=lst_017, wardrobe
+2026-11-15T22:48:58.901762173Z       out: Here are two outfit combinations using the new mesh long-sleeve top and pieces from your wardrobe:  **Outfit 1…
+2026-11-15T22:48:59.724102331Z [20] create_fit_card
+2026-11-15T22:48:59.724124942Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:48:59.724132413Z       out: scored this black mesh long-sleeve top on depop for just $15 and I'm obsessed. layered it under an oversized g…
+2026-11-15T22:48:59.724228038Z {"timestamp": "2026-11-15T22:48:59.724+00:00", "request_id": "d213c683", "input": "linen jersey sweat top under $50", "output": "scored this black mesh long-sleeve top on depop for just $15 and I'm obsessed. layered it under an oversized grey crewneck with khaki trousers and chunky sneakers for the ultimate grunge-minimalist look. honestly such a steal for layering.", "duration_ms": 6278.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 777, "output_tokens": 249}
+2026-11-15T22:48:59.724847025Z 127.0.0.1 - - [15/Nov/2026:22:48:59 +0000] "POST /ask HTTP/1.1" 200 5160 "-" "Python-urllib/3.13"
+2026-11-15T22:49:00.602919567Z [21] parse_request
+2026-11-15T22:49:00.602938028Z       in:  dict with keys: query
+2026-11-15T22:49:00.602942478Z       out: dict with keys: description, size, max_price
+2026-11-15T22:49:04.854166378Z [22] search_listings (via MCP)
+2026-11-15T22:49:04.854184189Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:49:04.854189659Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:49:04.854194139Z [23] selected_item
+2026-11-15T22:49:04.854198129Z       out: id=lst_032
+2026-11-15T22:49:06.167811647Z [24] suggest_outfit
+2026-11-15T22:49:06.167837509Z       in:  id=lst_032, wardrobe
+2026-11-15T22:49:06.16784548Z       out: Here are two outfit combinations using the new olive canvas shacket and pieces from your wardrobe:  **Outfit 1…
+2026-11-15T22:49:06.954156979Z [25] create_fit_card
+2026-11-15T22:49:06.954173269Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:49:06.95417782Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it's officially my new favorite layering piece.…
+2026-11-15T22:49:06.954258584Z {"timestamp": "2026-11-15T22:49:06.954+00:00", "request_id": "9a1aeb78", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it's officially my new favorite layering piece. Obsessed with how good it looks thrown over an oversized crewneck with combat boots for that grungy, textured streetwear vibe. Such a solid earth-tone find for transitional weather!", "duration_ms": 7106.8, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 858, "output_tokens": 352}
+2026-11-15T22:49:06.954822947Z 127.0.0.1 - - [15/Nov/2026:22:49:06 +0000] "POST /ask HTTP/1.1" 200 4124 "-" "Python-urllib/3.13"
+2026-11-15T22:49:07.080645623Z   [rate limit] 15 requests used this minute. Waiting 26s. This is normal.
+2026-11-15T22:49:34.245252689Z [26] parse_request
+2026-11-15T22:49:34.24527236Z       in:  dict with keys: query
+2026-11-15T22:49:34.245278471Z       out: dict with keys: description, size, max_price
+2026-11-15T22:49:37.403128387Z [2026-11-15 22:49:37 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:60)
+2026-11-15T22:49:37.458099387Z [2026-11-15 22:49:37 +0000] [60] [ERROR] Error handling request /ask
+2026-11-15T22:49:37.458118678Z Traceback (most recent call last):
+2026-11-15T22:49:37.458122819Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:49:37.458127839Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:49:37.458131019Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458134149Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:49:37.458137199Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:49:37.458141369Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:49:37.45814596Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:49:37.458164591Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458168091Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:49:37.458170951Z     response = self.full_dispatch_request()
+2026-11-15T22:49:37.458173911Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:49:37.458187572Z     rv = self.dispatch_request()
+2026-11-15T22:49:37.458189572Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:49:37.458191543Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:49:37.458193553Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:49:37.458195563Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:49:37.458195843Z 127.0.0.1 - - [15/Nov/2026:22:49:37 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:49:37.458197553Z     session = run_agent(query, wardrobe)
+2026-11-15T22:49:37.458210514Z   File "/opt/render/project/src/agent.py", line 142, in run_agent
+2026-11-15T22:49:37.458214364Z     session["search_results"] = mcp_client.call_tool("search_listings", {
+2026-11-15T22:49:37.458217804Z                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458221914Z         "description": session["parsed"]["description"],
+2026-11-15T22:49:37.458225254Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458232175Z         "size": session["parsed"]["size"],
+2026-11-15T22:49:37.458236225Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458239855Z         "max_price": session["parsed"]["max_price"],
+2026-11-15T22:49:37.458244026Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458247486Z     })
+2026-11-15T22:49:37.458250836Z     ^^
+2026-11-15T22:49:37.458254496Z   File "/opt/render/project/src/mcp_client.py", line 59, in call_tool
+2026-11-15T22:49:37.458258006Z     return asyncio.run(_call(name, arguments))
+2026-11-15T22:49:37.458261236Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:49:37.458265137Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 196, in run
+2026-11-15T22:49:37.458269497Z     return runner.run(main)
+2026-11-15T22:49:37.458272877Z            ~~~~~~~~~~^^^^^^
+2026-11-15T22:49:37.458276788Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 119, in run
+2026-11-15T22:49:37.458280578Z     return self._loop.run_until_complete(task)
+2026-11-15T22:49:37.458284108Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-15T22:49:37.458288498Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+2026-11-15T22:49:37.458293109Z     self.run_forever()
+2026-11-15T22:49:37.458296539Z     ~~~~~~~~~~~~~~~~^^
+2026-11-15T22:49:37.458299999Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+2026-11-15T22:49:37.458303439Z     self._run_once()
+2026-11-15T22:49:37.458306709Z     ~~~~~~~~~~~~~~^^
+2026-11-15T22:49:37.458309999Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 2022, in _run_once
+2026-11-15T22:49:37.458340871Z     event_list = self._selector.select(timeout)
+2026-11-15T22:49:37.458351502Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/selectors.py", line 452, in select
+2026-11-15T22:49:37.458355512Z     fd_event_list = self._selector.poll(timeout, max_ev)
+2026-11-15T22:49:37.458368783Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:49:37.458372953Z     sys.exit(1)
+2026-11-15T22:49:37.458377003Z     ~~~~~~~~^^^
+2026-11-15T22:49:37.458380414Z SystemExit: 1
+2026-11-15T22:49:37.45849375Z [2026-11-15 22:49:37 +0000] [60] [INFO] Worker exiting (pid: 60)
+2026-11-15T22:49:38.459418363Z [2026-11-15 22:49:38 +0000] [58] [ERROR] Worker (pid:60) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:49:38.461928429Z [2026-11-15 22:49:38 +0000] [77] [INFO] Booting worker with pid: 77
+2026-11-15T22:49:45.935666304Z [1] parse_request
+2026-11-15T22:49:45.935697406Z       in:  dict with keys: query
+2026-11-15T22:49:45.935701616Z       out: dict with keys: description, size, max_price
+2026-11-15T22:49:49.961723914Z [2] search_listings (via MCP)
+2026-11-15T22:49:49.961769656Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:49:49.961776237Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:49:49.961779977Z [3] selected_item
+2026-11-15T22:49:49.961782907Z       out: id=lst_007
+2026-11-15T22:49:51.570206255Z [4] suggest_outfit
+2026-11-15T22:49:51.570233076Z       in:  id=lst_007, wardrobe
+2026-11-15T22:49:51.570237806Z       out: Here are two outfit suggestions combining the new light wash cropped denim jacket with pieces from the wardrob…
+2026-11-15T22:49:52.215966222Z [5] create_fit_card
+2026-11-15T22:49:52.215992563Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:49:52.215997263Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and it’s already doing heavy lifting for my st…
+2026-11-15T22:49:52.21611173Z {"timestamp": "2026-11-15T22:49:52.215+00:00", "request_id": "93729eb5", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and it’s already doing heavy lifting for my streetwear rotation. I love how the boxy cut looks layered over baggy dark denim with chunky sneakers, but it’s just as good thrown over an oversized grey crewneck and khaki trousers. Such a good vintage find!", "duration_ms": 13660.5, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 885, "output_tokens": 384}
+2026-11-15T22:49:52.217232455Z 127.0.0.1 - - [15/Nov/2026:22:49:52 +0000] "POST /ask HTTP/1.1" 200 6766 "-" "Python-urllib/3.13"
+2026-11-15T22:49:52.956110561Z [6] parse_request
+2026-11-15T22:49:52.956132602Z       in:  dict with keys: query
+2026-11-15T22:49:52.956135312Z       out: dict with keys: description, size, max_price
+2026-11-15T22:49:56.658490152Z [7] search_listings (via MCP)
+2026-11-15T22:49:56.658515773Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:49:56.658519523Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:49:56.658522684Z [8] selected_item
+2026-11-15T22:49:56.658525134Z       out: id=lst_008
+2026-11-15T22:49:58.125646754Z [9] suggest_outfit
+2026-11-15T22:49:58.125669435Z       in:  id=lst_008, wardrobe
+2026-11-15T22:49:58.125675196Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  ### Outfit 1: Eff…
+2026-11-15T22:49:58.744603869Z [10] create_fit_card
+2026-11-15T22:49:58.744628361Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:49:58.744631531Z       out: Finally scored this chunky brown knit cardigan on Depop for $35, and it is the ultimate cozy earth-tone layer …
+2026-11-15T22:49:58.744679494Z {"timestamp": "2026-11-15T22:49:58.744+00:00", "request_id": "60877f14", "input": "printed knit tank under $45", "output": "Finally scored this chunky brown knit cardigan on Depop for $35, and it is the ultimate cozy earth-tone layer for fall. I threw it on over wide-leg trousers and a white tank for an effortless, minimalist coffee-run look. Such a good find!", "duration_ms": 6392.8, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 879, "output_tokens": 357}
+2026-11-15T22:49:58.745272628Z 127.0.0.1 - - [15/Nov/2026:22:49:58 +0000] "POST /ask HTTP/1.1" 200 4985 "-" "Python-urllib/3.13"
+2026-11-15T22:49:59.523703065Z [11] parse_request
+2026-11-15T22:49:59.523728366Z       in:  dict with keys: query
+2026-11-15T22:49:59.523732617Z       out: dict with keys: description, size, max_price
+2026-11-15T22:50:03.87026324Z [12] search_listings (via MCP)
+2026-11-15T22:50:03.870306422Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:50:03.870312273Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:50:03.870337954Z [13] selected_item
+2026-11-15T22:50:03.870344385Z       out: id=lst_017
+2026-11-15T22:50:04.761912804Z [14] suggest_outfit
+2026-11-15T22:50:04.761934926Z       in:  id=lst_017, wardrobe
+2026-11-15T22:50:04.761939346Z       out: Here are two outfit suggestions combining the new mesh top with pieces from your wardrobe:  **Outfit 1: Grunge…
+2026-11-15T22:50:05.968462375Z [15] create_fit_card
+2026-11-15T22:50:05.968486287Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:50:05.968492797Z       out: Just scored this black mesh long-sleeve top on depop for only $15, and I am obsessed. Layered it over a white …
+2026-11-15T22:50:05.968510188Z {"timestamp": "2026-11-15T22:50:05.968+00:00", "request_id": "f7f4ff35", "input": "linen jersey sweat top under $50", "output": "Just scored this black mesh long-sleeve top on depop for only $15, and I am obsessed. Layered it over a white tank with my baggy dark wash jeans and combat boots for the ultimate grunge streetwear look. Can't wait to style this sheer piece a million different ways.", "duration_ms": 7032.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 763, "output_tokens": 243}
+2026-11-15T22:50:05.969039269Z 127.0.0.1 - - [15/Nov/2026:22:50:05 +0000] "POST /ask HTTP/1.1" 200 5146 "-" "Python-urllib/3.13"
+2026-11-15T22:50:06.73144599Z [16] parse_request
+2026-11-15T22:50:06.731463071Z       in:  dict with keys: query
+2026-11-15T22:50:06.731467392Z       out: dict with keys: description, size, max_price
+2026-11-15T22:50:10.554037432Z [17] search_listings (via MCP)
+2026-11-15T22:50:10.554067983Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:50:10.554075984Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:50:10.554080074Z [18] selected_item
+2026-11-15T22:50:10.554083884Z       out: id=lst_032
+2026-11-15T22:50:11.720128976Z [19] suggest_outfit
+2026-11-15T22:50:11.720152917Z       in:  id=lst_032, wardrobe
+2026-11-15T22:50:11.720158117Z       out: Here are two ways to style the **Olive Canvas Shacket** using only items from your wardrobe:  ### Outfit 1: Cl…
+2026-11-15T22:50:12.456467229Z [20] create_fit_card
+2026-11-15T22:50:12.45649079Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:50:12.456496861Z       out: Score! Snagged this olive canvas shacket on Poshmark for just $33, and I'm already obsessed. It's the ultimate…
+2026-11-15T22:50:12.457443196Z {"timestamp": "2026-11-15T22:50:12.456+00:00", "request_id": "e07b6f2a", "input": "corduroy jacket size L under $45", "output": "Score! Snagged this olive canvas shacket on Poshmark for just $33, and I'm already obsessed. It's the ultimate layering piece for throwing over baggy denim and combat boots for that effortless streetwear vibe. Can't wait to style it with wide-leg trousers and a white tank next week too!", "duration_ms": 6246.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 775, "output_tokens": 274}
+2026-11-15T22:50:12.457466447Z 127.0.0.1 - - [15/Nov/2026:22:50:12 +0000] "POST /ask HTTP/1.1" 200 3770 "-" "Python-urllib/3.13"
+2026-11-15T22:50:12.708990175Z 127.0.0.1 - - [15/Nov/2026:22:50:12 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:50:12.920891548Z   [rate limit] service pushed back. Waiting 48s (attempt 1 of 5). This is the limiter doing its job, not a bug.
+2026-11-15T22:50:43.689429125Z [2026-11-15 22:50:43 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:77)
+2026-11-15T22:50:43.694483039Z [2026-11-15 22:50:43 +0000] [77] [ERROR] Error handling request /ask
+2026-11-15T22:50:43.69449508Z Traceback (most recent call last):
+2026-11-15T22:50:43.69449884Z   File "/opt/render/project/src/generate.py", line 315, in generate
+2026-11-15T22:50:43.694502271Z     response = client.models.generate_content(**kwargs)
+2026-11-15T22:50:43.694505991Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 6331, in generate_content
+2026-11-15T22:50:43.694509371Z     response = self._generate_content(
+2026-11-15T22:50:43.694512451Z         model=model, contents=contents, config=parsed_config
+2026-11-15T22:50:43.694515551Z     )
+2026-11-15T22:50:43.694518632Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 4767, in _generate_content
+2026-11-15T22:50:43.694521632Z     response = self._api_client.request(
+2026-11-15T22:50:43.694524642Z         'post', path, request_dict, http_options
+2026-11-15T22:50:43.694527852Z     )
+2026-11-15T22:50:43.694531092Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1605, in request
+2026-11-15T22:50:43.694534192Z     response = self._request(http_request, http_options, stream=False)
+2026-11-15T22:50:43.694537362Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1398, in _request
+2026-11-15T22:50:43.694540923Z     return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+2026-11-15T22:50:43.694543923Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:50:43.694547313Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+2026-11-15T22:50:43.694550323Z     do = self.iter(retry_state=retry_state)
+2026-11-15T22:50:43.694553383Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+2026-11-15T22:50:43.694556854Z     result = action(retry_state)
+2026-11-15T22:50:43.694559784Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+2026-11-15T22:50:43.694562764Z     raise retry_exc.reraise()
+2026-11-15T22:50:43.694565714Z           ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:50:43.694568744Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+2026-11-15T22:50:43.694571764Z     raise self.last_attempt.result()
+2026-11-15T22:50:43.694574865Z           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:50:43.694577815Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+2026-11-15T22:50:43.694580925Z     return self.__get_result()
+2026-11-15T22:50:43.694583865Z            ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:50:43.694586896Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+2026-11-15T22:50:43.694597916Z     raise self._exception
+2026-11-15T22:50:43.694599936Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+2026-11-15T22:50:43.694601846Z     result = fn(*args, **kwargs)
+2026-11-15T22:50:43.694603826Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1375, in _request_once
+2026-11-15T22:50:43.694605797Z     errors.APIError.raise_for_response(response)
+2026-11-15T22:50:43.694607997Z     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-11-15T22:50:43.694609997Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+2026-11-15T22:50:43.694612037Z     cls.raise_error(response.status_code, response_json, response)
+2026-11-15T22:50:43.694614027Z     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:50:43.694615987Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+2026-11-15T22:50:43.694618467Z     raise ClientError(status_code, response_json, response)
+2026-11-15T22:50:43.694630788Z google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite, description: Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\nPlease retry in 47.116417906s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://aistudio.google.com/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'description': 'Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.', 'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '47s'}]}}
+2026-11-15T22:50:43.694634288Z 
+2026-11-15T22:50:43.694636498Z During handling of the above exception, another exception occurred:
+2026-11-15T22:50:43.694638439Z 
+2026-11-15T22:50:43.694640419Z Traceback (most recent call last):
+2026-11-15T22:50:43.694642469Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:50:43.694644659Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:50:43.694645939Z 127.0.0.1 - - [15/Nov/2026:22:50:43 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:50:43.694646649Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:50:43.694649249Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:50:43.694651399Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:50:43.694653429Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:50:43.694655689Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:50:43.69465776Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:50:43.694673801Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:50:43.694676611Z     response = self.full_dispatch_request()
+2026-11-15T22:50:43.694679441Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:50:43.694681931Z     rv = self.dispatch_request()
+2026-11-15T22:50:43.694684031Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:50:43.694686171Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:50:43.694688201Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:50:43.694690802Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:50:43.694692722Z     session = run_agent(query, wardrobe)
+2026-11-15T22:50:43.694694692Z   File "/opt/render/project/src/agent.py", line 116, in run_agent
+2026-11-15T22:50:43.694697192Z     reply = generate(
+2026-11-15T22:50:43.694699152Z         f'''
+2026-11-15T22:50:43.694701072Z     ...<12 lines>...
+2026-11-15T22:50:43.694703032Z         temperature=0.0,
+2026-11-15T22:50:43.694704932Z     )
+2026-11-15T22:50:43.694707003Z   File "/opt/render/project/src/generate.py", line 341, in generate
+2026-11-15T22:50:43.694708963Z     time.sleep(backoff)
+2026-11-15T22:50:43.694710863Z     ~~~~~~~~~~^^^^^^^^^
+2026-11-15T22:50:43.694714593Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:50:43.694716613Z     sys.exit(1)
+2026-11-15T22:50:43.694718563Z     ~~~~~~~~^^^
+2026-11-15T22:50:43.694720483Z SystemExit: 1
+2026-11-15T22:50:43.694965518Z [2026-11-15 22:50:43 +0000] [77] [INFO] Worker exiting (pid: 77)
+2026-11-15T22:50:44.758707884Z [2026-11-15 22:50:44 +0000] [58] [ERROR] Worker (pid:77) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:50:44.761529619Z [2026-11-15 22:50:44 +0000] [91] [INFO] Booting worker with pid: 91
+2026-11-15T22:50:53.095578407Z [1] parse_request
+2026-11-15T22:50:53.095598408Z       in:  dict with keys: query
+2026-11-15T22:50:53.095603298Z       out: dict with keys: description, size, max_price
+2026-11-15T22:50:56.958221294Z [2] search_listings (via MCP)
+2026-11-15T22:50:56.958245525Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:50:56.958252056Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:50:56.958256776Z [3] selected_item
+2026-11-15T22:50:56.958260726Z       out: id=lst_007
+2026-11-15T22:50:58.392565979Z [4] suggest_outfit
+2026-11-15T22:50:58.392588591Z       in:  id=lst_007, wardrobe
+2026-11-15T22:50:58.392594261Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:51:00.073568686Z [5] create_fit_card
+2026-11-15T22:51:00.073588497Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:51:00.073595817Z       out: Score! Just grabbed this light wash cropped denim jacket on Poshmark for $42 and I'm obsessed with how it look…
+2026-11-15T22:51:00.073738606Z {"timestamp": "2026-11-15T22:51:00.073+00:00", "request_id": "5d6c3e5d", "input": "denim jacket under $50", "output": "Score! Just grabbed this light wash cropped denim jacket on Poshmark for $42 and I'm obsessed with how it looks layered over an oversized crewneck and wide-leg trousers. It gives the whole khaki and grey fit that perfect chunky boot grunge vibe without even trying.", "duration_ms": 15219.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 874, "output_tokens": 360}
+2026-11-15T22:51:00.075002319Z 127.0.0.1 - - [15/Nov/2026:22:51:00 +0000] "POST /ask HTTP/1.1" 200 6599 "-" "Python-urllib/3.13"
+2026-11-15T22:51:00.847986734Z [6] parse_request
+2026-11-15T22:51:00.848018155Z       in:  dict with keys: query
+2026-11-15T22:51:00.848024936Z       out: dict with keys: description, size, max_price
+2026-11-15T22:51:04.850975286Z [7] search_listings (via MCP)
+2026-11-15T22:51:04.850993197Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:51:04.850997847Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:51:04.851002167Z [8] selected_item
+2026-11-15T22:51:04.851005387Z       out: id=lst_008
+2026-11-15T22:51:06.303035009Z [9] suggest_outfit
+2026-11-15T22:51:06.3030559Z       in:  id=lst_008, wardrobe
+2026-11-15T22:51:06.30306051Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  ### Outfit 1: Eff…
+2026-11-15T22:51:07.091954519Z [10] create_fit_card
+2026-11-15T22:51:07.091970009Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:51:07.09197421Z       out: scored this chunky brown knit cardigan on depop for just $35 and i'm never taking it off. styling it with khak…
+2026-11-15T22:51:07.092052194Z {"timestamp": "2026-11-15T22:51:07.091+00:00", "request_id": "a1d40dc1", "input": "printed knit tank under $45", "output": "scored this chunky brown knit cardigan on depop for just $35 and i'm never taking it off. styling it with khaki trousers and a leather belt gives the ultimate cozy, earth-toned minimalist look. obsessed with how heavy and warm the knit is for chilly days!", "duration_ms": 6818.2, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 860, "output_tokens": 338}
+2026-11-15T22:51:07.092772326Z 127.0.0.1 - - [15/Nov/2026:22:51:07 +0000] "POST /ask HTTP/1.1" 200 4889 "-" "Python-urllib/3.13"
+2026-11-15T22:51:08.120044834Z [11] parse_request
+2026-11-15T22:51:08.120065585Z       in:  dict with keys: query
+2026-11-15T22:51:08.120069725Z       out: dict with keys: description, size, max_price
+2026-11-15T22:51:12.360620801Z [12] search_listings (via MCP)
+2026-11-15T22:51:12.360699935Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:51:12.360704716Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:51:12.360708736Z [13] selected_item
+2026-11-15T22:51:12.360711626Z       out: id=lst_017
+2026-11-15T22:51:13.838836842Z [14] suggest_outfit
+2026-11-15T22:51:13.838864484Z       in:  id=lst_017, wardrobe
+2026-11-15T22:51:13.838870464Z       out: Here are two outfit combinations using the new mesh top and pieces from your wardrobe:  **Outfit 1: Edgy & Gru…
+2026-11-15T22:51:14.444264975Z [15] create_fit_card
+2026-11-15T22:51:14.444279996Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:51:14.444285636Z       out: Scored this black mesh long-sleeve top on depop for just $15.00 and I’m obsessed. Layered it over a white tank…
+2026-11-15T22:51:14.444382192Z {"timestamp": "2026-11-15T22:51:14.444+00:00", "request_id": "5a7490a9", "input": "linen jersey sweat top under $50", "output": "Scored this black mesh long-sleeve top on depop for just $15.00 and I’m obsessed. Layered it over a white tank with baggy dark jeans and combat boots for the ultimate grunge streetwear fit. Can't wait to style it with khakis next!", "duration_ms": 7096.4, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 869, "output_tokens": 348}
+2026-11-15T22:51:14.444913933Z 127.0.0.1 - - [15/Nov/2026:22:51:14 +0000] "POST /ask HTTP/1.1" 200 5641 "-" "Python-urllib/3.13"
+2026-11-15T22:51:15.244165852Z [16] parse_request
+2026-11-15T22:51:15.244188284Z       in:  dict with keys: query
+2026-11-15T22:51:15.244191404Z       out: dict with keys: description, size, max_price
+2026-11-15T22:51:18.961734023Z [17] search_listings (via MCP)
+2026-11-15T22:51:18.961756324Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:51:18.961759434Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:51:18.961762535Z [18] selected_item
+2026-11-15T22:51:18.961764524Z       out: id=lst_032
+2026-11-15T22:51:20.613478616Z [19] suggest_outfit
+2026-11-15T22:51:20.613497427Z       in:  id=lst_032, wardrobe
+2026-11-15T22:51:20.613502597Z       out: Here are two outfit options combining the new olive canvas shacket with pieces from your wardrobe:  **Outfit 1…
+2026-11-15T22:51:21.491437753Z [20] create_fit_card
+2026-11-15T22:51:21.491456134Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:51:21.491460644Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it's officially the ultimate layering piece for…
+2026-11-15T22:51:21.491475245Z {"timestamp": "2026-11-15T22:51:21.491+00:00", "request_id": "70530ac5", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it's officially the ultimate layering piece for my earth-toned capsule. Tossed it on over a ribbed white tank and wide-leg trousers for an effortless, minimal look that I'll be wearing on repeat.", "duration_ms": 6766.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 739, "output_tokens": 232}
+2026-11-15T22:51:21.492064599Z 127.0.0.1 - - [15/Nov/2026:22:51:21 +0000] "POST /ask HTTP/1.1" 200 3540 "-" "Python-urllib/3.13"
+2026-11-15T22:51:22.23413676Z [21] parse_request
+2026-11-15T22:51:22.234150901Z       in:  dict with keys: query
+2026-11-15T22:51:22.234154151Z       out: dict with keys: description, size, max_price
+2026-11-15T22:51:26.356789479Z [22] search_listings (via MCP)
+2026-11-15T22:51:26.3568162Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:51:26.356821431Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:51:26.356825961Z [23] selected_item
+2026-11-15T22:51:26.356829691Z       out: id=lst_002
+2026-11-15T22:51:27.40949828Z [24] suggest_outfit
+2026-11-15T22:51:27.409517761Z       in:  id=lst_002, wardrobe
+2026-11-15T22:51:27.409522342Z       out: Here are two outfit suggestions combining the Y2K Baby Tee with pieces from your wardrobe:  **Outfit 1: Casual…
+2026-11-15T22:51:28.132772007Z [25] create_fit_card
+2026-11-15T22:51:28.132799368Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:51:28.132803558Z       out: Obsessed with this little butterfly tee I just scored on Depop for $18! I threw it on with some baggy dark was…
+2026-11-15T22:51:28.132846221Z {"timestamp": "2026-11-15T22:51:28.132+00:00", "request_id": "e5605570", "input": "vintage graphic tee under $30", "output": "Obsessed with this little butterfly tee I just scored on Depop for $18! I threw it on with some baggy dark wash jeans and my chunky sneakers for the ultimate Y2K streetwear fit.", "duration_ms": 6415.5, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 861, "output_tokens": 318}
+2026-11-15T22:51:28.133435255Z 127.0.0.1 - - [15/Nov/2026:22:51:28 +0000] "POST /ask HTTP/1.1" 200 7509 "-" "Python-urllib/3.13"
+2026-11-15T22:51:28.252926977Z   [rate limit] 15 requests used this minute. Waiting 24s. This is normal.
+2026-11-15T22:51:53.069378585Z [26] parse_request
+2026-11-15T22:51:53.069405257Z       in:  dict with keys: query
+2026-11-15T22:51:53.069412237Z       out: dict with keys: description, size, max_price
+2026-11-15T22:51:57.255470767Z [27] search_listings (via MCP)
+2026-11-15T22:51:57.255492328Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:51:57.255498118Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:51:57.255503548Z [28] selected_item
+2026-11-15T22:51:57.255507689Z       out: id=lst_007
+2026-11-15T22:51:58.823610349Z [29] suggest_outfit
+2026-11-15T22:51:58.82363107Z       in:  id=lst_007, wardrobe
+2026-11-15T22:51:58.823636501Z       out: Here are two outfit suggestions combining the new light wash cropped denim jacket with pieces from the wardrob…
+2026-11-15T22:51:58.915813542Z [2026-11-15 22:51:58 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:91)
+2026-11-15T22:51:58.93624Z [2026-11-15 22:51:58 +0000] [91] [ERROR] Error handling request /ask
+2026-11-15T22:51:58.936257041Z Traceback (most recent call last):
+2026-11-15T22:51:58.936263202Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:51:58.936269012Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:51:58.936273262Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:51:58.936277133Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:51:58.936281013Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:51:58.936285883Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:51:58.936289933Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:51:58.936293754Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:51:58.936297524Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:51:58.936301294Z     response = self.full_dispatch_request()
+2026-11-15T22:51:58.936305114Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:51:58.936309315Z     rv = self.dispatch_request()
+2026-11-15T22:51:58.936313085Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:51:58.936348057Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:51:58.936354017Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:51:58.936359167Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:51:58.936364278Z     session = run_agent(query, wardrobe)
+2026-11-15T22:51:58.936369858Z   File "/opt/render/project/src/agent.py", line 183, in run_agent
+2026-11-15T22:51:58.936377859Z     session["fit_card"] = create_fit_card(session["outfit_suggestion"], session["selected_item"])
+2026-11-15T22:51:58.936383729Z                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:51:58.936388789Z   File "/opt/render/project/src/tools.py", line 256, in create_fit_card
+2026-11-15T22:51:58.936391159Z 127.0.0.1 - - [15/Nov/2026:22:51:58 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:51:58.93639566Z     caption = generate(prompt, cache=False).strip()
+2026-11-15T22:51:58.9364019Z               ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:51:58.936420131Z   File "/opt/render/project/src/generate.py", line 315, in generate
+2026-11-15T22:51:58.936436712Z     response = client.models.generate_content(**kwargs)
+2026-11-15T22:51:58.936440382Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 6331, in generate_content
+2026-11-15T22:51:58.936445042Z     response = self._generate_content(
+2026-11-15T22:51:58.936449513Z         model=model, contents=contents, config=parsed_config
+2026-11-15T22:51:58.936453583Z     )
+2026-11-15T22:51:58.936457963Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 4767, in _generate_content
+2026-11-15T22:51:58.936461933Z     response = self._api_client.request(
+2026-11-15T22:51:58.936465564Z         'post', path, request_dict, http_options
+2026-11-15T22:51:58.936469284Z     )
+2026-11-15T22:51:58.936473444Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1605, in request
+2026-11-15T22:51:58.936477174Z     response = self._request(http_request, http_options, stream=False)
+2026-11-15T22:51:58.936480514Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1398, in _request
+2026-11-15T22:51:58.936485855Z     return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+2026-11-15T22:51:58.936490455Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:51:58.936495185Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+2026-11-15T22:51:58.936499375Z     do = self.iter(retry_state=retry_state)
+2026-11-15T22:51:58.936501886Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+2026-11-15T22:51:58.936504466Z     result = action(retry_state)
+2026-11-15T22:51:58.936506456Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+2026-11-15T22:51:58.936508366Z     self._add_action_func(lambda rs: rs.outcome.result())
+2026-11-15T22:51:58.936510356Z                                      ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:51:58.936512596Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+2026-11-15T22:51:58.936514516Z     return self.__get_result()
+2026-11-15T22:51:58.936516407Z            ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:51:58.936518387Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+2026-11-15T22:51:58.936520357Z     raise self._exception
+2026-11-15T22:51:58.936522367Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+2026-11-15T22:51:58.936524297Z     result = fn(*args, **kwargs)
+2026-11-15T22:51:58.936526177Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1374, in _request_once
+2026-11-15T22:51:58.936528207Z     response = self._httpx_client.send(httpx_request, stream=stream)  # type: ignore[union-attr]
+2026-11-15T22:51:58.936539608Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+2026-11-15T22:51:58.936541788Z     response = self._send_handling_auth(
+2026-11-15T22:51:58.936543808Z         request,
+2026-11-15T22:51:58.936546438Z     ...<2 lines>...
+2026-11-15T22:51:58.936548909Z         history=[],
+2026-11-15T22:51:58.936550898Z     )
+2026-11-15T22:51:58.936552939Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+2026-11-15T22:51:58.936554969Z     response = self._send_handling_redirects(
+2026-11-15T22:51:58.936560989Z         request,
+2026-11-15T22:51:58.936562989Z         follow_redirects=follow_redirects,
+2026-11-15T22:51:58.936565009Z         history=history,
+2026-11-15T22:51:58.936566939Z     )
+2026-11-15T22:51:58.93656889Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+2026-11-15T22:51:58.93657085Z     response = self._send_single_request(request)
+2026-11-15T22:51:58.93657287Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+2026-11-15T22:51:58.93657482Z     response = transport.handle_request(request)
+2026-11-15T22:51:58.93657679Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+2026-11-15T22:51:58.93657871Z     resp = self._pool.handle_request(req)
+2026-11-15T22:51:58.9365812Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+2026-11-15T22:51:58.93658316Z     raise exc from None
+2026-11-15T22:51:58.936585071Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+2026-11-15T22:51:58.936587051Z     response = connection.handle_request(
+2026-11-15T22:51:58.936588961Z         pool_request.request
+2026-11-15T22:51:58.936590861Z     )
+2026-11-15T22:51:58.936592781Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+2026-11-15T22:51:58.936594821Z     return self._connection.handle_request(request)
+2026-11-15T22:51:58.936596841Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+2026-11-15T22:51:58.936598821Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+2026-11-15T22:51:58.936600752Z     raise exc
+2026-11-15T22:51:58.936602721Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+2026-11-15T22:51:58.936604622Z     ) = self._receive_response_headers(**kwargs)
+2026-11-15T22:51:58.936606512Z         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-11-15T22:51:58.936608512Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+2026-11-15T22:51:58.936610392Z     event = self._receive_event(timeout=timeout)
+2026-11-15T22:51:58.936612332Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+2026-11-15T22:51:58.936614212Z     data = self._network_stream.read(
+2026-11-15T22:51:58.936616082Z         self.READ_NUM_BYTES, timeout=timeout
+2026-11-15T22:51:58.936617982Z     )
+2026-11-15T22:51:58.936619902Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 128, in read
+2026-11-15T22:51:58.936621843Z     return self._sock.recv(max_bytes)
+2026-11-15T22:51:58.936623733Z            ~~~~~~~~~~~~~~~^^^^^^^^^^^
+2026-11-15T22:51:58.936625723Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/ssl.py", line 1285, in recv
+2026-11-15T22:51:58.936627703Z     return self.read(buflen)
+2026-11-15T22:51:58.936629623Z            ~~~~~~~~~^^^^^^^^
+2026-11-15T22:51:58.936631593Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/ssl.py", line 1140, in read
+2026-11-15T22:51:58.936633513Z     return self._sslobj.read(len)
+2026-11-15T22:51:58.936635374Z            ~~~~~~~~~~~~~~~~~^^^^^
+2026-11-15T22:51:58.936637294Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:51:58.936642024Z     sys.exit(1)
+2026-11-15T22:51:58.936644004Z     ~~~~~~~~^^^
+2026-11-15T22:51:58.936645984Z SystemExit: 1
+2026-11-15T22:51:58.936699717Z [2026-11-15 22:51:58 +0000] [91] [INFO] Worker exiting (pid: 91)
+2026-11-15T22:51:59.958475349Z [2026-11-15 22:51:59 +0000] [58] [ERROR] Worker (pid:91) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:51:59.960952313Z [2026-11-15 22:51:59 +0000] [110] [INFO] Booting worker with pid: 110
+2026-11-15T22:52:07.590446257Z [1] parse_request
+2026-11-15T22:52:07.590472329Z       in:  dict with keys: query
+2026-11-15T22:52:07.590476579Z       out: dict with keys: description, size, max_price
+2026-11-15T22:52:11.858604515Z [2] search_listings (via MCP)
+2026-11-15T22:52:11.858633707Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:52:11.858639957Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:52:11.858645657Z [3] selected_item
+2026-11-15T22:52:11.858650457Z       out: id=lst_008
+2026-11-15T22:52:13.171905259Z [4] suggest_outfit
+2026-11-15T22:52:13.17192791Z       in:  id=lst_008, wardrobe
+2026-11-15T22:52:13.171934211Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:52:14.873251872Z [5] create_fit_card
+2026-11-15T22:52:14.873280473Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:52:14.873288004Z       out: scored this chunky brown knit cardigan on depop for $35 and i'm already obsessed with styling it. threw it on …
+2026-11-15T22:52:14.873536328Z {"timestamp": "2026-11-15T22:52:14.873+00:00", "request_id": "7bd3f13a", "input": "printed knit tank under $45", "output": "scored this chunky brown knit cardigan on depop for $35 and i'm already obsessed with styling it. threw it on with baggy dark wash jeans and combat boots to give the cozy cottagecore vibe a little bit of edge. honestly the ultimate autumn layering piece!", "duration_ms": 14816.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 874, "output_tokens": 350}
+2026-11-15T22:52:14.8746017Z 127.0.0.1 - - [15/Nov/2026:22:52:14 +0000] "POST /ask HTTP/1.1" 200 4928 "-" "Python-urllib/3.13"
+2026-11-15T22:52:16.033955919Z [6] parse_request
+2026-11-15T22:52:16.033984281Z       in:  dict with keys: query
+2026-11-15T22:52:16.033990201Z       out: dict with keys: description, size, max_price
+2026-11-15T22:52:20.161534521Z [7] search_listings (via MCP)
+2026-11-15T22:52:20.161565663Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:52:20.161571194Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:52:20.161582834Z [8] selected_item
+2026-11-15T22:52:20.161587315Z       out: id=lst_017
+2026-11-15T22:52:21.511568619Z [9] suggest_outfit
+2026-11-15T22:52:21.51159273Z       in:  id=lst_017, wardrobe
+2026-11-15T22:52:21.511600111Z       out: Here are two outfits combining the new mesh long-sleeve top with pieces from your wardrobe:  ### Outfit 1: Edg…
+2026-11-15T22:52:22.286222543Z [10] create_fit_card
+2026-11-15T22:52:22.286242124Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:52:22.286247824Z       out: Found this black mesh long-sleeve top on depop for just $15, and I am already obsessed. Layered it over a whit…
+2026-11-15T22:52:22.28634335Z {"timestamp": "2026-11-15T22:52:22.286+00:00", "request_id": "22c546fc", "input": "linen jersey sweat top under $50", "output": "Found this black mesh long-sleeve top on depop for just $15, and I am already obsessed. Layered it over a white ribbed tank with baggy dark wash jeans and combat boots for the ultimate grunge look. So ready to wear this everywhere.", "duration_ms": 7262.2, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 875, "output_tokens": 347}
+2026-11-15T22:52:22.287002628Z 127.0.0.1 - - [15/Nov/2026:22:52:22 +0000] "POST /ask HTTP/1.1" 200 5683 "-" "Python-urllib/3.13"
+2026-11-15T22:52:23.207087449Z [11] parse_request
+2026-11-15T22:52:23.20710375Z       in:  dict with keys: query
+2026-11-15T22:52:23.20710744Z       out: dict with keys: description, size, max_price
+2026-11-15T22:52:26.761121206Z [12] search_listings (via MCP)
+2026-11-15T22:52:26.761155648Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:52:26.761162188Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:52:26.761168169Z [13] selected_item
+2026-11-15T22:52:26.761173939Z       out: id=lst_032
+2026-11-15T22:52:28.183545861Z [14] suggest_outfit
+2026-11-15T22:52:28.183565442Z       in:  id=lst_032, wardrobe
+2026-11-15T22:52:28.183571892Z       out: Here are two outfit combinations using the new olive canvas shacket and pieces from your wardrobe:  ### Outfit…
+2026-11-15T22:52:29.135821933Z [15] create_fit_card
+2026-11-15T22:52:29.135844294Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:52:29.135850014Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it’s officially my new favorite layering piece.…
+2026-11-15T22:52:29.135927849Z {"timestamp": "2026-11-15T22:52:29.135+00:00", "request_id": "2cfa1099", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it’s officially my new favorite layering piece. Wore it today over a white ribbed tank and wide-leg trousers for that clean, minimal earth-tone vibe. Can't wait to style it with a hoodie and combat boots next!", "duration_ms": 6570.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 881, "output_tokens": 379}
+2026-11-15T22:52:29.136587257Z 127.0.0.1 - - [15/Nov/2026:22:52:29 +0000] "POST /ask HTTP/1.1" 200 4316 "-" "Python-urllib/3.13"
+2026-11-15T22:52:29.468756905Z 127.0.0.1 - - [15/Nov/2026:22:52:29 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:52:30.184174232Z [16] parse_request
+2026-11-15T22:52:30.184202974Z       in:  dict with keys: query
+2026-11-15T22:52:30.184209964Z       out: dict with keys: description, size, max_price
+2026-11-15T22:52:34.363413801Z [17] search_listings (via MCP)
+2026-11-15T22:52:34.363444223Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:52:34.363450253Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:52:34.363455794Z [18] selected_item
+2026-11-15T22:52:34.363460804Z       out: id=lst_002
+2026-11-15T22:52:35.656534163Z [19] suggest_outfit
+2026-11-15T22:52:35.656552314Z       in:  id=lst_002, wardrobe
+2026-11-15T22:52:35.656557495Z       out: Here are two outfit combinations using the Y2K Baby Tee and pieces from your wardrobe:  ### Outfit 1: Streetwe…
+2026-11-15T22:52:36.395265525Z [20] create_fit_card
+2026-11-15T22:52:36.395291866Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:52:36.395299727Z       out: Just scored this Y2K butterfly baby tee on depop for $18 and I'm obsessed. Paired it with baggy dark denim and…
+2026-11-15T22:52:36.395386812Z {"timestamp": "2026-11-15T22:52:36.395+00:00", "request_id": "7e21b01b", "input": "vintage graphic tee under $30", "output": "Just scored this Y2K butterfly baby tee on depop for $18 and I'm obsessed. Paired it with baggy dark denim and a vintage jacket for the ultimate nostalgic streetwear look. Such a steal for the vibe!", "duration_ms": 6776.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 873, "output_tokens": 336}
+2026-11-15T22:52:36.396094163Z 127.0.0.1 - - [15/Nov/2026:22:52:36 +0000] "POST /ask HTTP/1.1" 200 7632 "-" "Python-urllib/3.13"
+2026-11-15T22:52:37.050237425Z [21] parse_request
+2026-11-15T22:52:37.050266557Z       in:  dict with keys: query
+2026-11-15T22:52:37.050271627Z       out: dict with keys: description, size, max_price
+2026-11-15T22:52:40.756408576Z [22] search_listings (via MCP)
+2026-11-15T22:52:40.756436448Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:52:40.756440298Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:52:40.756444098Z [23] selected_item
+2026-11-15T22:52:40.756446768Z       out: id=lst_007
+2026-11-15T22:52:42.321232076Z [24] suggest_outfit
+2026-11-15T22:52:42.321260438Z       in:  id=lst_007, wardrobe
+2026-11-15T22:52:42.321266118Z       out: Here are two outfit suggestions combining the new light wash cropped denim jacket with pieces from the wardrob…
+2026-11-15T22:52:43.052850393Z [25] create_fit_card
+2026-11-15T22:52:43.052876114Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:52:43.052880355Z       out: Scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed. It's the exact boxy …
+2026-11-15T22:52:43.052998271Z {"timestamp": "2026-11-15T22:52:43.052+00:00", "request_id": "845737f4", "input": "denim jacket under $50", "output": "Scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed. It's the exact boxy vintage piece I needed to nail that effortless streetwear double-denim look. Can't wait to style it over an oversized crewneck with some combat boots next!", "duration_ms": 6533.4, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 889, "output_tokens": 381}
+2026-11-15T22:52:43.053724084Z 127.0.0.1 - - [15/Nov/2026:22:52:43 +0000] "POST /ask HTTP/1.1" 200 6713 "-" "Python-urllib/3.13"
+2026-11-15T22:52:43.224909789Z   [rate limit] 15 requests used this minute. Waiting 23s. This is normal.
+2026-11-15T22:52:48.739735272Z ==> Detected service running on port 10000
+2026-11-15T22:52:48.812147168Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+2026-11-15T22:53:07.120541953Z [26] parse_request
+2026-11-15T22:53:07.120573925Z       in:  dict with keys: query
+2026-11-15T22:53:07.120580125Z       out: dict with keys: description, size, max_price
+2026-11-15T22:53:10.962354701Z [27] search_listings (via MCP)
+2026-11-15T22:53:10.962379802Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:53:10.962385582Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:53:10.962391353Z [28] selected_item
+2026-11-15T22:53:10.962395493Z       out: id=lst_008
+2026-11-15T22:53:13.279835712Z [2026-11-15 22:53:13 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:110)
+2026-11-15T22:53:13.290032785Z [2026-11-15 22:53:13 +0000] [110] [ERROR] Error handling request /ask
+2026-11-15T22:53:13.290047556Z Traceback (most recent call last):
+2026-11-15T22:53:13.290053146Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:53:13.290058876Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:53:13.290063617Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:53:13.290070237Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:53:13.290073457Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:53:13.290077388Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:53:13.290090828Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:53:13.290092908Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:53:13.290094858Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:53:13.290096809Z     response = self.full_dispatch_request()
+2026-11-15T22:53:13.290098849Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:53:13.290101319Z     rv = self.dispatch_request()
+2026-11-15T22:53:13.290103239Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:53:13.290105179Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:53:13.290107159Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:53:13.290109089Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:53:13.290110959Z     session = run_agent(query, wardrobe)
+2026-11-15T22:53:13.290112899Z   File "/opt/render/project/src/agent.py", line 174, in run_agent
+2026-11-15T22:53:13.29011531Z     session["outfit_suggestion"] = suggest_outfit(session["selected_item"], session["wardrobe"])
+2026-11-15T22:53:13.2901173Z                                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:53:13.29011919Z   File "/opt/render/project/src/tools.py", line 188, in suggest_outfit
+2026-11-15T22:53:13.29012112Z     outfit = generate(prompt).strip()
+2026-11-15T22:53:13.29012306Z              ~~~~~~~~^^^^^^^^
+2026-11-15T22:53:13.29012502Z   File "/opt/render/project/src/generate.py", line 315, in generate
+2026-11-15T22:53:13.29012692Z     response = client.models.generate_content(**kwargs)
+2026-11-15T22:53:13.29012886Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 6331, in generate_content
+2026-11-15T22:53:13.29013088Z     response = self._generate_content(
+2026-11-15T22:53:13.290132751Z         model=model, contents=contents, config=parsed_config
+2026-11-15T22:53:13.290135071Z     )
+2026-11-15T22:53:13.290137201Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 4767, in _generate_content
+2026-11-15T22:53:13.290139641Z     response = self._api_client.request(
+2026-11-15T22:53:13.290141591Z         'post', path, request_dict, http_options
+2026-11-15T22:53:13.290143531Z     )
+2026-11-15T22:53:13.290145461Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1605, in request
+2026-11-15T22:53:13.290147481Z     response = self._request(http_request, http_options, stream=False)
+2026-11-15T22:53:13.290149402Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1398, in _request
+2026-11-15T22:53:13.290151312Z     return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+2026-11-15T22:53:13.290153722Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:53:13.290156972Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+2026-11-15T22:53:13.290160142Z     do = self.iter(retry_state=retry_state)
+2026-11-15T22:53:13.290163262Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+2026-11-15T22:53:13.290166093Z     result = action(retry_state)
+2026-11-15T22:53:13.290168993Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+2026-11-15T22:53:13.290176113Z     self._add_action_func(lambda rs: rs.outcome.result())
+2026-11-15T22:53:13.290179183Z                                      ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:53:13.290182094Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+2026-11-15T22:53:13.290184734Z     return self.__get_result()
+2026-11-15T22:53:13.290185274Z 127.0.0.1 - - [15/Nov/2026:22:53:13 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:53:13.290188004Z            ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:53:13.290191054Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+2026-11-15T22:53:13.290194444Z     raise self._exception
+2026-11-15T22:53:13.290203095Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+2026-11-15T22:53:13.290206535Z     result = fn(*args, **kwargs)
+2026-11-15T22:53:13.290210165Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1374, in _request_once
+2026-11-15T22:53:13.290214095Z     response = self._httpx_client.send(httpx_request, stream=stream)  # type: ignore[union-attr]
+2026-11-15T22:53:13.290219426Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+2026-11-15T22:53:13.290221936Z     response = self._send_handling_auth(
+2026-11-15T22:53:13.290224046Z         request,
+2026-11-15T22:53:13.290226756Z     ...<2 lines>...
+2026-11-15T22:53:13.290228716Z         history=[],
+2026-11-15T22:53:13.290230696Z     )
+2026-11-15T22:53:13.290232677Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+2026-11-15T22:53:13.290234617Z     response = self._send_handling_redirects(
+2026-11-15T22:53:13.290236577Z         request,
+2026-11-15T22:53:13.290238617Z         follow_redirects=follow_redirects,
+2026-11-15T22:53:13.290240557Z         history=history,
+2026-11-15T22:53:13.290242487Z     )
+2026-11-15T22:53:13.290244407Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+2026-11-15T22:53:13.290247527Z     response = self._send_single_request(request)
+2026-11-15T22:53:13.290250467Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+2026-11-15T22:53:13.290253758Z     response = transport.handle_request(request)
+2026-11-15T22:53:13.290256938Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+2026-11-15T22:53:13.290259988Z     resp = self._pool.handle_request(req)
+2026-11-15T22:53:13.290263388Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+2026-11-15T22:53:13.290266519Z     raise exc from None
+2026-11-15T22:53:13.290269669Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+2026-11-15T22:53:13.290273009Z     response = connection.handle_request(
+2026-11-15T22:53:13.290275779Z         pool_request.request
+2026-11-15T22:53:13.290278759Z     )
+2026-11-15T22:53:13.290281829Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+2026-11-15T22:53:13.290284549Z     return self._connection.handle_request(request)
+2026-11-15T22:53:13.29028708Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+2026-11-15T22:53:13.29029818Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+2026-11-15T22:53:13.29030185Z     raise exc
+2026-11-15T22:53:13.290304971Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+2026-11-15T22:53:13.290307821Z     ) = self._receive_response_headers(**kwargs)
+2026-11-15T22:53:13.290310841Z         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-11-15T22:53:13.290332372Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+2026-11-15T22:53:13.290341643Z     event = self._receive_event(timeout=timeout)
+2026-11-15T22:53:13.290344933Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+2026-11-15T22:53:13.290348223Z     data = self._network_stream.read(
+2026-11-15T22:53:13.290351383Z         self.READ_NUM_BYTES, timeout=timeout
+2026-11-15T22:53:13.290354504Z     )
+2026-11-15T22:53:13.290357554Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 128, in read
+2026-11-15T22:53:13.290360724Z     return self._sock.recv(max_bytes)
+2026-11-15T22:53:13.290363694Z            ~~~~~~~~~~~~~~~^^^^^^^^^^^
+2026-11-15T22:53:13.290366994Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/ssl.py", line 1285, in recv
+2026-11-15T22:53:13.290370354Z     return self.read(buflen)
+2026-11-15T22:53:13.290372305Z            ~~~~~~~~~^^^^^^^^
+2026-11-15T22:53:13.290374295Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/ssl.py", line 1140, in read
+2026-11-15T22:53:13.290376305Z     return self._sslobj.read(len)
+2026-11-15T22:53:13.290378295Z            ~~~~~~~~~~~~~~~~~^^^^^
+2026-11-15T22:53:13.290380185Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:53:13.290382105Z     sys.exit(1)
+2026-11-15T22:53:13.290384115Z     ~~~~~~~~^^^
+2026-11-15T22:53:13.290386075Z SystemExit: 1
+2026-11-15T22:53:13.290544835Z [2026-11-15 22:53:13 +0000] [110] [INFO] Worker exiting (pid: 110)
+2026-11-15T22:53:14.358759596Z [2026-11-15 22:53:14 +0000] [58] [ERROR] Worker (pid:110) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:53:14.361612292Z [2026-11-15 22:53:14 +0000] [129] [INFO] Booting worker with pid: 129
+2026-11-15T22:53:22.644546595Z [1] parse_request
+2026-11-15T22:53:22.644568836Z       in:  dict with keys: query
+2026-11-15T22:53:22.644574106Z       out: dict with keys: description, size, max_price
+2026-11-15T22:53:26.452269115Z [2] search_listings (via MCP)
+2026-11-15T22:53:26.452299136Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:53:26.452305437Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:53:26.452331438Z [3] selected_item
+2026-11-15T22:53:26.452339139Z       out: id=lst_017
+2026-11-15T22:53:27.592549322Z [4] suggest_outfit
+2026-11-15T22:53:27.592577044Z       in:  id=lst_017, wardrobe
+2026-11-15T22:53:27.592582914Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:53:28.445482453Z [5] create_fit_card
+2026-11-15T22:53:28.445505395Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:53:28.445510715Z       out: Just scored this black mesh long-sleeve top on depop for only $15.00, and it’s honestly the ultimate layering …
+2026-11-15T22:53:28.445635552Z {"timestamp": "2026-11-15T22:53:28.445+00:00", "request_id": "11b220c3", "input": "linen jersey sweat top under $50", "output": "Just scored this black mesh long-sleeve top on depop for only $15.00, and it’s honestly the ultimate layering piece. I threw it on under an oversized grey crewneck and khaki trousers for that messy, grungy contrast. It gives off major early 2000s indie sleaze energy and I am obsessed.", "duration_ms": 13991.2, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 778, "output_tokens": 269}
+2026-11-15T22:53:28.446656942Z 127.0.0.1 - - [15/Nov/2026:22:53:28 +0000] "POST /ask HTTP/1.1" 200 5214 "-" "Python-urllib/3.13"
+2026-11-15T22:53:29.109872032Z [6] parse_request
+2026-11-15T22:53:29.109891343Z       in:  dict with keys: query
+2026-11-15T22:53:29.109896723Z       out: dict with keys: description, size, max_price
+2026-11-15T22:53:33.257401421Z [7] search_listings (via MCP)
+2026-11-15T22:53:33.257424183Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:53:33.257428963Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:53:33.257433783Z [8] selected_item
+2026-11-15T22:53:33.257437213Z       out: id=lst_032
+2026-11-15T22:53:34.253363656Z [9] suggest_outfit
+2026-11-15T22:53:34.253389058Z       in:  id=lst_032, wardrobe
+2026-11-15T22:53:34.253394348Z       out: Here are two outfit combinations using the new olive canvas shacket and pieces from your wardrobe:  ### Outfit…
+2026-11-15T22:53:35.087891366Z [10] create_fit_card
+2026-11-15T22:53:35.087913087Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:53:35.087918528Z       out: So obsessed with this olive canvas shacket I just scored on Poshmark for only $33! It’s the ultimate minimal l…
+2026-11-15T22:53:35.087985341Z {"timestamp": "2026-11-15T22:53:35.087+00:00", "request_id": "86200923", "input": "corduroy jacket size L under $45", "output": "So obsessed with this olive canvas shacket I just scored on Poshmark for only $33! It’s the ultimate minimal layering piece for pairing with baggy denim and combat boots, or dressing up with wide-leg trousers. Such a good earth-toned staple for fall.", "duration_ms": 6493.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 783, "output_tokens": 271}
+2026-11-15T22:53:35.088594637Z 127.0.0.1 - - [15/Nov/2026:22:53:35 +0000] "POST /ask HTTP/1.1" 200 3800 "-" "Python-urllib/3.13"
+2026-11-15T22:53:36.226578698Z [11] parse_request
+2026-11-15T22:53:36.22660141Z       in:  dict with keys: query
+2026-11-15T22:53:36.22660654Z       out: dict with keys: description, size, max_price
+2026-11-15T22:53:39.856658747Z [12] search_listings (via MCP)
+2026-11-15T22:53:39.856694949Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:53:39.85670204Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:53:39.8567069Z [13] selected_item
+2026-11-15T22:53:39.85671087Z       out: id=lst_002
+2026-11-15T22:53:41.117906033Z [14] suggest_outfit
+2026-11-15T22:53:41.117936295Z       in:  id=lst_002, wardrobe
+2026-11-15T22:53:41.117943606Z       out: Here are two outfit suggestions combining the Y2K Baby Tee with pieces from your wardrobe:  **Outfit 1: Casual…
+2026-11-15T22:53:41.715958673Z [15] create_fit_card
+2026-11-15T22:53:41.715983274Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:53:41.715988865Z       out: Found this insanely cute Y2K butterfly baby tee on depop for just $18, and I am obsessed. I just styled it wit…
+2026-11-15T22:53:41.71607561Z {"timestamp": "2026-11-15T22:53:41.715+00:00", "request_id": "fdb348e2", "input": "vintage graphic tee under $30", "output": "Found this insanely cute Y2K butterfly baby tee on depop for just $18, and I am obsessed. I just styled it with baggy dark-wash jeans and a cropped hoodie for the ultimate early 2000s streetwear vibe.", "duration_ms": 6465.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 894, "output_tokens": 361}
+2026-11-15T22:53:41.716710426Z 127.0.0.1 - - [15/Nov/2026:22:53:41 +0000] "POST /ask HTTP/1.1" 200 7693 "-" "Python-urllib/3.13"
+2026-11-15T22:53:42.290646714Z [16] parse_request
+2026-11-15T22:53:42.290669535Z       in:  dict with keys: query
+2026-11-15T22:53:42.290673446Z       out: dict with keys: description, size, max_price
+2026-11-15T22:53:46.2496584Z [17] search_listings (via MCP)
+2026-11-15T22:53:46.249679141Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:53:46.249684151Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:53:46.249688271Z [18] selected_item
+2026-11-15T22:53:46.249691472Z       out: id=lst_007
+2026-11-15T22:53:47.681418387Z [19] suggest_outfit
+2026-11-15T22:53:47.681445349Z       in:  id=lst_007, wardrobe
+2026-11-15T22:53:47.681453099Z       out: Here are two ways to style the new light wash cropped denim jacket using pieces from your wardrobe:  **Outfit …
+2026-11-15T22:53:48.41389463Z [20] create_fit_card
+2026-11-15T22:53:48.413930472Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:53:48.413940233Z       out: Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the vintage fit.…
+2026-11-15T22:53:48.413964784Z {"timestamp": "2026-11-15T22:53:48.413+00:00", "request_id": "94263e33", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the vintage fit. Paired it with dark baggy jeans for a high-contrast streetwear moment, but it looks just as good layered over a grey crewneck with khaki trousers. Seriously never taking this off.", "duration_ms": 6595.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 905, "output_tokens": 397}
+2026-11-15T22:53:48.414542528Z 127.0.0.1 - - [15/Nov/2026:22:53:48 +0000] "POST /ask HTTP/1.1" 200 6715 "-" "Python-urllib/3.13"
+2026-11-15T22:53:49.167390965Z [21] parse_request
+2026-11-15T22:53:49.167409977Z       in:  dict with keys: query
+2026-11-15T22:53:49.167416187Z       out: dict with keys: description, size, max_price
+2026-11-15T22:53:53.162816961Z [22] search_listings (via MCP)
+2026-11-15T22:53:53.162846333Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:53:53.162851463Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:53:53.162856043Z [23] selected_item
+2026-11-15T22:53:53.162860334Z       out: id=lst_008
+2026-11-15T22:53:54.471119229Z [24] suggest_outfit
+2026-11-15T22:53:54.471147651Z       in:  id=lst_008, wardrobe
+2026-11-15T22:53:54.471153321Z       out: Here are two outfit combinations using the new knit cardigan and pieces exclusively from your wardrobe:  ### O…
+2026-11-15T22:53:55.158046103Z [25] create_fit_card
+2026-11-15T22:53:55.158075385Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:53:55.158079995Z       out: Finally scored this chunky brown knit cardigan on Depop for $35 and I'm obsessed with how cozy it is. Styled i…
+2026-11-15T22:53:55.15815821Z {"timestamp": "2026-11-15T22:53:55.158+00:00", "request_id": "5886266a", "input": "printed knit tank under $45", "output": "Finally scored this chunky brown knit cardigan on Depop for $35 and I'm obsessed with how cozy it is. Styled it over a ribbed tank and baggy dark wash jeans with black combat boots for that perfect mix of soft and edgy streetwear.", "duration_ms": 6636.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 877, "output_tokens": 349}
+2026-11-15T22:53:55.158863471Z 127.0.0.1 - - [15/Nov/2026:22:53:55 +0000] "POST /ask HTTP/1.1" 200 5014 "-" "Python-urllib/3.13"
+2026-11-15T22:53:55.376244538Z   [rate limit] 15 requests used this minute. Waiting 26s. This is normal.
+2026-11-15T22:54:22.19763159Z [26] parse_request
+2026-11-15T22:54:22.197658232Z       in:  dict with keys: query
+2026-11-15T22:54:22.197666882Z       out: dict with keys: description, size, max_price
+2026-11-15T22:54:25.682884278Z [2026-11-15 22:54:25 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:129)
+2026-11-15T22:54:25.7622119Z [2026-11-15 22:54:25 +0000] [129] [ERROR] Error handling request /ask
+2026-11-15T22:54:25.762230541Z Traceback (most recent call last):
+2026-11-15T22:54:25.762235981Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:54:25.762241281Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:54:25.762246002Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.762250612Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:54:25.762254882Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:54:25.762259832Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:54:25.762264973Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:54:25.762269383Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.762273573Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:54:25.762277983Z     response = self.full_dispatch_request()
+2026-11-15T22:54:25.762282504Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:54:25.762287214Z     rv = self.dispatch_request()
+2026-11-15T22:54:25.762292094Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:54:25.762297074Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:54:25.762301925Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:54:25.762306515Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:54:25.762311335Z     session = run_agent(query, wardrobe)
+2026-11-15T22:54:25.762341907Z   File "/opt/render/project/src/agent.py", line 142, in run_agent
+2026-11-15T22:54:25.762349597Z     session["search_results"] = mcp_client.call_tool("search_listings", {
+2026-11-15T22:54:25.762354248Z                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.762358528Z         "description": session["parsed"]["description"],
+2026-11-15T22:54:25.762362758Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.762367498Z         "size": session["parsed"]["size"],
+2026-11-15T22:54:25.762372179Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.762376809Z         "max_price": session["parsed"]["max_price"],
+2026-11-15T22:54:25.762378589Z 127.0.0.1 - - [15/Nov/2026:22:54:25 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:54:25.762382279Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.76239328Z     })
+2026-11-15T22:54:25.7623983Z     ^^
+2026-11-15T22:54:25.762403321Z   File "/opt/render/project/src/mcp_client.py", line 59, in call_tool
+2026-11-15T22:54:25.762407911Z     return asyncio.run(_call(name, arguments))
+2026-11-15T22:54:25.762428702Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:54:25.762431862Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 196, in run
+2026-11-15T22:54:25.762434862Z     return runner.run(main)
+2026-11-15T22:54:25.762437623Z            ~~~~~~~~~~^^^^^^
+2026-11-15T22:54:25.762440883Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 119, in run
+2026-11-15T22:54:25.762443893Z     return self._loop.run_until_complete(task)
+2026-11-15T22:54:25.762446923Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-15T22:54:25.762450243Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+2026-11-15T22:54:25.762453634Z     self.run_forever()
+2026-11-15T22:54:25.762456514Z     ~~~~~~~~~~~~~~~~^^
+2026-11-15T22:54:25.762459754Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+2026-11-15T22:54:25.762462714Z     self._run_once()
+2026-11-15T22:54:25.762465584Z     ~~~~~~~~~~~~~~^^
+2026-11-15T22:54:25.762468695Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 2022, in _run_once
+2026-11-15T22:54:25.762477825Z     event_list = self._selector.select(timeout)
+2026-11-15T22:54:25.762482595Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/selectors.py", line 452, in select
+2026-11-15T22:54:25.762485425Z     fd_event_list = self._selector.poll(timeout, max_ev)
+2026-11-15T22:54:25.762487996Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:54:25.762489956Z     sys.exit(1)
+2026-11-15T22:54:25.762492146Z     ~~~~~~~~^^^
+2026-11-15T22:54:25.762494076Z SystemExit: 1
+2026-11-15T22:54:25.76274188Z [2026-11-15 22:54:25 +0000] [129] [INFO] Worker exiting (pid: 129)
+2026-11-15T22:54:26.75798251Z [2026-11-15 22:54:26 +0000] [58] [ERROR] Worker (pid:129) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:54:26.852065319Z [2026-11-15 22:54:26 +0000] [148] [INFO] Booting worker with pid: 148
+2026-11-15T22:54:34.169681249Z [1] parse_request
+2026-11-15T22:54:34.1697009Z       in:  dict with keys: query
+2026-11-15T22:54:34.169706931Z       out: dict with keys: description, size, max_price
+2026-11-15T22:54:37.954652747Z [2] search_listings (via MCP)
+2026-11-15T22:54:37.954687359Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:54:37.95469311Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:54:37.95469722Z [3] selected_item
+2026-11-15T22:54:37.95470031Z       out: id=lst_032
+2026-11-15T22:54:39.219700546Z [4] suggest_outfit
+2026-11-15T22:54:39.219723227Z       in:  id=lst_032, wardrobe
+2026-11-15T22:54:39.219731198Z       out: Here are two outfit combinations using the new olive canvas shacket and pieces from your wardrobe:  **Outfit 1…
+2026-11-15T22:54:40.029284742Z [5] create_fit_card
+2026-11-15T22:54:40.029331115Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:54:40.029340455Z       out: Scored this olive canvas shacket on Poshmark for $33 and I'm obsessed with how heavy-duty it is. Tossed it ove…
+2026-11-15T22:54:40.02942771Z {"timestamp": "2026-11-15T22:54:40.029+00:00", "request_id": "678f229b", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for $33 and I'm obsessed with how heavy-duty it is. Tossed it over an oversized grey crewneck and combat boots today for the ultimate cozy streetwear fit. Honestly such a good find for effortless earth-tone layering.", "duration_ms": 13161.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 877, "output_tokens": 368}
+2026-11-15T22:54:40.030505883Z 127.0.0.1 - - [15/Nov/2026:22:54:40 +0000] "POST /ask HTTP/1.1" 200 4169 "-" "Python-urllib/3.13"
+2026-11-15T22:54:40.436353962Z 127.0.0.1 - - [15/Nov/2026:22:54:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:54:41.08476884Z [6] parse_request
+2026-11-15T22:54:41.084792331Z       in:  dict with keys: query
+2026-11-15T22:54:41.084797411Z       out: dict with keys: description, size, max_price
+2026-11-15T22:54:45.259633164Z [7] search_listings (via MCP)
+2026-11-15T22:54:45.259662765Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:54:45.259670106Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:54:45.259676516Z [8] selected_item
+2026-11-15T22:54:45.259683797Z       out: id=lst_002
+2026-11-15T22:54:46.476753735Z [9] suggest_outfit
+2026-11-15T22:54:46.476778216Z       in:  id=lst_002, wardrobe
+2026-11-15T22:54:46.476786617Z       out: Here are two outfit suggestions combining the Y2K Baby Tee with pieces from your wardrobe:  **Outfit 1: Y2K St…
+2026-11-15T22:54:47.03292527Z [10] create_fit_card
+2026-11-15T22:54:47.032953652Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:54:47.032960372Z       out: Scored this adorable Y2K butterfly tee on depop for just $18.00 and I'm obsessed. I styled it with baggy dark-…
+2026-11-15T22:54:47.033008205Z {"timestamp": "2026-11-15T22:54:47.032+00:00", "request_id": "b8c615fd", "input": "vintage graphic tee under $30", "output": "Scored this adorable Y2K butterfly tee on depop for just $18.00 and I'm obsessed. I styled it with baggy dark-wash jeans, a black denim jacket, and chunky sneakers for the ultimate Y2K streetwear edge.", "duration_ms": 6475.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 869, "output_tokens": 338}
+2026-11-15T22:54:47.033601109Z 127.0.0.1 - - [15/Nov/2026:22:54:47 +0000] "POST /ask HTTP/1.1" 200 7610 "-" "Python-urllib/3.13"
+2026-11-15T22:54:47.619575017Z [11] parse_request
+2026-11-15T22:54:47.619602468Z       in:  dict with keys: query
+2026-11-15T22:54:47.619608049Z       out: dict with keys: description, size, max_price
+2026-11-15T22:54:51.364286503Z [12] search_listings (via MCP)
+2026-11-15T22:54:51.364312214Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:54:51.364354857Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:54:51.364363247Z [13] selected_item
+2026-11-15T22:54:51.364367917Z       out: id=lst_007
+2026-11-15T22:54:52.539996336Z [14] suggest_outfit
+2026-11-15T22:54:52.540018377Z       in:  id=lst_007, wardrobe
+2026-11-15T22:54:52.540024547Z       out: Here are two outfit suggestions combining the new light wash cropped denim jacket with pieces from the wardrob…
+2026-11-15T22:54:53.204701618Z [15] create_fit_card
+2026-11-15T22:54:53.204722379Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:54:53.20473009Z       out: Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed. It's giving …
+2026-11-15T22:54:53.204813965Z {"timestamp": "2026-11-15T22:54:53.204+00:00", "request_id": "21ff50ff", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed. It's giving major streetwear energy thrown over baggy dark jeans and a white tank, but honestly looks just as good dressed down with khaki trousers. Such a classic vintage find that I'll be wearing on repeat.", "duration_ms": 6170.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 855, "output_tokens": 350}
+2026-11-15T22:54:53.205376357Z 127.0.0.1 - - [15/Nov/2026:22:54:53 +0000] "POST /ask HTTP/1.1" 200 6582 "-" "Python-urllib/3.13"
+2026-11-15T22:54:54.048559003Z [16] parse_request
+2026-11-15T22:54:54.048582684Z       in:  dict with keys: query
+2026-11-15T22:54:54.048586395Z       out: dict with keys: description, size, max_price
+2026-11-15T22:54:57.757245848Z [17] search_listings (via MCP)
+2026-11-15T22:54:57.75727956Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:54:57.757285791Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:54:57.757290941Z [18] selected_item
+2026-11-15T22:54:57.757295021Z       out: id=lst_017
+2026-11-15T22:54:58.728898029Z [19] suggest_outfit
+2026-11-15T22:54:58.728930491Z       in:  id=lst_017, wardrobe
+2026-11-15T22:54:58.728937891Z       out: Here are two outfit combinations using the new mesh top and items from your wardrobe:  **Outfit 1: Y2K Grunge …
+2026-11-15T22:54:59.458367255Z [20] create_fit_card
+2026-11-15T22:54:59.458386816Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:54:59.458392596Z       out: scored this black mesh long-sleeve top on depop for only $15 and it’s already doing heavy lifting for my grung…
+2026-11-15T22:54:59.458472001Z {"timestamp": "2026-11-15T22:54:59.458+00:00", "request_id": "e0cdf82c", "input": "linen jersey sweat top under $50", "output": "scored this black mesh long-sleeve top on depop for only $15 and it’s already doing heavy lifting for my grungy y2k layering combos. throwing it under an oversized crewneck with baggy jeans gives the exact effortless edge i’ve been trying to pull off.", "duration_ms": 5972.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 812, "output_tokens": 289}
+2026-11-15T22:54:59.459099857Z 127.0.0.1 - - [15/Nov/2026:22:54:59 +0000] "POST /ask HTTP/1.1" 200 5278 "-" "Python-urllib/3.13"
+2026-11-15T22:55:00.321404293Z [21] parse_request
+2026-11-15T22:55:00.321436885Z       in:  dict with keys: query
+2026-11-15T22:55:00.321444185Z       out: dict with keys: description, size, max_price
+2026-11-15T22:55:04.464399835Z [22] search_listings (via MCP)
+2026-11-15T22:55:04.464423116Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:55:04.464428876Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:55:04.464434717Z [23] selected_item
+2026-11-15T22:55:04.464439507Z       out: id=lst_008
+2026-11-15T22:55:06.234977506Z [24] suggest_outfit
+2026-11-15T22:55:06.234993397Z       in:  id=lst_008, wardrobe
+2026-11-15T22:55:06.234998507Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:55:06.820379708Z [25] create_fit_card
+2026-11-15T22:55:06.820402709Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:55:06.82041205Z       out: Score this chunky brown knit cardigan on Depop for just $35, and it is honestly the coziest piece I own now. I…
+2026-11-15T22:55:06.820490604Z {"timestamp": "2026-11-15T22:55:06.820+00:00", "request_id": "ebcc93b2", "input": "printed knit tank under $45", "output": "Score this chunky brown knit cardigan on Depop for just $35, and it is honestly the coziest piece I own now. I’ve been styling it over a white tank with dark wash baggy jeans and combat boots for that perfect mix of cottagecore and grunge. Such a win for fall layering!", "duration_ms": 7360.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 877, "output_tokens": 361}
+2026-11-15T22:55:06.821021505Z 127.0.0.1 - - [15/Nov/2026:22:55:06 +0000] "POST /ask HTTP/1.1" 200 4919 "-" "Python-urllib/3.13"
+2026-11-15T22:55:07.013359863Z   [rate limit] 15 requests used this minute. Waiting 27s. This is normal.
+2026-11-15T22:55:34.203409552Z [26] parse_request
+2026-11-15T22:55:34.203428553Z       in:  dict with keys: query
+2026-11-15T22:55:34.203432843Z       out: dict with keys: description, size, max_price
+2026-11-15T22:55:37.05072889Z [2026-11-15 22:55:37 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:148)
+2026-11-15T22:55:37.05985126Z [2026-11-15 22:55:37 +0000] [148] [ERROR] Error handling request /ask
+2026-11-15T22:55:37.059872121Z Traceback (most recent call last):
+2026-11-15T22:55:37.059878281Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:55:37.059883992Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:55:37.059887242Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.059892222Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:55:37.059897383Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:55:37.059902943Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:55:37.059907783Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:55:37.059912403Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.059916904Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:55:37.059921784Z     response = self.full_dispatch_request()
+2026-11-15T22:55:37.059926124Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:55:37.059929704Z     rv = self.dispatch_request()
+2026-11-15T22:55:37.059932814Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:55:37.059935875Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:55:37.059939035Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:55:37.059942125Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:55:37.059946525Z     session = run_agent(query, wardrobe)
+2026-11-15T22:55:37.059951256Z   File "/opt/render/project/src/agent.py", line 142, in run_agent
+2026-11-15T22:55:37.059955686Z     session["search_results"] = mcp_client.call_tool("search_listings", {
+2026-11-15T22:55:37.059959946Z                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.059964966Z         "description": session["parsed"]["description"],
+2026-11-15T22:55:37.059969627Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.059970797Z 127.0.0.1 - - [15/Nov/2026:22:55:37 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:55:37.059974407Z         "size": session["parsed"]["size"],
+2026-11-15T22:55:37.059979417Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.060004269Z         "max_price": session["parsed"]["max_price"],
+2026-11-15T22:55:37.060007559Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.060010669Z     })
+2026-11-15T22:55:37.060013759Z     ^^
+2026-11-15T22:55:37.06001685Z   File "/opt/render/project/src/mcp_client.py", line 59, in call_tool
+2026-11-15T22:55:37.06002051Z     return asyncio.run(_call(name, arguments))
+2026-11-15T22:55:37.06003548Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:55:37.060038731Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 196, in run
+2026-11-15T22:55:37.060042561Z     return runner.run(main)
+2026-11-15T22:55:37.060045661Z            ~~~~~~~~~~^^^^^^
+2026-11-15T22:55:37.060048861Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 119, in run
+2026-11-15T22:55:37.060052041Z     return self._loop.run_until_complete(task)
+2026-11-15T22:55:37.060055002Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-15T22:55:37.060059022Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+2026-11-15T22:55:37.060062852Z     self.run_forever()
+2026-11-15T22:55:37.060065352Z     ~~~~~~~~~~~~~~~~^^
+2026-11-15T22:55:37.060067342Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+2026-11-15T22:55:37.060069233Z     self._run_once()
+2026-11-15T22:55:37.060071182Z     ~~~~~~~~~~~~~~^^
+2026-11-15T22:55:37.060073113Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 2022, in _run_once
+2026-11-15T22:55:37.060074993Z     event_list = self._selector.select(timeout)
+2026-11-15T22:55:37.060076873Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/selectors.py", line 452, in select
+2026-11-15T22:55:37.060078823Z     fd_event_list = self._selector.poll(timeout, max_ev)
+2026-11-15T22:55:37.060080813Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:55:37.060082773Z     sys.exit(1)
+2026-11-15T22:55:37.060084733Z     ~~~~~~~~^^^
+2026-11-15T22:55:37.060086614Z SystemExit: 1
+2026-11-15T22:55:37.060256273Z [2026-11-15 22:55:37 +0000] [148] [INFO] Worker exiting (pid: 148)
+2026-11-15T22:55:38.062008284Z [2026-11-15 22:55:38 +0000] [58] [ERROR] Worker (pid:148) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:55:38.151210888Z [2026-11-15 22:55:38 +0000] [165] [INFO] Booting worker with pid: 165
+2026-11-15T22:55:45.569915439Z [1] parse_request
+2026-11-15T22:55:45.56993987Z       in:  dict with keys: query
+2026-11-15T22:55:45.56994495Z       out: dict with keys: description, size, max_price
+2026-11-15T22:55:49.863423683Z [2] search_listings (via MCP)
+2026-11-15T22:55:49.863455875Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:55:49.863461995Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:55:49.863466935Z [3] selected_item
+2026-11-15T22:55:49.863471706Z       out: id=lst_002
+2026-11-15T22:55:51.412060239Z [4] suggest_outfit
+2026-11-15T22:55:51.4120886Z       in:  id=lst_002, wardrobe
+2026-11-15T22:55:51.412094311Z       out: Here is an outfit combining the Y2K Baby Tee with pieces from your wardrobe:  **Outfit:** * **Top:** Y2K Baby …
+2026-11-15T22:55:52.215297552Z [5] create_fit_card
+2026-11-15T22:55:52.215342284Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:55:52.215353075Z       out: Scored this little butterfly print Y2K baby tee for just $18 on depop and I'm obsessed. I paired it with dark …
+2026-11-15T22:55:52.215556537Z {"timestamp": "2026-11-15T22:55:52.215+00:00", "request_id": "9c6515f2", "input": "vintage graphic tee under $30", "output": "Scored this little butterfly print Y2K baby tee for just $18 on depop and I'm obsessed. I paired it with dark wash baggy jeans, chunky white sneakers, and a black denim jacket for the ultimate noughties streetwear fit. So happy to finally add this piece to my wardrobe!", "duration_ms": 14057.0, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 755, "output_tokens": 233}
+2026-11-15T22:55:52.216719384Z 127.0.0.1 - - [15/Nov/2026:22:55:52 +0000] "POST /ask HTTP/1.1" 200 7194 "-" "Python-urllib/3.13"
+2026-11-15T22:55:53.086269651Z [6] parse_request
+2026-11-15T22:55:53.086296612Z       in:  dict with keys: query
+2026-11-15T22:55:53.086300053Z       out: dict with keys: description, size, max_price
+2026-11-15T22:55:56.96058274Z [7] search_listings (via MCP)
+2026-11-15T22:55:56.960614952Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:55:56.960623863Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:55:56.960630233Z [8] selected_item
+2026-11-15T22:55:56.960635553Z       out: id=lst_007
+2026-11-15T22:55:58.480366067Z [9] suggest_outfit
+2026-11-15T22:55:58.480386668Z       in:  id=lst_007, wardrobe
+2026-11-15T22:55:58.480392069Z       out: Here are two outfit combinations using the new light wash cropped denim jacket and pieces from the wardrobe:  …
+2026-11-15T22:55:59.528504409Z [10] create_fit_card
+2026-11-15T22:55:59.5285299Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:55:59.528536111Z       out: Finally tracked down this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed. I've been styl…
+2026-11-15T22:55:59.528583403Z {"timestamp": "2026-11-15T22:55:59.528+00:00", "request_id": "087e97c8", "input": "denim jacket under $50", "output": "Finally tracked down this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed. I've been styling it nonstop with baggy dark denim for that perfect streetwear contrast, or dressing it down with khaki trousers and combat boots for an earthy, high-low vibe.", "duration_ms": 7214.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 887, "output_tokens": 375}
+2026-11-15T22:55:59.529221341Z 127.0.0.1 - - [15/Nov/2026:22:55:59 +0000] "POST /ask HTTP/1.1" 200 6615 "-" "Python-urllib/3.13"
+2026-11-15T22:56:00.288975036Z [11] parse_request
+2026-11-15T22:56:00.288993647Z       in:  dict with keys: query
+2026-11-15T22:56:00.289000097Z       out: dict with keys: description, size, max_price
+2026-11-15T22:56:04.363266618Z [12] search_listings (via MCP)
+2026-11-15T22:56:04.36329119Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:56:04.36329667Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:56:04.36330185Z [13] selected_item
+2026-11-15T22:56:04.36330616Z       out: id=lst_008
+2026-11-15T22:56:05.645095616Z [14] suggest_outfit
+2026-11-15T22:56:05.645111887Z       in:  id=lst_008, wardrobe
+2026-11-15T22:56:05.645116167Z       out: Here are two outfit combinations using the new knit cardigan and pieces from the wardrobe:  **Outfit 1: The Ea…
+2026-11-15T22:56:06.410254554Z [15] create_fit_card
+2026-11-15T22:56:06.410273396Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:56:06.410279356Z       out: Finally scored this chunky brown knit cardigan on depop for $35 and I'm so obsessed with how heavy and cozy it…
+2026-11-15T22:56:06.410336119Z {"timestamp": "2026-11-15T22:56:06.410+00:00", "request_id": "4f2f55ea", "input": "printed knit tank under $45", "output": "Finally scored this chunky brown knit cardigan on depop for $35 and I'm so obsessed with how heavy and cozy it is. I styled it with a ribbed tank, baggy dark wash jeans, and combat boots for a super chill streetwear look that still feels totally earthy. It’s giving the ultimate oversized cottagecore energy without trying too hard.", "duration_ms": 6880.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 866, "output_tokens": 359}
+2026-11-15T22:56:06.410909503Z 127.0.0.1 - - [15/Nov/2026:22:56:06 +0000] "POST /ask HTTP/1.1" 200 5021 "-" "Python-urllib/3.13"
+2026-11-15T22:56:07.271847656Z [16] parse_request
+2026-11-15T22:56:07.271864227Z       in:  dict with keys: query
+2026-11-15T22:56:07.271868577Z       out: dict with keys: description, size, max_price
+2026-11-15T22:56:11.153036122Z [17] search_listings (via MCP)
+2026-11-15T22:56:11.153065324Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:56:11.153072234Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:56:11.153078155Z [18] selected_item
+2026-11-15T22:56:11.153082545Z       out: id=lst_017
+2026-11-15T22:56:12.799466083Z [19] suggest_outfit
+2026-11-15T22:56:12.799497164Z       in:  id=lst_017, wardrobe
+2026-11-15T22:56:12.799503225Z       out: Here are two outfit combinations using the new mesh long-sleeve top and pieces from your wardrobe:  ### Outfit…
+2026-11-15T22:56:13.556674538Z [20] create_fit_card
+2026-11-15T22:56:13.556755122Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:56:13.556762763Z       out: Score! Snagged this sheer mesh long-sleeve for just $15.00 on Depop and I'm obsessed. Layered it over a white …
+2026-11-15T22:56:13.558552507Z {"timestamp": "2026-11-15T22:56:13.558+00:00", "request_id": "7e265d26", "input": "linen jersey sweat top under $50", "output": "Score! Snagged this sheer mesh long-sleeve for just $15.00 on Depop and I'm obsessed. Layered it over a white tank with baggy dark denim and combat boots for the ultimate 90s grunge look.", "duration_ms": 6968.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 905, "output_tokens": 377}
+2026-11-15T22:56:13.559273799Z 127.0.0.1 - - [15/Nov/2026:22:56:13 +0000] "POST /ask HTTP/1.1" 200 5720 "-" "Python-urllib/3.13"
+2026-11-15T22:56:14.129121558Z [21] parse_request
+2026-11-15T22:56:14.129151689Z       in:  dict with keys: query
+2026-11-15T22:56:14.12915764Z       out: dict with keys: description, size, max_price
+2026-11-15T22:56:18.052081905Z [22] search_listings (via MCP)
+2026-11-15T22:56:18.052098146Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:56:18.052102476Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:56:18.052106226Z [23] selected_item
+2026-11-15T22:56:18.052109407Z       out: id=lst_032
+2026-11-15T22:56:19.085022409Z [24] suggest_outfit
+2026-11-15T22:56:19.085046311Z       in:  id=lst_032, wardrobe
+2026-11-15T22:56:19.085052321Z       out: Here are two outfit combinations using the new olive canvas shacket and pieces from your wardrobe:  ### Outfit…
+2026-11-15T22:56:19.192812022Z   [rate limit] service pushed back. Waiting 42s (attempt 1 of 5). This is the limiter doing its job, not a bug.
+2026-11-15T22:56:44.486832876Z [2026-11-15 22:56:44 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:165)
+2026-11-15T22:56:44.493459251Z [2026-11-15 22:56:44 +0000] [165] [ERROR] Error handling request /ask
+2026-11-15T22:56:44.493474792Z Traceback (most recent call last):
+2026-11-15T22:56:44.493480122Z   File "/opt/render/project/src/generate.py", line 315, in generate
+2026-11-15T22:56:44.493485633Z     response = client.models.generate_content(**kwargs)
+2026-11-15T22:56:44.493491413Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 6331, in generate_content
+2026-11-15T22:56:44.493494483Z     response = self._generate_content(
+2026-11-15T22:56:44.493497483Z         model=model, contents=contents, config=parsed_config
+2026-11-15T22:56:44.493509244Z     )
+2026-11-15T22:56:44.493511404Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 4767, in _generate_content
+2026-11-15T22:56:44.493513404Z     response = self._api_client.request(
+2026-11-15T22:56:44.493515395Z         'post', path, request_dict, http_options
+2026-11-15T22:56:44.493517315Z     )
+2026-11-15T22:56:44.493519335Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1605, in request
+2026-11-15T22:56:44.493521355Z     response = self._request(http_request, http_options, stream=False)
+2026-11-15T22:56:44.493523355Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1398, in _request
+2026-11-15T22:56:44.493525825Z     return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+2026-11-15T22:56:44.493527735Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:56:44.493530405Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+2026-11-15T22:56:44.493532416Z     do = self.iter(retry_state=retry_state)
+2026-11-15T22:56:44.493534636Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+2026-11-15T22:56:44.493537096Z     result = action(retry_state)
+2026-11-15T22:56:44.493539016Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+2026-11-15T22:56:44.493541006Z     raise retry_exc.reraise()
+2026-11-15T22:56:44.493542876Z           ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:56:44.493544756Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+2026-11-15T22:56:44.493546636Z     raise self.last_attempt.result()
+2026-11-15T22:56:44.493548536Z           ~~~~~~~~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:56:44.493550826Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+2026-11-15T22:56:44.493552817Z     return self.__get_result()
+2026-11-15T22:56:44.493554717Z            ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:56:44.493560467Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+2026-11-15T22:56:44.493563247Z     raise self._exception
+2026-11-15T22:56:44.493566707Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+2026-11-15T22:56:44.493569838Z     result = fn(*args, **kwargs)
+2026-11-15T22:56:44.493572858Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1375, in _request_once
+2026-11-15T22:56:44.493575888Z     errors.APIError.raise_for_response(response)
+2026-11-15T22:56:44.493578898Z     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-11-15T22:56:44.493582058Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+2026-11-15T22:56:44.493585148Z     cls.raise_error(response.status_code, response_json, response)
+2026-11-15T22:56:44.493588589Z     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:56:44.493591789Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+2026-11-15T22:56:44.493593939Z     raise ClientError(status_code, response_json, response)
+2026-11-15T22:56:44.49360445Z google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite, description: Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\nPlease retry in 40.843615438s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://aistudio.google.com/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'description': 'Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.', 'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}
+2026-11-15T22:56:44.49360908Z 127.0.0.1 - - [15/Nov/2026:22:56:44 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:56:44.49361277Z 
+2026-11-15T22:56:44.49361509Z During handling of the above exception, another exception occurred:
+2026-11-15T22:56:44.49361703Z 
+2026-11-15T22:56:44.493619101Z Traceback (most recent call last):
+2026-11-15T22:56:44.493631701Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:56:44.493636122Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:56:44.493639832Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:56:44.493643532Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:56:44.493646942Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:56:44.493651692Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:56:44.493654943Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:56:44.493658553Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:56:44.493662133Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:56:44.493665933Z     response = self.full_dispatch_request()
+2026-11-15T22:56:44.493669213Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:56:44.493673044Z     rv = self.dispatch_request()
+2026-11-15T22:56:44.493676514Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:56:44.493680154Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:56:44.493684294Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:56:44.493688145Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:56:44.493691615Z     session = run_agent(query, wardrobe)
+2026-11-15T22:56:44.493695325Z   File "/opt/render/project/src/agent.py", line 183, in run_agent
+2026-11-15T22:56:44.493698575Z     session["fit_card"] = create_fit_card(session["outfit_suggestion"], session["selected_item"])
+2026-11-15T22:56:44.493701845Z                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:56:44.493705286Z   File "/opt/render/project/src/tools.py", line 256, in create_fit_card
+2026-11-15T22:56:44.493717186Z     caption = generate(prompt, cache=False).strip()
+2026-11-15T22:56:44.493720546Z               ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:56:44.493724107Z   File "/opt/render/project/src/generate.py", line 341, in generate
+2026-11-15T22:56:44.493728237Z     time.sleep(backoff)
+2026-11-15T22:56:44.493731407Z     ~~~~~~~~~~^^^^^^^^^
+2026-11-15T22:56:44.493734647Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:56:44.493737847Z     sys.exit(1)
+2026-11-15T22:56:44.493741368Z     ~~~~~~~~^^^
+2026-11-15T22:56:44.493745018Z SystemExit: 1
+2026-11-15T22:56:44.493920588Z [2026-11-15 22:56:44 +0000] [165] [INFO] Worker exiting (pid: 165)
+2026-11-15T22:56:45.559445479Z [2026-11-15 22:56:45 +0000] [58] [ERROR] Worker (pid:165) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:56:45.561835368Z [2026-11-15 22:56:45 +0000] [181] [INFO] Booting worker with pid: 181
+2026-11-15T22:56:45.655695831Z 127.0.0.1 - - [15/Nov/2026:22:56:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:56:53.236748111Z [1] parse_request
+2026-11-15T22:56:53.236775003Z       in:  dict with keys: query
+2026-11-15T22:56:53.236780023Z       out: dict with keys: description, size, max_price
+2026-11-15T22:56:57.057446514Z [2] search_listings (via MCP)
+2026-11-15T22:56:57.05754303Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:56:57.05754912Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:56:57.057554041Z [3] selected_item
+2026-11-15T22:56:57.057576732Z       out: id=lst_002
+2026-11-15T22:56:58.525679367Z [4] suggest_outfit
+2026-11-15T22:56:58.525707888Z       in:  id=lst_002, wardrobe
+2026-11-15T22:56:58.525714679Z       out: Here are two outfit combinations using the Y2K Baby Tee and pieces from your wardrobe:  **Outfit 1: Y2K Street…
+2026-11-15T22:56:59.207409219Z [5] create_fit_card
+2026-11-15T22:56:59.20743506Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:56:59.207441121Z       out: Scored this literal dream Y2K butterfly baby tee on depop for just $18.00! I paired it with wide-leg khaki tro…
+2026-11-15T22:56:59.207573168Z {"timestamp": "2026-11-15T22:56:59.207+00:00", "request_id": "9388c23f", "input": "vintage graphic tee under $30", "output": "Scored this literal dream Y2K butterfly baby tee on depop for just $18.00! I paired it with wide-leg khaki trousers and combat boots for that exact mix of sweet vintage details and edgy grunge.", "duration_ms": 13378.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 880, "output_tokens": 343}
+2026-11-15T22:56:59.208437518Z 127.0.0.1 - - [15/Nov/2026:22:56:59 +0000] "POST /ask HTTP/1.1" 200 7590 "-" "Python-urllib/3.13"
+2026-11-15T22:56:59.74089628Z [6] parse_request
+2026-11-15T22:56:59.740923782Z       in:  dict with keys: query
+2026-11-15T22:56:59.740929332Z       out: dict with keys: description, size, max_price
+2026-11-15T22:57:03.657103766Z [7] search_listings (via MCP)
+2026-11-15T22:57:03.657144999Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:57:03.657150969Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:57:03.657156759Z [8] selected_item
+2026-11-15T22:57:03.657161589Z       out: id=lst_007
+2026-11-15T22:57:05.010290843Z [9] suggest_outfit
+2026-11-15T22:57:05.010331366Z       in:  id=lst_007, wardrobe
+2026-11-15T22:57:05.010339146Z       out: Here are two outfit combinations featuring the new light wash cropped denim jacket and pieces from the wardrob…
+2026-11-15T22:57:06.23676966Z [10] create_fit_card
+2026-11-15T22:57:06.236786551Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:57:06.236791591Z       out: Score! Just snagged this cropped light wash denim jacket on Poshmark for $42, and it’s the ultimate piece for …
+2026-11-15T22:57:06.236872546Z {"timestamp": "2026-11-15T22:57:06.236+00:00", "request_id": "f8e8e5ea", "input": "denim jacket under $50", "output": "Score! Just snagged this cropped light wash denim jacket on Poshmark for $42, and it’s the ultimate piece for throwing over a ribbed tank and wide-leg trousers. The vintage wash gives off such an effortless streetwear vibe, whether I'm styling it with baggy dark denim or chunky combat boots.", "duration_ms": 7027.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 904, "output_tokens": 398}
+2026-11-15T22:57:06.237454059Z 127.0.0.1 - - [15/Nov/2026:22:57:06 +0000] "POST /ask HTTP/1.1" 200 6782 "-" "Python-urllib/3.13"
+2026-11-15T22:57:07.480648246Z [11] parse_request
+2026-11-15T22:57:07.480681238Z       in:  dict with keys: query
+2026-11-15T22:57:07.480685398Z       out: dict with keys: description, size, max_price
+2026-11-15T22:57:11.552828857Z [12] search_listings (via MCP)
+2026-11-15T22:57:11.552850058Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:57:11.552856348Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:57:11.552861499Z [13] selected_item
+2026-11-15T22:57:11.552865999Z       out: id=lst_008
+2026-11-15T22:57:12.808436174Z [14] suggest_outfit
+2026-11-15T22:57:12.808460915Z       in:  id=lst_008, wardrobe
+2026-11-15T22:57:12.808466575Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  **Outfit 1: The E…
+2026-11-15T22:57:13.534297358Z [15] create_fit_card
+2026-11-15T22:57:13.53434673Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:57:13.534354251Z       out: Just scored this chunky brown knit cardigan on depop for $35 and it is literally the coziest thing I own. I'm …
+2026-11-15T22:57:13.534367682Z {"timestamp": "2026-11-15T22:57:13.534+00:00", "request_id": "339d1031", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and it is literally the coziest thing I own. I'm obsessed with how the rich earth tones look paired with wide-leg trousers and fresh white sneakers for a chill layered vibe. Honestly never taking this off.", "duration_ms": 7191.5, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 883, "output_tokens": 363}
+2026-11-15T22:57:13.534916323Z 127.0.0.1 - - [15/Nov/2026:22:57:13 +0000] "POST /ask HTTP/1.1" 200 4988 "-" "Python-urllib/3.13"
+2026-11-15T22:57:14.132961163Z [16] parse_request
+2026-11-15T22:57:14.132981164Z       in:  dict with keys: query
+2026-11-15T22:57:14.132988364Z       out: dict with keys: description, size, max_price
+2026-11-15T22:57:17.858744505Z [17] search_listings (via MCP)
+2026-11-15T22:57:17.858771397Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:57:17.858775957Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:57:17.858780138Z [18] selected_item
+2026-11-15T22:57:17.858783318Z       out: id=lst_017
+2026-11-15T22:57:19.018441569Z [19] suggest_outfit
+2026-11-15T22:57:19.01845837Z       in:  id=lst_017, wardrobe
+2026-11-15T22:57:19.018462641Z       out: Here are two outfit combinations using the new mesh long-sleeve top and pieces from your wardrobe:  **Outfit 1…
+2026-11-15T22:57:19.614350114Z [20] create_fit_card
+2026-11-15T22:57:19.614370925Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:57:19.614376906Z       out: Score this mesh long-sleeve top for just $15.00 on depop and I'm already obsessed. I layered it under a white …
+2026-11-15T22:57:19.614424739Z {"timestamp": "2026-11-15T22:57:19.614+00:00", "request_id": "e8e140a9", "input": "linen jersey sweat top under $50", "output": "Score this mesh long-sleeve top for just $15.00 on depop and I'm already obsessed. I layered it under a white ribbed tank with baggy jeans and combat boots for the ultimate grunge look. So happy with how this vibe turned out!", "duration_ms": 6079.0, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 766, "output_tokens": 240}
+2026-11-15T22:57:19.6149771Z 127.0.0.1 - - [15/Nov/2026:22:57:19 +0000] "POST /ask HTTP/1.1" 200 5120 "-" "Python-urllib/3.13"
+2026-11-15T22:57:20.342237335Z [21] parse_request
+2026-11-15T22:57:20.342288347Z       in:  dict with keys: query
+2026-11-15T22:57:20.342295148Z       out: dict with keys: description, size, max_price
+2026-11-15T22:57:24.452993675Z [22] search_listings (via MCP)
+2026-11-15T22:57:24.453026777Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:57:24.453035077Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:57:24.453040917Z [23] selected_item
+2026-11-15T22:57:24.453044938Z       out: id=lst_032
+2026-11-15T22:57:25.593687333Z [24] suggest_outfit
+2026-11-15T22:57:25.593715375Z       in:  id=lst_032, wardrobe
+2026-11-15T22:57:25.593721135Z       out: Here are two outfit options combining the olive canvas shacket with pieces from your wardrobe:  **Outfit 1: Ca…
+2026-11-15T22:57:26.160717279Z [25] create_fit_card
+2026-11-15T22:57:26.160747581Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:57:26.160754982Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it’s officially my new favorite layering piece.…
+2026-11-15T22:57:26.160806355Z {"timestamp": "2026-11-15T22:57:26.160+00:00", "request_id": "f088c686", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it’s officially my new favorite layering piece. Obsessed with how good it looks thrown over an oversized grey crewneck and combat boots for that rugged, utilitarian streetwear vibe. Can't wait to style it a million more ways for fall!", "duration_ms": 6327.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 838, "output_tokens": 336}
+2026-11-15T22:57:26.161390669Z 127.0.0.1 - - [15/Nov/2026:22:57:26 +0000] "POST /ask HTTP/1.1" 200 4055 "-" "Python-urllib/3.13"
+2026-11-15T22:57:26.162030146Z   [rate limit] 15 requests used this minute. Waiting 26s. This is normal.
+2026-11-15T22:57:53.132359955Z [26] parse_request
+2026-11-15T22:57:53.132387166Z       in:  dict with keys: query
+2026-11-15T22:57:53.132391207Z       out: dict with keys: description, size, max_price
+2026-11-15T22:57:56.852781927Z [2026-11-15 22:57:56 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:181)
+2026-11-15T22:57:56.862188273Z [2026-11-15 22:57:56 +0000] [181] [ERROR] Error handling request /ask
+2026-11-15T22:57:56.862209444Z Traceback (most recent call last):
+2026-11-15T22:57:56.862215675Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:57:56.862220835Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:57:56.862225485Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.862230285Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:57:56.862235046Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:57:56.862254657Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:57:56.862258227Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:57:56.862261417Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.862264518Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:57:56.862267478Z     response = self.full_dispatch_request()
+2026-11-15T22:57:56.862270508Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:57:56.862273828Z     rv = self.dispatch_request()
+2026-11-15T22:57:56.862276728Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:57:56.862279578Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:57:56.862283079Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:57:56.862285809Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:57:56.862288629Z     session = run_agent(query, wardrobe)
+2026-11-15T22:57:56.862291339Z   File "/opt/render/project/src/agent.py", line 142, in run_agent
+2026-11-15T22:57:56.862294429Z     session["search_results"] = mcp_client.call_tool("search_listings", {
+2026-11-15T22:57:56.862297659Z                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.862300449Z         "description": session["parsed"]["description"],
+2026-11-15T22:57:56.86230327Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.86230637Z         "size": session["parsed"]["size"],
+2026-11-15T22:57:56.8623096Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.86231279Z         "max_price": session["parsed"]["max_price"],
+2026-11-15T22:57:56.862334102Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.862340862Z     })
+2026-11-15T22:57:56.862341982Z 127.0.0.1 - - [15/Nov/2026:22:57:56 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:57:56.862344812Z     ^^
+2026-11-15T22:57:56.862355783Z   File "/opt/render/project/src/mcp_client.py", line 59, in call_tool
+2026-11-15T22:57:56.862360083Z     return asyncio.run(_call(name, arguments))
+2026-11-15T22:57:56.862363253Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:57:56.862366053Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 196, in run
+2026-11-15T22:57:56.862368724Z     return runner.run(main)
+2026-11-15T22:57:56.862370644Z            ~~~~~~~~~~^^^^^^
+2026-11-15T22:57:56.862372564Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 119, in run
+2026-11-15T22:57:56.862374604Z     return self._loop.run_until_complete(task)
+2026-11-15T22:57:56.862376584Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-15T22:57:56.862379514Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+2026-11-15T22:57:56.862381914Z     self.run_forever()
+2026-11-15T22:57:56.862383844Z     ~~~~~~~~~~~~~~~~^^
+2026-11-15T22:57:56.862385885Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+2026-11-15T22:57:56.862387765Z     self._run_once()
+2026-11-15T22:57:56.862389715Z     ~~~~~~~~~~~~~~^^
+2026-11-15T22:57:56.862391605Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 2022, in _run_once
+2026-11-15T22:57:56.862401755Z     event_list = self._selector.select(timeout)
+2026-11-15T22:57:56.862403895Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/selectors.py", line 452, in select
+2026-11-15T22:57:56.862406406Z     fd_event_list = self._selector.poll(timeout, max_ev)
+2026-11-15T22:57:56.862408366Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:57:56.862410446Z     sys.exit(1)
+2026-11-15T22:57:56.862412506Z     ~~~~~~~~^^^
+2026-11-15T22:57:56.862414416Z SystemExit: 1
+2026-11-15T22:57:56.949474663Z [2026-11-15 22:57:56 +0000] [181] [INFO] Worker exiting (pid: 181)
+2026-11-15T22:57:57.863240824Z [2026-11-15 22:57:57 +0000] [58] [ERROR] Worker (pid:181) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:57:57.95201505Z [2026-11-15 22:57:57 +0000] [200] [INFO] Booting worker with pid: 200
+2026-11-15T22:58:05.392392696Z [1] parse_request
+2026-11-15T22:58:05.392417027Z       in:  dict with keys: query
+2026-11-15T22:58:05.392424558Z       out: dict with keys: description, size, max_price
+2026-11-15T22:58:09.651403779Z [2] search_listings (via MCP)
+2026-11-15T22:58:09.651437591Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:58:09.651443461Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:58:09.651449042Z [3] selected_item
+2026-11-15T22:58:09.651453372Z       out: id=lst_007
+2026-11-15T22:58:11.163401481Z [4] suggest_outfit
+2026-11-15T22:58:11.163424003Z       in:  id=lst_007, wardrobe
+2026-11-15T22:58:11.163429883Z       out: Here are two outfit suggestions combining the new light wash cropped denim jacket with pieces from the wardrob…
+2026-11-15T22:58:11.968218162Z [5] create_fit_card
+2026-11-15T22:58:11.968243264Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:58:11.968248484Z       out: Finally scored this cropped light wash denim jacket on Poshmark for $42 and I am already obsessed. I threw it …
+2026-11-15T22:58:11.968397923Z {"timestamp": "2026-11-15T22:58:11.968+00:00", "request_id": "5845655f", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I am already obsessed. I threw it on over a white tank and baggy dark denim for that effortless double-denim streetwear look. It’s definitely going to be my new go-to jacket for transition weather.", "duration_ms": 14009.4, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 899, "output_tokens": 389}
+2026-11-15T22:58:11.969493476Z 127.0.0.1 - - [15/Nov/2026:22:58:11 +0000] "POST /ask HTTP/1.1" 200 6747 "-" "Python-urllib/3.13"
+2026-11-15T22:58:12.382395716Z [6] parse_request
+2026-11-15T22:58:12.382416057Z       in:  dict with keys: query
+2026-11-15T22:58:12.382422058Z       out: dict with keys: description, size, max_price
+2026-11-15T22:58:16.254222847Z [7] search_listings (via MCP)
+2026-11-15T22:58:16.254244858Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:58:16.254251948Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:58:16.254258289Z [8] selected_item
+2026-11-15T22:58:16.254264369Z       out: id=lst_008
+2026-11-15T22:58:17.814096017Z [9] suggest_outfit
+2026-11-15T22:58:17.814122549Z       in:  id=lst_008, wardrobe
+2026-11-15T22:58:17.814127929Z       out: Here are two outfit combinations using the new knit cardigan and pieces exclusively from your wardrobe:  ### O…
+2026-11-15T22:58:18.536016583Z [10] create_fit_card
+2026-11-15T22:58:18.536048815Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:58:18.536069846Z       out: Obsessed with this chunky brown knit cardigan I just snagged on depop for $35! It’s the ultimate cozy earth-to…
+2026-11-15T22:58:18.536156311Z {"timestamp": "2026-11-15T22:58:18.535+00:00", "request_id": "79cd658a", "input": "printed knit tank under $45", "output": "Obsessed with this chunky brown knit cardigan I just snagged on depop for $35! It’s the ultimate cozy earth-tone piece, so I threw it over baggy jeans and combat boots to give the cottagecore vibe a little bit of edge.", "duration_ms": 6566.0, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 887, "output_tokens": 362}
+2026-11-15T22:58:18.538399632Z 127.0.0.1 - - [15/Nov/2026:22:58:18 +0000] "POST /ask HTTP/1.1" 200 4988 "-" "Python-urllib/3.13"
+2026-11-15T22:58:19.349526218Z [11] parse_request
+2026-11-15T22:58:19.34955166Z       in:  dict with keys: query
+2026-11-15T22:58:19.34955718Z       out: dict with keys: description, size, max_price
+2026-11-15T22:58:23.352559353Z [12] search_listings (via MCP)
+2026-11-15T22:58:23.352577454Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:58:23.352581554Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:58:23.352585104Z [13] selected_item
+2026-11-15T22:58:23.352588294Z       out: id=lst_032
+2026-11-15T22:58:24.667982705Z [14] suggest_outfit
+2026-11-15T22:58:24.668006077Z       in:  id=lst_032, wardrobe
+2026-11-15T22:58:24.668011907Z       out: Here are two outfit combinations using the new olive canvas shacket and pieces from your existing wardrobe:  *…
+2026-11-15T22:58:25.377740464Z [15] create_fit_card
+2026-11-15T22:58:25.377758565Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:58:25.377765285Z       out: Scoreeeed this olive canvas shacket on Poshmark for just $33 and I'm already obsessed. Wore it today over wide…
+2026-11-15T22:58:25.377830719Z {"timestamp": "2026-11-15T22:58:25.377+00:00", "request_id": "b8eedf0c", "input": "corduroy jacket size L under $45", "output": "Scoreeeed this olive canvas shacket on Poshmark for just $33 and I'm already obsessed. Wore it today over wide-leg trousers and a white tank for that easy, earthy minimal look. Such a good layering piece for fall!", "duration_ms": 6705.8, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 852, "output_tokens": 336}
+2026-11-15T22:58:25.378401012Z 127.0.0.1 - - [15/Nov/2026:22:58:25 +0000] "POST /ask HTTP/1.1" 200 4079 "-" "Python-urllib/3.13"
+2026-11-15T22:58:25.986215461Z [16] parse_request
+2026-11-15T22:58:25.986236222Z       in:  dict with keys: query
+2026-11-15T22:58:25.986242872Z       out: dict with keys: description, size, max_price
+2026-11-15T22:58:29.855211876Z [17] search_listings (via MCP)
+2026-11-15T22:58:29.855232657Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:58:29.855238567Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:58:29.855243308Z [18] selected_item
+2026-11-15T22:58:29.855247648Z       out: id=lst_017
+2026-11-15T22:58:31.189404656Z [19] suggest_outfit
+2026-11-15T22:58:31.189434558Z       in:  id=lst_017, wardrobe
+2026-11-15T22:58:31.189440748Z       out: Here are two outfits combining the new mesh long-sleeve top with pieces from your current wardrobe:  **Outfit …
+2026-11-15T22:58:32.054811253Z [20] create_fit_card
+2026-11-15T22:58:32.054841945Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:58:32.054847375Z       out: Scored this perfect sheer black mesh top on depop for only $15.00! I just layered it under an oversized grey c…
+2026-11-15T22:58:32.054858466Z {"timestamp": "2026-11-15T22:58:32.054+00:00", "request_id": "862c9b6c", "input": "linen jersey sweat top under $50", "output": "Scored this perfect sheer black mesh top on depop for only $15.00! I just layered it under an oversized grey crewneck with khaki trousers and chunky sneakers for the ultimate textured contrast fit.", "duration_ms": 6675.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 892, "output_tokens": 354}
+2026-11-15T22:58:32.056371283Z 127.0.0.1 - - [15/Nov/2026:22:58:32 +0000] "POST /ask HTTP/1.1" 200 5672 "-" "Python-urllib/3.13"
+2026-11-15T22:58:32.331848761Z 127.0.0.1 - - [15/Nov/2026:22:58:32 +0000] "GET /health HTTP/1.1" 200 16 "-" "Python-urllib/3.13"
+2026-11-15T22:58:33.115244955Z [21] parse_request
+2026-11-15T22:58:33.115283387Z       in:  dict with keys: query
+2026-11-15T22:58:33.115287337Z       out: dict with keys: description, size, max_price
+2026-11-15T22:58:37.249410444Z [22] search_listings (via MCP)
+2026-11-15T22:58:37.249423935Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:58:37.249430375Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:58:37.249434895Z [23] selected_item
+2026-11-15T22:58:37.249438506Z       out: id=lst_002
+2026-11-15T22:58:38.404876394Z [24] suggest_outfit
+2026-11-15T22:58:38.404889485Z       in:  id=lst_002, wardrobe
+2026-11-15T22:58:38.404892414Z       out: Here are two outfit suggestions using the Y2K baby tee and pieces from your wardrobe:  **Outfit 1: Y2K Streetw…
+2026-11-15T22:58:39.128372848Z [25] create_fit_card
+2026-11-15T22:58:39.12840234Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:58:39.12840564Z       out: Literally obsessed with this butterfly baby tee I just scored on depop for $18. I'm styling it with baggy dark…
+2026-11-15T22:58:39.128457873Z {"timestamp": "2026-11-15T22:58:39.128+00:00", "request_id": "09fe1fea", "input": "vintage graphic tee under $30", "output": "Literally obsessed with this butterfly baby tee I just scored on depop for $18. I'm styling it with baggy dark-wash jeans and a zip hoodie for the ultimate Y2K streetwear edge. Such a good find!", "duration_ms": 6701.2, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 886, "output_tokens": 350}
+2026-11-15T22:58:39.129043037Z 127.0.0.1 - - [15/Nov/2026:22:58:39 +0000] "POST /ask HTTP/1.1" 200 7645 "-" "Python-urllib/3.13"
+2026-11-15T22:58:39.129736267Z   [rate limit] 15 requests used this minute. Waiting 26s. This is normal.
+2026-11-15T22:59:05.914732056Z [26] parse_request
+2026-11-15T22:59:05.914758807Z       in:  dict with keys: query
+2026-11-15T22:59:05.914765888Z       out: dict with keys: description, size, max_price
+2026-11-15T22:59:09.95676443Z [27] search_listings (via MCP)
+2026-11-15T22:59:09.956783291Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:59:09.956787641Z       out: 7 items: Denim Jacket — Light Wash, Cropped, Vintage Levi's 501 Jeans — Medium Wash, 90s Track Jacket — Navy/White Stripe … +4 more
+2026-11-15T22:59:09.956791532Z [28] selected_item
+2026-11-15T22:59:09.956794662Z       out: id=lst_007
+2026-11-15T22:59:10.105810614Z [2026-11-15 22:59:10 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:200)
+2026-11-15T22:59:10.115796144Z [2026-11-15 22:59:10 +0000] [200] [ERROR] Error handling request /ask
+2026-11-15T22:59:10.115813045Z Traceback (most recent call last):
+2026-11-15T22:59:10.115818555Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T22:59:10.115823746Z     self.handle_request(listener, req, client, addr)
+2026-11-15T22:59:10.115828046Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:59:10.115845677Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T22:59:10.115848577Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T22:59:10.115852037Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T22:59:10.115854728Z     return self.wsgi_app(environ, start_response)
+2026-11-15T22:59:10.115857518Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:59:10.115860158Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T22:59:10.115863168Z     response = self.full_dispatch_request()
+2026-11-15T22:59:10.115866268Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T22:59:10.115870098Z     rv = self.dispatch_request()
+2026-11-15T22:59:10.115873009Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T22:59:10.115876039Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T22:59:10.115879179Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T22:59:10.115882099Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T22:59:10.115884979Z     session = run_agent(query, wardrobe)
+2026-11-15T22:59:10.11589077Z   File "/opt/render/project/src/agent.py", line 174, in run_agent
+2026-11-15T22:59:10.11589448Z     session["outfit_suggestion"] = suggest_outfit(session["selected_item"], session["wardrobe"])
+2026-11-15T22:59:10.11589763Z                                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:59:10.11590066Z   File "/opt/render/project/src/tools.py", line 188, in suggest_outfit
+2026-11-15T22:59:10.11590378Z     outfit = generate(prompt).strip()
+2026-11-15T22:59:10.115906651Z              ~~~~~~~~^^^^^^^^
+2026-11-15T22:59:10.115909641Z   File "/opt/render/project/src/generate.py", line 315, in generate
+2026-11-15T22:59:10.115912611Z     response = client.models.generate_content(**kwargs)
+2026-11-15T22:59:10.115915761Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 6331, in generate_content
+2026-11-15T22:59:10.115918791Z     response = self._generate_content(
+2026-11-15T22:59:10.115921691Z         model=model, contents=contents, config=parsed_config
+2026-11-15T22:59:10.115924641Z     )
+2026-11-15T22:59:10.115927802Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/models.py", line 4767, in _generate_content
+2026-11-15T22:59:10.115930982Z     response = self._api_client.request(
+2026-11-15T22:59:10.115934002Z         'post', path, request_dict, http_options
+2026-11-15T22:59:10.115936962Z     )
+2026-11-15T22:59:10.115940133Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1605, in request
+2026-11-15T22:59:10.115943093Z     response = self._request(http_request, http_options, stream=False)
+2026-11-15T22:59:10.115946153Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1398, in _request
+2026-11-15T22:59:10.115946553Z 127.0.0.1 - - [15/Nov/2026:22:59:10 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T22:59:10.115949073Z     return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+2026-11-15T22:59:10.115962864Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T22:59:10.115967414Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+2026-11-15T22:59:10.115983305Z     do = self.iter(retry_state=retry_state)
+2026-11-15T22:59:10.115986115Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+2026-11-15T22:59:10.115989295Z     result = action(retry_state)
+2026-11-15T22:59:10.115991736Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+2026-11-15T22:59:10.115994186Z     self._add_action_func(lambda rs: rs.outcome.result())
+2026-11-15T22:59:10.115996716Z                                      ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:59:10.115999806Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+2026-11-15T22:59:10.116002286Z     return self.__get_result()
+2026-11-15T22:59:10.116004606Z            ~~~~~~~~~~~~~~~~~^^
+2026-11-15T22:59:10.116007086Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+2026-11-15T22:59:10.116011287Z     raise self._exception
+2026-11-15T22:59:10.116015637Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+2026-11-15T22:59:10.116019377Z     result = fn(*args, **kwargs)
+2026-11-15T22:59:10.116023507Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/google/genai/_api_client.py", line 1374, in _request_once
+2026-11-15T22:59:10.116027967Z     response = self._httpx_client.send(httpx_request, stream=stream)  # type: ignore[union-attr]
+2026-11-15T22:59:10.116045809Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+2026-11-15T22:59:10.116050309Z     response = self._send_handling_auth(
+2026-11-15T22:59:10.116053879Z         request,
+2026-11-15T22:59:10.116056759Z     ...<2 lines>...
+2026-11-15T22:59:10.116059149Z         history=[],
+2026-11-15T22:59:10.1160616Z     )
+2026-11-15T22:59:10.11606409Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+2026-11-15T22:59:10.11606659Z     response = self._send_handling_redirects(
+2026-11-15T22:59:10.11606897Z         request,
+2026-11-15T22:59:10.11607136Z         follow_redirects=follow_redirects,
+2026-11-15T22:59:10.11607373Z         history=history,
+2026-11-15T22:59:10.11607608Z     )
+2026-11-15T22:59:10.116078601Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+2026-11-15T22:59:10.116081051Z     response = self._send_single_request(request)
+2026-11-15T22:59:10.116083381Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+2026-11-15T22:59:10.116086101Z     response = transport.handle_request(request)
+2026-11-15T22:59:10.116088511Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+2026-11-15T22:59:10.116090921Z     resp = self._pool.handle_request(req)
+2026-11-15T22:59:10.116093851Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+2026-11-15T22:59:10.116096242Z     raise exc from None
+2026-11-15T22:59:10.116098712Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+2026-11-15T22:59:10.116103142Z     response = connection.handle_request(
+2026-11-15T22:59:10.116107182Z         pool_request.request
+2026-11-15T22:59:10.116111123Z     )
+2026-11-15T22:59:10.116121443Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+2026-11-15T22:59:10.116125463Z     return self._connection.handle_request(request)
+2026-11-15T22:59:10.116129113Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+2026-11-15T22:59:10.116133104Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+2026-11-15T22:59:10.116137174Z     raise exc
+2026-11-15T22:59:10.116141624Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+2026-11-15T22:59:10.116145404Z     ) = self._receive_response_headers(**kwargs)
+2026-11-15T22:59:10.116147945Z         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-11-15T22:59:10.116150395Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+2026-11-15T22:59:10.116152815Z     event = self._receive_event(timeout=timeout)
+2026-11-15T22:59:10.116155345Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+2026-11-15T22:59:10.116157725Z     data = self._network_stream.read(
+2026-11-15T22:59:10.116160185Z         self.READ_NUM_BYTES, timeout=timeout
+2026-11-15T22:59:10.116162645Z     )
+2026-11-15T22:59:10.116165126Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 128, in read
+2026-11-15T22:59:10.116167536Z     return self._sock.recv(max_bytes)
+2026-11-15T22:59:10.116169926Z            ~~~~~~~~~~~~~~~^^^^^^^^^^^
+2026-11-15T22:59:10.116172456Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/ssl.py", line 1285, in recv
+2026-11-15T22:59:10.116174916Z     return self.read(buflen)
+2026-11-15T22:59:10.116178756Z            ~~~~~~~~~^^^^^^^^
+2026-11-15T22:59:10.116182756Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/ssl.py", line 1140, in read
+2026-11-15T22:59:10.116186557Z     return self._sslobj.read(len)
+2026-11-15T22:59:10.116190467Z            ~~~~~~~~~~~~~~~~~^^^^^
+2026-11-15T22:59:10.116194207Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T22:59:10.116198037Z     sys.exit(1)
+2026-11-15T22:59:10.116200808Z     ~~~~~~~~^^^
+2026-11-15T22:59:10.116203808Z SystemExit: 1
+2026-11-15T22:59:10.116286653Z [2026-11-15 22:59:10 +0000] [200] [INFO] Worker exiting (pid: 200)
+2026-11-15T22:59:11.158591624Z [2026-11-15 22:59:11 +0000] [58] [ERROR] Worker (pid:200) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:59:11.161187845Z [2026-11-15 22:59:11 +0000] [219] [INFO] Booting worker with pid: 219
+2026-11-15T22:59:19.171442246Z [1] parse_request
+2026-11-15T22:59:19.171459987Z       in:  dict with keys: query
+2026-11-15T22:59:19.171463787Z       out: dict with keys: description, size, max_price
+2026-11-15T22:59:23.356894327Z [2] search_listings (via MCP)
+2026-11-15T22:59:23.356911738Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:59:23.356916018Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T22:59:23.356920039Z [3] selected_item
+2026-11-15T22:59:23.356923169Z       out: id=lst_017
+2026-11-15T22:59:24.445032467Z [4] suggest_outfit
+2026-11-15T22:59:24.445054819Z       in:  id=lst_017, wardrobe
+2026-11-15T22:59:24.445062729Z       out: Here are two outfit suggestions combining the new mesh long-sleeve top with pieces from your wardrobe:  **Outf…
+2026-11-15T22:59:25.782669334Z [5] create_fit_card
+2026-11-15T22:59:25.782698655Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:59:25.782703616Z       out: Just scored this black mesh long-sleeve top on depop for only $15, and it's officially the ultimate layering p…
+2026-11-15T22:59:25.782833343Z {"timestamp": "2026-11-15T22:59:25.782+00:00", "request_id": "20834a8a", "input": "linen jersey sweat top under $50", "output": "Just scored this black mesh long-sleeve top on depop for only $15, and it's officially the ultimate layering piece. I threw it on under an oversized grey crewneck with wide-leg khakis for that effortless grunge-meets-streetwear vibe. Honestly obsessed with how the sheer sleeves peek out!", "duration_ms": 14529.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 781, "output_tokens": 266}
+2026-11-15T22:59:25.783953618Z 127.0.0.1 - - [15/Nov/2026:22:59:25 +0000] "POST /ask HTTP/1.1" 200 5243 "-" "Python-urllib/3.13"
+2026-11-15T22:59:26.553954486Z [6] parse_request
+2026-11-15T22:59:26.553987428Z       in:  dict with keys: query
+2026-11-15T22:59:26.553992108Z       out: dict with keys: description, size, max_price
+2026-11-15T22:59:30.754407313Z [7] search_listings (via MCP)
+2026-11-15T22:59:30.754435504Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:59:30.754439804Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:59:30.754443595Z [8] selected_item
+2026-11-15T22:59:30.754446675Z       out: id=lst_008
+2026-11-15T22:59:31.877376164Z [9] suggest_outfit
+2026-11-15T22:59:31.877395265Z       in:  id=lst_008, wardrobe
+2026-11-15T22:59:31.877399735Z       out: Here are two outfits combining the knit cardigan with pieces from your wardrobe:  **Outfit 1: The Cozy Earth-T…
+2026-11-15T22:59:32.691055827Z [10] create_fit_card
+2026-11-15T22:59:32.691078039Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:59:32.691082549Z       out: Just scored this chunky brown knit cardigan on depop for $35 and I am never taking it off. Paired it with my f…
+2026-11-15T22:59:32.691142512Z {"timestamp": "2026-11-15T22:59:32.690+00:00", "request_id": "5c6bf562", "input": "printed knit tank under $45", "output": "Just scored this chunky brown knit cardigan on depop for $35 and I am never taking it off. Paired it with my favorite baggy jeans and combat boots to give the cozy cottagecore knitwear a little bit of edge.", "duration_ms": 6906.5, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 877, "output_tokens": 346}
+2026-11-15T22:59:32.691804511Z 127.0.0.1 - - [15/Nov/2026:22:59:32 +0000] "POST /ask HTTP/1.1" 200 4915 "-" "Python-urllib/3.13"
+2026-11-15T22:59:33.396341347Z [11] parse_request
+2026-11-15T22:59:33.396359898Z       in:  dict with keys: query
+2026-11-15T22:59:33.396363938Z       out: dict with keys: description, size, max_price
+2026-11-15T22:59:37.15334243Z [12] search_listings (via MCP)
+2026-11-15T22:59:37.153368652Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:59:37.153373112Z       out: 10 items: Y2K Baby Tee — Butterfly Print, Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey … +7 more
+2026-11-15T22:59:37.153377272Z [13] selected_item
+2026-11-15T22:59:37.153380352Z       out: id=lst_002
+2026-11-15T22:59:38.471043266Z [14] suggest_outfit
+2026-11-15T22:59:38.471070487Z       in:  id=lst_002, wardrobe
+2026-11-15T22:59:38.471076297Z       out: Here are two outfit suggestions combining the Y2K Butterfly Baby Tee with pieces from your wardrobe:  **Outfit…
+2026-11-15T22:59:39.183568585Z [15] create_fit_card
+2026-11-15T22:59:39.183599226Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:59:39.183605207Z       out: Just scored this adorable butterfly baby tee on Depop for $18 and I'm obsessed. I styled it with wide-leg khak…
+2026-11-15T22:59:39.183681951Z {"timestamp": "2026-11-15T22:59:39.183+00:00", "request_id": "fe53639a", "input": "vintage graphic tee under $30", "output": "Just scored this adorable butterfly baby tee on Depop for $18 and I'm obsessed. I styled it with wide-leg khaki trousers and a brown belt for the cutest earth-toned fit. It gives major vintage vibes while still feeling super wearable for every day!", "duration_ms": 6362.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 871, "output_tokens": 342}
+2026-11-15T22:59:39.184376111Z 127.0.0.1 - - [15/Nov/2026:22:59:39 +0000] "POST /ask HTTP/1.1" 200 7653 "-" "Python-urllib/3.13"
+2026-11-15T22:59:39.663764285Z [16] parse_request
+2026-11-15T22:59:39.663782556Z       in:  dict with keys: query
+2026-11-15T22:59:39.663787276Z       out: dict with keys: description, size, max_price
+2026-11-15T22:59:43.462130977Z [17] search_listings (via MCP)
+2026-11-15T22:59:43.462161829Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:59:43.462167209Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T22:59:43.462172319Z [18] selected_item
+2026-11-15T22:59:43.462176199Z       out: id=lst_032
+2026-11-15T22:59:44.484028247Z [19] suggest_outfit
+2026-11-15T22:59:44.484054919Z       in:  id=lst_032, wardrobe
+2026-11-15T22:59:44.484059449Z       out: Here are two outfit suggestions combining the new olive canvas shacket with pieces from your wardrobe:  **Outf…
+2026-11-15T22:59:45.258988581Z [20] create_fit_card
+2026-11-15T22:59:45.259013122Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:59:45.259017762Z       out: Scored this olive canvas shacket on Poshmark for just $33, and it’s about to become my absolute go-to for effo…
+2026-11-15T22:59:45.259048984Z {"timestamp": "2026-11-15T22:59:45.258+00:00", "request_id": "04d92c47", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it’s about to become my absolute go-to for effortless layering. Threw it on over wide-leg khaki trousers and a white ribbed tank for that easy, earthy minimalist look. So obsessed with how it turned out!", "duration_ms": 6074.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 757, "output_tokens": 252}
+2026-11-15T22:59:45.259579635Z 127.0.0.1 - - [15/Nov/2026:22:59:45 +0000] "POST /ask HTTP/1.1" 200 3635 "-" "Python-urllib/3.13"
+2026-11-15T22:59:46.200275821Z [21] parse_request
+2026-11-15T22:59:46.200305563Z       in:  dict with keys: query
+2026-11-15T22:59:46.200311343Z       out: dict with keys: description, size, max_price
+2026-11-15T22:59:50.15423411Z [22] search_listings (via MCP)
+2026-11-15T22:59:50.154262682Z       in:  dict with keys: description, size, max_price
+2026-11-15T22:59:50.154267952Z       out: 3 items: Knit Cardigan — Chunky Brown, Crochet Halter Top — Cream, Vintage Knit Vest — Argyle Brown/Cream
+2026-11-15T22:59:50.154272652Z [23] selected_item
+2026-11-15T22:59:50.154276753Z       out: id=lst_008
+2026-11-15T22:59:51.609798347Z [24] suggest_outfit
+2026-11-15T22:59:51.609835459Z       in:  id=lst_008, wardrobe
+2026-11-15T22:59:51.609843299Z       out: Here are two outfit combinations using the new knit cardigan and pieces from your wardrobe:  ### Outfit 1: The…
+2026-11-15T22:59:52.397023932Z [25] create_fit_card
+2026-11-15T22:59:52.397041113Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T22:59:52.397046533Z       out: finally scored this chunky brown knit cardigan on depop for $35 and i'm obsessed with how cozy it looks layere…
+2026-11-15T22:59:52.397107217Z {"timestamp": "2026-11-15T22:59:52.396+00:00", "request_id": "09491de2", "input": "printed knit tank under $45", "output": "finally scored this chunky brown knit cardigan on depop for $35 and i'm obsessed with how cozy it looks layered over wide-leg trousers and sneakers. it gives the ultimate earthy cottagecore vibe without trying too hard.", "duration_ms": 6860.6, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 882, "output_tokens": 350}
+2026-11-15T22:59:52.397708242Z 127.0.0.1 - - [15/Nov/2026:22:59:52 +0000] "POST /ask HTTP/1.1" 200 4976 "-" "Python-urllib/3.13"
+2026-11-15T22:59:52.398393981Z   [rate limit] 15 requests used this minute. Waiting 26s. This is normal.
+2026-11-15T23:00:19.873135063Z [26] parse_request
+2026-11-15T23:00:19.873155614Z       in:  dict with keys: query
+2026-11-15T23:00:19.873162275Z       out: dict with keys: description, size, max_price
+2026-11-15T23:00:22.487833893Z [2026-11-15 23:00:22 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:219)
+2026-11-15T23:00:22.55773025Z [2026-11-15 23:00:22 +0000] [219] [ERROR] Error handling request /ask
+2026-11-15T23:00:22.557751372Z Traceback (most recent call last):
+2026-11-15T23:00:22.557757612Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 134, in handle
+2026-11-15T23:00:22.557763692Z     self.handle_request(listener, req, client, addr)
+2026-11-15T23:00:22.557768663Z     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.557773363Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 177, in handle_request
+2026-11-15T23:00:22.557778183Z     respiter = self.wsgi(environ, resp.start_response)
+2026-11-15T23:00:22.557783674Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+2026-11-15T23:00:22.557788344Z     return self.wsgi_app(environ, start_response)
+2026-11-15T23:00:22.557792854Z            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.557797514Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+2026-11-15T23:00:22.557802264Z     response = self.full_dispatch_request()
+2026-11-15T23:00:22.557806805Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+2026-11-15T23:00:22.557812065Z     rv = self.dispatch_request()
+2026-11-15T23:00:22.557820966Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+2026-11-15T23:00:22.557825746Z     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+2026-11-15T23:00:22.557830346Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-11-15T23:00:22.557837186Z   File "/opt/render/project/src/serve.py", line 157, in ask
+2026-11-15T23:00:22.557841807Z     session = run_agent(query, wardrobe)
+2026-11-15T23:00:22.557846497Z   File "/opt/render/project/src/agent.py", line 142, in run_agent
+2026-11-15T23:00:22.557851007Z     session["search_results"] = mcp_client.call_tool("search_listings", {
+2026-11-15T23:00:22.557851097Z 127.0.0.1 - - [15/Nov/2026:23:00:22 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+2026-11-15T23:00:22.557864618Z                                 ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.557870119Z         "description": session["parsed"]["description"],
+2026-11-15T23:00:22.557874829Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.557879749Z         "size": session["parsed"]["size"],
+2026-11-15T23:00:22.557884659Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.55788969Z         "max_price": session["parsed"]["max_price"],
+2026-11-15T23:00:22.55789432Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.55789922Z     })
+2026-11-15T23:00:22.557917681Z     ^^
+2026-11-15T23:00:22.557920962Z   File "/opt/render/project/src/mcp_client.py", line 59, in call_tool
+2026-11-15T23:00:22.557924502Z     return asyncio.run(_call(name, arguments))
+2026-11-15T23:00:22.557944893Z            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-15T23:00:22.557949893Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 196, in run
+2026-11-15T23:00:22.557954133Z     return runner.run(main)
+2026-11-15T23:00:22.557957993Z            ~~~~~~~~~~^^^^^^
+2026-11-15T23:00:22.557961844Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/runners.py", line 119, in run
+2026-11-15T23:00:22.557965574Z     return self._loop.run_until_complete(task)
+2026-11-15T23:00:22.557969804Z            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-15T23:00:22.557974154Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+2026-11-15T23:00:22.557977265Z     self.run_forever()
+2026-11-15T23:00:22.557979715Z     ~~~~~~~~~~~~~~~~^^
+2026-11-15T23:00:22.557982185Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+2026-11-15T23:00:22.557992755Z     self._run_once()
+2026-11-15T23:00:22.557996226Z     ~~~~~~~~~~~~~~^^
+2026-11-15T23:00:22.557998696Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/asyncio/base_events.py", line 2022, in _run_once
+2026-11-15T23:00:22.558001126Z     event_list = self._selector.select(timeout)
+2026-11-15T23:00:22.558003576Z   File "/opt/render/project/python/Python-3.13.14/lib/python3.13/selectors.py", line 452, in select
+2026-11-15T23:00:22.558006696Z     fd_event_list = self._selector.poll(timeout, max_ev)
+2026-11-15T23:00:22.558009176Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+2026-11-15T23:00:22.558011777Z     sys.exit(1)
+2026-11-15T23:00:22.558014287Z     ~~~~~~~~^^^
+2026-11-15T23:00:22.558016687Z SystemExit: 1
+2026-11-15T23:00:22.558151145Z [2026-11-15 23:00:22 +0000] [219] [INFO] Worker exiting (pid: 219)
+2026-11-15T23:00:23.559361997Z [2026-11-15 23:00:23 +0000] [58] [ERROR] Worker (pid:219) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T23:00:23.561920786Z [2026-11-15 23:00:23 +0000] [236] [INFO] Booting worker with pid: 236
+2026-11-15T23:00:31.28185915Z [1] parse_request
+2026-11-15T23:00:31.281884991Z       in:  dict with keys: query
+2026-11-15T23:00:31.281890752Z       out: dict with keys: description, size, max_price
+2026-11-15T23:00:35.153383664Z [2] search_listings (via MCP)
+2026-11-15T23:00:35.153401855Z       in:  dict with keys: description, size, max_price
+2026-11-15T23:00:35.153406185Z       out: 5 items: Mesh Long-Sleeve Top — Black, Vintage Linen Blazer — Cream, Crochet Halter Top — Cream … +2 more
+2026-11-15T23:00:35.153409965Z [3] selected_item
+2026-11-15T23:00:35.153414216Z       out: id=lst_017
+2026-11-15T23:00:36.106188824Z [4] suggest_outfit
+2026-11-15T23:00:36.106221626Z       in:  id=lst_017, wardrobe
+2026-11-15T23:00:36.106227586Z       out: Here are two outfit combinations using the new mesh long-sleeve top and pieces from your wardrobe:  **Outfit 1…
+2026-11-15T23:00:36.857010379Z [5] create_fit_card
+2026-11-15T23:00:36.85702418Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-15T23:00:36.85702933Z       out: Scoreeee on this black mesh long-sleeve top for just $15.00 on depop! Layered it over a white ribbed tank with…
+2026-11-15T23:00:36.857224512Z {"timestamp": "2026-11-15T23:00:36.856+00:00", "request_id": "19e162fe", "input": "linen jersey sweat top under $50", "output": "Scoreeee on this black mesh long-sleeve top for just $15.00 on depop! Layered it over a white ribbed tank with baggy jeans and combat boots for the ultimate grunge fit, but it also looks so good with khaki trousers for a y2k streetwear vibe.", "duration_ms": 13201.1, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 783, "output_tokens": 262}
+2026-11-15T23:00:36.85960487Z 127.0.0.1 - - [15/Nov/2026:23:00:36 +0000] "POST /ask HTTP/1.1" 200 5192 "-" "Python-urllib/3.13"
+2026-11-15T23:00:37.499625463Z [6] parse_request
+2026-11-15T23:00:37.499653845Z       in:  dict with keys: query
+2026-11-15T23:00:37.499658535Z       out: dict with keys: description, size, max_price
+2026-11-15T23:00:41.263115361Z [7] search_listings (via MCP)
+2026-11-15T23:00:41.263137712Z       in:  dict with keys: description, size, max_price
+2026-11-15T23:00:41.263141953Z       out: 1 items: Shacket — Olive Canvas
+2026-11-15T23:00:41.263145843Z [8] selected_item
+2026-11-15T23:00:41.263148983Z       out: id=lst_032
+2026-11-15T23:00:42.99371295Z [9] model_unavailable
+2026-11-15T23:00:42.993734512Z       in:  dict with keys: query
+2026-11-15T23:00:42.993741272Z       out: dict with keys: error
+2026-11-15T23:00:42.993798845Z {"timestamp": "2026-11-15T23:00:42.993+00:00", "request_id": "6d6b7fea", "input": "corduroy jacket size L under $45", "output": null, "duration_ms": 6133.6, "status": "agent_error", "error": "The model is currently unavailable. Check your API key and try again.", "model_calls": 2, "prompt_tokens": 113, "output_tokens": 12}
+2026-11-15T23:00:42.994437062Z 127.0.0.1 - - [15/Nov/2026:23:00:42 +0000] "POST /ask HTTP/1.1" 200 2717 "-" "Python-urllib/3.13"
+2026-11-15T23:15:22.288904204Z [2026-11-15 23:15:22 +0000] [58] [INFO] Handling signal: term
+2026-11-15T23:15:22.289559972Z [2026-11-15 23:15:22 +0000] [236] [INFO] Worker exiting (pid: 236)
+2026-11-15T23:15:24.691800067Z [2026-11-15 23:15:24 +0000] [58] [INFO] Shutting down: Master
