@@ -125,10 +125,6 @@ def ask():
             request_id, "empty or missing query", query=query,
             duration_ms=round((time.perf_counter() - t0) * 1000, 1))
         return jsonify({"error": msg}), 400
-    # if not query:
-    #     # 400 rather than a stack trace: the caller can act on this one.
-    #     return jsonify({"error": "Send JSON with a 'query' field, e.g. "
-    #                              '{"query": "vintage graphic tee under $30"}'}), 400
 
     wardrobe = payload.get("wardrobe")
     if not isinstance(wardrobe, dict):
@@ -152,16 +148,6 @@ def ask():
             flush=True,
         )
 
-    # failure = None
-    # session = None
-    # with _one_at_a_time:
-    #     try:
-    #         session = run_agent(query, wardrobe)
-    #     except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
-    #         failure = f"{type(exc).__name__}: {exc}"
-
-    # # Outside the lock: building a response is not work the next caller should
-    # # be waiting on.
     # if failure is not None:
     #     return jsonify({"error": failure}), 500
 
@@ -173,7 +159,7 @@ def ask():
         tokens_before = generate.token_counts()
         try:
             session = run_agent(query, wardrobe)
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
             failure = f"{type(exc).__name__}: {exc}"
         calls = generate.call_count() - calls_before
         tokens = generate.token_counts()
@@ -190,11 +176,11 @@ def ask():
                             status="crashed", error=failure, **extra)
         return jsonify({"error": failure}), 500
 
-    # TODO: status is "agent_error" if session["error"] else "ok"
-    # TODO: output is what the user got back. Which session key?
+    # "agent_error" = the agent stopped early (still HTTP 200); output is the fit card.
     requestlog.log_request(request_id, query, session.get("fit_card"), duration_ms,
                         status="agent_error" if session.get("error") else "ok", error=session.get("error"), **extra)
     return jsonify(session)
+
 
 if __name__ == "__main__":
     # PORT and 0.0.0.0 are not decoration. A host tells you which port to
