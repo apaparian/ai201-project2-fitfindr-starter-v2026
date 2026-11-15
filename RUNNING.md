@@ -178,8 +178,9 @@ In Render: New, Web Service, connect this GitHub repo (only this repo, not every
 | Instance type | Free |
 | `GEMINI_API_KEY` | your key, set in Render's environment settings, never in the repo |
 | `AI201_CACHE` | `0`, so repeated queries are not answered from the cache |
+| `PYTHON_VERSION` | `3.13.14`, the version used locally (see below) |
 
-Render redeploys when `main` changes. The build log for the deploy of commit `2ad2df4` says `Using Python version 3.14.10 (default)`: I did not set `PYTHON_VERSION`, so Render used its own default. That is outside the 3.11 to 3.13 range this repo's `requirements.txt` supports. The build installed every pinned package and the requests I tried (`/health`, `/ask` with an empty query, a no-match query and a normal query) worked, but it is not a tested combination. To pin it, set `PYTHON_VERSION` to a 3.13.x release in Render's environment settings. The log also shows Render setting `WEB_CONCURRENCY=1` and starting one sync gunicorn worker on port 10000, which is what `serve.py` needs.
+Render redeploys when `main` changes. My first deploy (commit `2ad2df4`) did not set `PYTHON_VERSION`, so the build log said `Using Python version 3.14.10 (default)`, which is outside the 3.11 to 3.13 range this repo's `requirements.txt` supports. The build installed every pinned package and the requests I tried worked, but it was not a tested combination, so I set `PYTHON_VERSION` to `3.13.14` in Render's environment settings. The redeploy's build log now says `Using Python version 3.13.14`. The log also shows Render setting `WEB_CONCURRENCY=1` and starting one sync gunicorn worker on port 10000, which is what `serve.py` needs.
 
 **What the environment needs**
 
