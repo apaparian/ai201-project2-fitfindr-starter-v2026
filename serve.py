@@ -148,10 +148,6 @@ def ask():
             flush=True,
         )
 
-    # if failure is not None:
-    #     return jsonify({"error": failure}), 500
-
-    # return jsonify(session)
     failure = None
     session = None
     with _one_at_a_time:
