@@ -41,6 +41,12 @@ import threading
 # and fixes the Windows console encoding for every module that imports it.
 import config  # noqa: F401
 
+import time
+import uuid
+
+import generate
+import requestlog
+
 from flask import Flask, jsonify, request
 
 from agent import run_agent
@@ -107,12 +113,22 @@ def ask():
                                                 example wardrobe the CLI uses.
     Out:  the session dict from run_agent(), as JSON.
     """
+    t0 = time.perf_counter()
+    request_id = uuid.uuid4().hex[:8]
+
     payload = request.get_json(silent=True) or {}
     query = (payload.get("query") or "").strip()
     if not query:
-        # 400 rather than a stack trace: the caller can act on this one.
-        return jsonify({"error": "Send JSON with a 'query' field, e.g. "
-                                 '{"query": "vintage graphic tee under $30"}'}), 400
+        msg = ("Send JSON with a 'query' field, e.g. "
+            '{"query": "vintage graphic tee under $30"}')
+        requestlog.log_rejection(
+            request_id, "empty or missing query", query=query,
+            duration_ms=round((time.perf_counter() - t0) * 1000, 1))
+        return jsonify({"error": msg}), 400
+    # if not query:
+    #     # 400 rather than a stack trace: the caller can act on this one.
+    #     return jsonify({"error": "Send JSON with a 'query' field, e.g. "
+    #                              '{"query": "vintage graphic tee under $30"}'}), 400
 
     wardrobe = payload.get("wardrobe")
     if not isinstance(wardrobe, dict):
@@ -136,21 +152,49 @@ def ask():
             flush=True,
         )
 
+    # failure = None
+    # session = None
+    # with _one_at_a_time:
+    #     try:
+    #         session = run_agent(query, wardrobe)
+    #     except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
+    #         failure = f"{type(exc).__name__}: {exc}"
+
+    # # Outside the lock: building a response is not work the next caller should
+    # # be waiting on.
+    # if failure is not None:
+    #     return jsonify({"error": failure}), 500
+
+    # return jsonify(session)
     failure = None
     session = None
     with _one_at_a_time:
+        calls_before = generate.call_count()
+        tokens_before = generate.token_counts()
         try:
             session = run_agent(query, wardrobe)
-        except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
+        except Exception as exc:
             failure = f"{type(exc).__name__}: {exc}"
+        calls = generate.call_count() - calls_before
+        tokens = generate.token_counts()
 
-    # Outside the lock: building a response is not work the next caller should
-    # be waiting on.
+    extra = {
+        "model_calls": calls,
+        "prompt_tokens": tokens["prompt"] - tokens_before["prompt"],
+        "output_tokens": tokens["output"] - tokens_before["output"],
+    }
+    duration_ms = round((time.perf_counter() - t0) * 1000, 1)
+
     if failure is not None:
+        requestlog.log_request(request_id, query, None, duration_ms,
+                            status="crashed", error=failure, **extra)
         return jsonify({"error": failure}), 500
 
+    # TODO: status is "agent_error" if session["error"] else "ok"
+    # TODO: output is what the user got back. Which session key?
+    requestlog.log_request(request_id, query, session.get("fit_card"), duration_ms,
+                        status="agent_error" if session.get("error") else "ok", error=session.get("error"), **extra)
     return jsonify(session)
-
 
 if __name__ == "__main__":
     # PORT and 0.0.0.0 are not decoration. A host tells you which port to
