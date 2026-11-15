@@ -174,7 +174,7 @@ In Render: New, Web Service, connect this GitHub repo (only this repo, not every
 | Branch | `main` |
 | Language | Python 3 |
 | Build command | `pip install -r requirements.txt` |
-| Start command | `gunicorn serve:app` (the default sync worker, no `-k` flag; an async worker breaks every MCP call) |
+| Start command | `gunicorn serve:app` (the default sync worker, no `-k` flag; an async worker breaks every MCP call). `gunicorn.conf.py` in the repo sets `timeout = 120`, because gunicorn's 30-second default killed requests that were waiting out the Gemini rate limit |
 | Instance type | Free |
 | `GEMINI_API_KEY` | your key, set in Render's environment settings, never in the repo |
 | `AI201_CACHE` | `0`, so repeated queries are not answered from the cache |
