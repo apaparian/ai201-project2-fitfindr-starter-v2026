@@ -1,0 +1,10 @@
+{"http": 200, "seconds": 5.67, "fit_card_ok": true, "note": "", "pair": 1, "which": "A", "query": "vintage graphic tee under $30", "start_gap_s": 0.0, "pair_pass": true}
+{"http": 200, "seconds": 10.61, "fit_card_ok": true, "note": "", "pair": 1, "which": "B", "query": "denim jacket under $50", "start_gap_s": 0.0, "pair_pass": true}
+{"http": 200, "seconds": 11.68, "fit_card_ok": true, "note": "", "pair": 2, "which": "A", "query": "printed knit tank under $45", "start_gap_s": 0.0, "pair_pass": true}
+{"http": 200, "seconds": 6.68, "fit_card_ok": true, "note": "", "pair": 2, "which": "B", "query": "linen jersey sweat top under $50", "start_gap_s": 0.0, "pair_pass": true}
+{"http": 200, "seconds": 5.72, "fit_card_ok": true, "note": "", "pair": 3, "which": "A", "query": "corduroy jacket size L under $45", "start_gap_s": 0.001, "pair_pass": true}
+{"http": 200, "seconds": 10.69, "fit_card_ok": true, "note": "", "pair": 3, "which": "B", "query": "vintage graphic tee under $30", "start_gap_s": 0.001, "pair_pass": true}
+{"http": 200, "seconds": 4.8, "fit_card_ok": true, "note": "", "pair": 4, "which": "A", "query": "denim jacket under $50", "start_gap_s": 0.001, "pair_pass": true}
+{"http": 200, "seconds": 10.68, "fit_card_ok": true, "note": "", "pair": 4, "which": "B", "query": "printed knit tank under $45", "start_gap_s": 0.001, "pair_pass": true}
+{"http": 200, "seconds": 5.86, "fit_card_ok": true, "note": "", "pair": 5, "which": "A", "query": "linen jersey sweat top under $50", "start_gap_s": 0.0, "pair_pass": true}
+{"http": 200, "seconds": 11.6, "fit_card_ok": true, "note": "", "pair": 5, "which": "B", "query": "corduroy jacket size L under $45", "start_gap_s": 0.0, "pair_pass": true}

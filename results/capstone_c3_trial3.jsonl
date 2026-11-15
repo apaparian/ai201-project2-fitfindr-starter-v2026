@@ -1,0 +1,3 @@
+{"http": 200, "seconds": 4.4, "fit_card_ok": true, "note": "", "clone": 1, "total_seconds_from_clone_to_card": 12.9, "pass": true}
+{"http": 200, "seconds": 3.54, "fit_card_ok": true, "note": "", "clone": 2, "total_seconds_from_clone_to_card": 14.0, "pass": true}
+{"http": 200, "seconds": 3.64, "fit_card_ok": true, "note": "", "clone": 3, "total_seconds_from_clone_to_card": 12.4, "pass": true}

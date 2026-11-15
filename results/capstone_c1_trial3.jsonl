@@ -1,0 +1,12 @@
+{"http": 200, "seconds": 3.14, "fit_card_ok": true, "note": "", "kind": "valid", "lines_added": 1, "pass": true}
+{"http": 400, "seconds": 0.01, "fit_card_ok": false, "note": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}", "kind": "empty", "lines_added": 1, "pass": true}
+{"http": 200, "seconds": 3.25, "fit_card_ok": true, "note": "", "kind": "valid", "lines_added": 1, "pass": true}
+{"http": 500, "seconds": 0.01, "fit_card_ok": false, "note": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Serve", "kind": "array", "lines_added": 0, "pass": false}
+{"http": 200, "seconds": 2.88, "fit_card_ok": true, "note": "", "kind": "valid", "lines_added": 1, "pass": true}
+{"http": 200, "seconds": 0.68, "fit_card_ok": false, "note": "No listings matched your request. Try a different set of keywords, a different size, or a ", "kind": "nomatch", "lines_added": 1, "pass": true}
+{"http": 200, "seconds": 90.63, "fit_card_ok": true, "note": "", "kind": "valid", "lines_added": 1, "pass": true}
+{"http": 400, "seconds": 0.01, "fit_card_ok": false, "note": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}", "kind": "empty", "lines_added": 1, "pass": true}
+{"http": 200, "seconds": 2.54, "fit_card_ok": true, "note": "", "kind": "valid", "lines_added": 1, "pass": true}
+{"http": 500, "seconds": 0.01, "fit_card_ok": false, "note": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Serve", "kind": "array", "lines_added": 0, "pass": false}
+{"http": 200, "seconds": 2.57, "fit_card_ok": true, "note": "", "kind": "valid", "lines_added": 1, "pass": true}
+{"http": 200, "seconds": 0.97, "fit_card_ok": false, "note": "No listings matched your request. Try a different set of keywords, a different size, or a ", "kind": "nomatch", "lines_added": 1, "pass": true}
