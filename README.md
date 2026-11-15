@@ -519,3 +519,71 @@ It also drew my attention towards other fixes, such as weak matches being passed
 ---
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**
+
+
+---
+
+## Capstone
+
+**What This Extends**
+
+This extends FitFindr, my Unit 2 project: the three-tool agent that finds a secondhand listing, suggests outfits from a wardrobe, and writes a fit card. The agent loop and the tools are unchanged. What is new is the operational layer around `serve.py`: a structured request log (`requestlog.py`, written to `logs/requests.jsonl`), timing and token counts on every request, and a deployment on Render.
+
+**The Shape**
+
+Shape A, deploy and instrument. The extension is the run path, the logging, and the measurements that come out of it.
+
+Out of scope: I am not changing the planning loop or the three tools, I am not touching query parsing or the search ranking, and I am not changing the prompts. I am also not adding new endpoints or a UI.
+
+**Running It**
+
+Path A, hosted on Render: https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com
+
+Start command: `gunicorn serve:app`. The `GEMINI_API_KEY` is set in Render's environment settings and is not in the repo. `AI201_CACHE=0` is set there too, so repeated queries are not served from the cache. TODO: finish RUNNING.md with the Render settings and a clean-clone test, then point to it here.
+
+**Instrumentation**
+
+Every `/ask` request writes one JSON line to `logs/requests.jsonl` (and to stdout, which is what Render's log viewer shows). The writer is `requestlog.py::_append`, called from `serve.py::ask`. Fields:
+
+- `timestamp`: UTC, to the millisecond
+- `request_id`: short random id
+- `input`: the query as received
+- `output`: the fit card, or null if the run did not produce one
+- `duration_ms`: whole request, measured with `time.perf_counter()`
+- `status`: `ok`, `agent_error` (the agent stopped early, still HTTP 200), `crashed` (HTTP 500), or `rejected` (HTTP 400)
+- `error`: the message when there is one
+- `model_calls`, `prompt_tokens`, `output_tokens`: this request's own spend, taken as a before/after difference of `generate.py`'s counters inside the lock
+
+Rejected requests (`requestlog.py::log_rejection`) keep the same `timestamp`, `request_id`, `input`, `output`, `duration_ms` and `status` fields, plus `event` and `reason`.
+
+These ten entries are from a local run of `python serve.py` with `AI201_CACHE=0` (commit "add 10-run request log from local cost measurement (cache off)"):
+
+```
+{"timestamp": "2026-11-15T17:49:30.649+00:00", "request_id": "3fbd34ac", "input": "vintage graphic tee under $30", "output": "Found this insanely cute butterfly baby tee on depop for just $18, and it’s the ultimate piece for mixing soft and edgy styles. I paired it with wide-leg khaki trousers and combat boots for that perfect contrast between sweet and grungy. Safe to say this is going to be on heavy rotation all season!", "duration_ms": 4156.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 885, "output_tokens": 366}
+{"timestamp": "2026-11-15T17:49:33.728+00:00", "request_id": "0c66af96", "input": "denim jacket under $50", "output": "Scored this cropped light wash vintage denim jacket on Poshmark for $42, and it immediately became my go-to streetwear layer. I love how the boxy cut balances out with baggy dark jeans and chunky sneakers for an easy, effortless vibe.", "duration_ms": 3048.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 906, "output_tokens": 387}
+{"timestamp": "2026-11-15T17:49:36.488+00:00", "request_id": "0d745389", "input": "printed knit tank under $45", "output": "Obsessed with this chunky brown knit cardigan I just scored on depop for $35! I threw it on over baggy dark denim and combat boots for a cozy look with a little bit of grunge. Such a dreamy earth-toned staple for fall.", "duration_ms": 2729.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 861, "output_tokens": 334}
+{"timestamp": "2026-11-15T17:49:40.037+00:00", "request_id": "a81966ff", "input": "linen jersey sweat top under $50", "output": "Finally scored this black mesh long-sleeve top on depop for just $15, and it is the ultimate grunge layering piece. I paired it with a white ribbed tank underneath, baggy dark wash jeans, and my trusty combat boots for that effortless goth streetwear vibe.", "duration_ms": 3521.7, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 927, "output_tokens": 401}
+{"timestamp": "2026-11-15T17:49:44.289+00:00", "request_id": "3fabecf0", "input": "vintage graphic tee under $30", "output": "Scored this adorable butterfly baby tee for just $18.00 on depop and I am obsessed. I threw it on with some baggy dark wash denim, chunky sneakers, and my black crossbody for the ultimate 2000s streetwear look. It’s giving major off-duty Bratz doll vibes and I’m never taking it off.", "duration_ms": 4234.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 743, "output_tokens": 233}
+{"timestamp": "2026-11-15T17:50:30.637+00:00", "request_id": "79991b64", "input": "corduroy jacket size L under $45", "output": "Scored this olive canvas shacket on Poshmark for just $33, and it’s the ultimate layering piece for my earth-tone phase. Been wearing it non-stop, whether I'm keeping it minimal with khaki trousers and chunky sneakers or throwing it over an oversized grey crewneck with combat boots for a grungier streetwear look.", "duration_ms": 46322.8, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 862, "output_tokens": 365}
+{"timestamp": "2026-11-15T17:50:33.972+00:00", "request_id": "e92825a8", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm already obsessed with styling it. Threw it on over wide-leg khaki trousers and combat boots for the ultimate casual earth-tone vibe. Such a good find!", "duration_ms": 3307.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 865, "output_tokens": 347}
+{"timestamp": "2026-11-15T17:50:36.743+00:00", "request_id": "8ff94a3c", "input": "printed knit tank under $45", "output": "Finally scored this chunky brown knit cardigan on Depop for $35 and I'm obsessed with how heavy and cozy it is. I threw it on over a white tank and baggy dark wash denim, finishing the look with my combat boots for a little bit of edge. It's giving the ultimate earthy streetwear vibe for chilly days.", "duration_ms": 2744.2, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 868, "output_tokens": 358}
+{"timestamp": "2026-11-15T17:50:39.563+00:00", "request_id": "cdca6b67", "input": "vintage graphic tee under $30", "output": "I am so obsessed with this butterfly baby tee I just scored on depop for $18! I styled it with baggy dark wash jeans, a cropped zip hoodie, and chunky sneakers for the ultimate Y2K streetwear vibe.", "duration_ms": 2792.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 885, "output_tokens": 347}
+{"timestamp": "2026-11-15T17:51:28.151+00:00", "request_id": "0c305717", "input": "linen jersey sweat top under $50", "output": "Score! Found this black mesh long-sleeve top on Depop for just $15, and it was so easy to layer over a white ribbed tank for that ultimate 90s grunge streetwear vibe. I'm obsessed with how it looks peeked out from under an oversized grey crewneck with baggy jeans, too.", "duration_ms": 48560.7, "status": "ok", "error": null, "model_calls": 4, "prompt_tokens": 906, "output_tokens": 392}
+```
+
+TODO: paste at least one failed run here. The 400 from the empty-query test on Render, and the no-match `agent_error` run, are candidates; copy the lines from Render's Logs tab before the instance sleeps.
+
+**What It Costs**
+
+Measured over the 10 runs above (local server, cache off, `gemini-3.5-flash-lite`):
+
+| Measure | Mean | Min | Max |
+|---|---|---|---|
+| Duration | 12.1 s | 2.7 s | 48.6 s |
+| Model calls | 3.1 | 3 | 4 |
+| Prompt tokens | 871 | 743 | 927 |
+| Output tokens | 353 | 233 | 401 |
+
+How I measured it: ten requests in a row against the local server, using the token counters in `generate.py` read before and after each `run_agent()` call, so each log line holds that request's own numbers. Eight runs took 2.7 to 4.2 seconds; two took 46 and 49 seconds. I suspect `generate.py`'s per-minute pacing (15 requests a minute; ten runs is about 31 calls), but I have not confirmed it.
+
+A hundred a day: 100 runs x 871 prompt tokens = 87,100 prompt tokens, and 100 runs x 353 output tokens = 35,300 output tokens per day. TODO: price those at the model's per-token rates for a dollar figure, or report tokens and seconds only.
