@@ -155,6 +155,75 @@ the point of the session.
 
 ---
 
+## Capstone: the deployed service
+
+FitFindr runs as a web service on Render (Path A). The agent code is the same as everywhere else in this file; `serve.py` puts it behind HTTP and `requestlog.py` records every request.
+
+**Where it runs**
+
+- URL: https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com
+- Platform: Render, free web service, deployed from the `main` branch of this repo
+- Routes: `GET /health` (returns `{"status": "ok"}`) and `POST /ask`
+
+**How it got there**
+
+In Render: New, Web Service, connect this GitHub repo (only this repo, not every repo), then:
+
+| Setting | Value |
+|---|---|
+| Branch | `main` |
+| Language | Python 3 |
+| Build command | `pip install -r requirements.txt` |
+| Start command | `gunicorn serve:app` (the default sync worker, no `-k` flag; an async worker breaks every MCP call) |
+| Instance type | Free |
+| `GEMINI_API_KEY` | your key, set in Render's environment settings, never in the repo |
+| `AI201_CACHE` | `0`, so repeated queries are not answered from the cache |
+
+Render redeploys when `main` changes. TODO: record the Python version Render used.
+
+**What the environment needs**
+
+- Python 3.11, 3.12 or 3.13 (not 3.14). Tested here on 3.13.
+- The dependencies in `requirements.txt`, which are pinned with both lower and upper bounds. No model files: the model is called over the Gemini API.
+- A Gemini API key in `GEMINI_API_KEY`.
+
+**Try the hosted service**
+
+```bash
+curl https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com/health
+curl -X POST https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "vintage graphic tee under $30"}'
+```
+
+The first request after about fifteen minutes of quiet takes around a minute, because the free instance sleeps.
+
+**Run it locally from a clean checkout**
+
+```bash
+git clone https://github.com/apaparian/ai201-project2-fitfindr-starter-v2026.git
+cd ai201-project2-fitfindr-starter-v2026
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env          # then paste your key into .env
+AI201_CACHE=0 PORT=5001 python serve.py
+```
+
+Port 5001 is on purpose: on macOS, AirPlay Receiver already uses port 5000. In a second terminal:
+
+```bash
+curl -X POST http://localhost:5001/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "vintage graphic tee under $30"}'
+```
+
+**Where the log is**
+
+Each request appends one JSON line to `logs/requests.jsonl` and prints the same line to stdout. On Render the file is wiped when the instance sleeps, so copy entries into the README in the same session you produce them. Read it back with `python -c "import requestlog; print(requestlog.read_entries())"`, and empty it with `requestlog.clear()`.
+
+---
+
 ## Where everything lives
 
 | File | What it does |
