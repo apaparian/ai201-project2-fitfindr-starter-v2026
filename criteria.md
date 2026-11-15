@@ -135,3 +135,40 @@ An empty wardrobe is a realistic branch of behavior discussed in the scope of th
      A number you missed stays where it is, gets diagnosed, and gets a fix
      attempted. That's where the points are.
      ───────────────────────────────────────────────────────────────────────── -->
+
+
+---
+
+# Capstone acceptance criteria
+
+Five criteria for the capstone extension (Shape A, deploy and instrument), written before any capstone results existed. The five above belong to the earlier project and are left as they were.
+
+## 1. Every request leaves exactly one log line
+
+For a local test suite of 12 requests sent to `serve.py` (6 valid queries, 2 empty queries, 2 no-match queries, and 2 JSON array bodies `[1,2]`), every request adds exactly one new line to `logs/requests.jsonl`. I count by comparing the file's line count before and after each request.
+
+**Why this target:** The logging is three separate calls in `ask()`, one per exit path, so a path that returns or raises before reaching its call leaves no trace. The array body is the one I expect to fail: `payload.get` raises before any log call is reached. 12 of 12 rather than 11 of 12 because no model call is involved in writing a log line, so there is nothing to vary. A miss is a gap in the code, and a gap here is silent: a failure that leaves no record can't be found later.
+
+## 2. Warm requests on the hosted service come back in under 5 seconds
+
+On the hosted Render service, for 10 requests each sent within two minutes of the previous one (valid queries from criterion 4, `AI201_CACHE=0`), at least 9 of 10 have a `duration_ms` under 5000 in the log. I copy the lines from Render's Logs tab the same session.
+
+**Why this target:** Normal runs measured 2.7 to 4.2 seconds, so 5 seconds clears the ordinary spread. But 2 of 10 earlier runs took 46 and 49 seconds, and I haven't yet diagnosed why. `generate.py` does sleep when 15 model calls have been used in a minute, and a run makes about 3 calls, so that is one place to look if this misses. 9 of 10 rather than 10 of 10 because each run depends on model calls whose speed I don't control, and one slow run in ten would not tell me the service is broken. A result like 7 of 10 would.
+
+## 3. A reader can start it from RUNNING.md alone
+
+In 3 separate fresh clones, each into a new folder and each using only RUNNING.md and my own Gemini key, the service starts and a query returns HTTP 200 with a non-null `fit_card` within 30 minutes. Any command I type that RUNNING.md doesn't list counts as an undocumented step and fails that clone.
+
+**Why this target:** Setup either has a gap or it doesn't, and nothing in it is random, so 3 of 3 and not 2 of 3: one failure means a real missing step that a reader would hit every time. The likely gaps are ones I've already run into: Render defaulting to an unsupported Python version, the pinned packages, and macOS using port 5000 for AirPlay. 30 minutes leaves room for a slower connection, and a much shorter limit would fail someone who is simply slow.
+
+## 4. The recommendation still works after the extension
+
+For 10 requests to the hosted service (these 5 queries, each sent twice: `vintage graphic tee under $30`, `denim jacket under $50`, `printed knit tank under $45`, `linen jersey sweat top under $50`, `corduroy jacket size L under $45`), at least 9 return HTTP 200 with a non-null `fit_card`. A Gemini 503 counts as a miss.
+
+**Why this target:** These 5 queries all returned cards in the cost runs, so a search miss is not the thing to worry about; the ways to fail are the two model calls and the host. Both go through the adapter that retries rate limits, so 9 of 10 leaves room for one call failing in a way a retry can't recover, such as a 503 outage. It does not leave room for two. If this comes out lower, I'll look first at whether the logging or the deploy broke something, because the queries are the same ones that worked before.
+
+## 5. Two requests at the same time both finish, and both are logged
+
+For 5 pairs of simultaneous requests to the hosted service (two `curl` commands started within one second of each other, using `&` and `wait`, with two different valid queries from criterion 4 per pair, `AI201_CACHE=0`), at least 4 of 5 pairs have both requests return HTTP 200 with a non-null `fit_card` within 90 seconds, and every request that returns has exactly one log line, 10 of 10. I count log lines from Render's Logs tab, copied the same session, using the different `input` and `request_id` values to tell them apart.
+
+**Why this target:** Both halves are needed, and they fail for different reasons. `serve.py` runs one request at a time behind a lock, so the second request in a pair waits for the first to finish. My slowest runs so far took 46 to 49 seconds, so the second request could wait close to a minute before its own run starts; 90 seconds covers that, and a hung request would exceed it. 4 of 5 pairs for the first half because a Gemini 503 on one request fails its pair for a reason that has nothing to do with queueing. 10 of 10 for the log half because writing a log line involves no model call, so nothing there can vary, and a miss would be a bug in the write path under load.
