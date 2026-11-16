@@ -539,7 +539,7 @@ Out of scope: I am not changing the planning loop or the three tools, I am not t
 
 Path A, hosted on Render: https://ai201-project2-fitfindr-starter-v2026-i3qn.onrender.com
 
-Start command: `gunicorn serve:app`. The `GEMINI_API_KEY` is set in Render's environment settings and is not in the repo. `AI201_CACHE=0` is set there too, so repeated queries are not served from the cache. TODO: finish RUNNING.md with the Render settings and a clean-clone test, then point to it here.
+Start command: `gunicorn serve:app`. The `GEMINI_API_KEY` is set in Render's environment settings and is not in the repo. `AI201_CACHE=0` is set there too, so repeated queries are not served from the cache. `PYTHON_VERSION` is pinned to 3.13.14 (Render's default was 3.14.10, outside this repo's supported range), and `gunicorn.conf.py` sets the worker timeout to 120 seconds. The Render settings, the environment, and the clean-clone steps are in [RUNNING.md](RUNNING.md), section "Capstone: the deployed service".
 
 **Instrumentation**
 
@@ -593,4 +593,146 @@ Measured over the 10 runs above (local server, cache off, `gemini-3.5-flash-lite
 
 How I measured it: ten requests in a row against the local server, using the token counters in `generate.py` read before and after each `run_agent()` call, so each log line holds that request's own numbers. Eight runs took 2.7 to 4.2 seconds; two took 46 and 49 seconds. I suspect `generate.py`'s per-minute pacing (15 requests a minute; ten runs is about 31 calls), but I have not confirmed it.
 
-A hundred a day: 100 runs x 871 prompt tokens = 87,100 prompt tokens, and 100 runs x 353 output tokens = 35,300 output tokens per day. TODO: price those at the model's per-token rates for a dollar figure, or report tokens and seconds only.
+A hundred a day: 100 runs x 3.1 model calls = about 310 calls a day. In tokens that is 100 x 871 = 87,100 prompt tokens plus 100 x 353 = 35,300 output tokens, about 122,000 tokens a day, and in time it is 100 x 12.1 s = about 20 minutes of compute. I am reporting tokens and seconds, not dollars, because I measured those and did not take a price from a pricing page.
+
+The binding limit is not cost but the free tier's quota. Gemini's own error messages state it: 15 requests a minute and 500 a day for this model. At about 3 calls a run that is roughly 5 runs a minute and 160 runs a day, so a hundred people a day (310 calls, 62% of the day's allowance) would fit, but my own testing did not: about 200 requests of trials in one round used up what was left of the day, and the hosted service stopped answering (see What's Still Broken).
+
+
+**Run Log and Verdicts**
+
+This is the "before" set: the hosted trials rerun with `AI201_CACHE=0` actually set on Render (the first attempt ran with the cache on by mistake, see the note at the end of this section), plus the local trials for criteria 1 and 3. Every trial was sent by a harness that wrote one JSON record per request to `results/capstone_*.jsonl`; the hosted log lines come from Render's Logs tab, saved as `results/capstone_render_log_cacheoff.txt`. Criterion 2 is scored on the `duration_ms` field in that log, not on the client's clock.
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Every request leaves exactly one log line | 12 of 12 | 10/12 | 10/12 | 10/12 | MISSED |
+| 2. Warm hosted requests under 5 s | 9 of 10 | 0/10 | 0/10 | 0/10 | MISSED |
+| 3. A reader can start it from RUNNING.md alone | 3 of 3 | 3/3 | 3/3 | 3/3 | MET |
+| 4. The recommendation still works | 9 of 10 | 9/10 | 8/10 | 8/10 | MISSED |
+| 5. Concurrent pairs both finish, both logged | 4 of 5 pairs, 10 of 10 logged | 3/5 pairs, 8 of 10 logged | 4/5 pairs, 9 of 10 logged | 2/5 pairs, 8 of 10 logged | MISSED |
+
+Real output, one trial each, with the file and function that produced it.
+
+Criterion 1, `results/capstone_c1_trial1.jsonl` (written by my trial harness, counting lines in `logs/requests.jsonl`, which `requestlog.py::_append` writes; the 500s come from `serve.py::ask`):
+
+```
+valid    HTTP 200  log lines added: 1
+empty    HTTP 400  log lines added: 1
+valid    HTTP 200  log lines added: 1
+array    HTTP 500  log lines added: 0
+valid    HTTP 200  log lines added: 1
+nomatch  HTTP 200  log lines added: 1
+valid    HTTP 200  log lines added: 1
+empty    HTTP 400  log lines added: 1
+valid    HTTP 200  log lines added: 1
+array    HTTP 500  log lines added: 0
+valid    HTTP 200  log lines added: 1
+nomatch  HTTP 200  log lines added: 1
+```
+
+Both array bodies (`[1,2]` and `["vintage tee"]`) returned HTTP 500 and added no log line in all three trials. Reproduced directly with Flask's test client:
+
+```
+AttributeError 'list' object has no attribute 'get' | at serve.py line 120 | query = (payload.get("query") or "").strip()
+```
+
+Criterion 2, from `results/capstone_render_log_cacheoff.txt`, first request of the run. The trace comes from `trace.py::step`, the record from `requestlog.py::_append`. Note the gap between step 1 and step 2:
+
+```
+2026-11-15T22:48:33.67834226Z [1] parse_request
+2026-11-15T22:48:37.463610664Z [2] search_listings (via MCP)
+2026-11-15T22:48:39.677346507Z {"timestamp": "2026-11-15T22:48:39.674+00:00", "request_id": "50d8b6bd", "input": "vintage graphic tee under $30", "output": "Scooped up this adorable butterfly baby tee for just $18 on Depop and I’m so obsessed. I paired it with baggy dark wash jeans and chunky sneakers for the ultimate Y2K streetwear edge.", "duration_ms": 16732.3, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 893, "output_tokens": 352}
+2026-11-15T22:48:46.654837019Z {"timestamp": "2026-11-15T22:48:46.653+00:00", "request_id": "972e26cc", "input": "denim jacket under $50", "output": "Finally scored this cropped light wash denim jacket on Poshmark for $42 and I'm obsessed with the double denim look. Paired it with dark baggy jeans and chunky sneakers for the ultimate streetwear fit.", "duration_ms": 6850.9, "status": "ok", "error": null, "model_calls": 3, "prompt_tokens": 884, "output_tokens": 356}
+```
+
+The lowest `duration_ms` of any logged request in the cache-off run was 5972, so none was under 5000. Per trial, the C2/C4 requests that were logged had medians of 6851, 6957 and 6616 ms.
+
+Criterion 3, `results/capstone_c3_trial1.jsonl` (the other two trials look the same, 12 to 14 s from clone to card):
+
+```
+clone 1: HTTP 200, fit_card present: True, clone-to-card 13.0 s
+clone 2: HTTP 200, fit_card present: True, clone-to-card 13.7 s
+clone 3: HTTP 200, fit_card present: True, clone-to-card 12.8 s
+```
+
+Criterion 4, `results/capstone_c2c4_trial2_cacheoff.jsonl`, one of the five failures:
+
+```
+request 1 (vintage graphic tee under $30): HTTP 500 after 31.02 s, fit_card present: False, body starts: <html>
+```
+
+Criterion 5, from `results/capstone_render_log_cacheoff.txt` (gunicorn and `generate.py`, not my code):
+
+```
+2026-11-15T22:49:37.403128387Z [2026-11-15 22:49:37 +0000] [58] [CRITICAL] WORKER TIMEOUT (pid:60)
+2026-11-15T22:50:43.694630788Z google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite, description: Generate content requests per minute limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\nPlease retry in 47.116417906s.', 'status': 'R ...
+2026-11-15T22:49:38.459418363Z [2026-11-15 22:49:38 +0000] [58] [ERROR] Worker (pid:60) was sent SIGKILL! Perhaps out of memory?
+2026-11-15T22:49:37.458195843Z 127.0.0.1 - - [15/Nov/2026:22:49:37 +0000] "POST /ask HTTP/1.1" 500 0 "-" "-"
+```
+
+**Verdicts and diagnoses**
+
+| # | Verdict | How I decided |
+|---|---|---|
+| 1 | MISSED | 10 of 12 each trial, against 12 of 12. The two misses are the same two array bodies every time. |
+| 2 | MISSED | 0 of 10 each trial, against 9 of 10. Not close: the fastest logged request took 5.97 s. |
+| 3 | MET | 3 of 3 clones each trial. The target held, but see What's Still Broken: it was loose. |
+| 4 | MISSED | 9, 8 and 8 of 10, against 9 of 10. Runs 2 and 3 are below the target. |
+| 5 | MISSED | 3, 4 and 2 pairs of 5, against 4 of 5, and the log half failed in every trial (8, 9 and 8 of 10 logged). |
+
+Diagnosis, criterion 1. The stage is `serve.py::ask`. `request.get_json(silent=True) or {}` returns a list for a body like `[1,2]`, a list has no `.get`, and the `AttributeError` is raised on line 120, before any `requestlog` call is reached. Flask turns it into an HTML 500 and nothing is written. 30 of the 36 requests logged exactly once; the 6 that didn't are all array bodies.
+
+Diagnosis, criterion 2. The stage is `search_listings (via MCP)`, called from `agent.py::run_agent` through `mcp_client.call_tool`. In every request the trace shows about 3.7 to 4.3 seconds between `parse_request` and `search_listings`: `call_tool` starts `mcp_server.py` as a new process each time, and on Render that start-up costs about four seconds. The two model calls that follow take about one to two seconds each, so even a request with no waiting takes six to seven seconds. My target of 5 seconds came from my local timings (2.7 to 4.2 s), and my reason assumed latency scaled with the number of model calls, not with starting a process. Several of the requests that took 14 to 25 seconds show `[rate limit] ... Waiting` lines in the same log, which is `generate.py`'s 15-calls-a-minute pacing.
+
+Diagnosis, criteria 4 and 5. Same stage, same mechanism. With the cache off, a request makes about 3 model calls, and 10 requests in a row is about 30 calls, twice Gemini's free-tier limit of 15 a minute. `generate.py` waits (`[rate limit] ... Waiting 26s`) or, after a real `429`, backs off for 40 to 47 seconds. A request that waits that long runs past gunicorn's default 30 second worker timeout, gunicorn kills the worker (`WORKER TIMEOUT`, then `SIGKILL`), and the caller gets an HTML 500. There were 10 such kills in the cache-off run: 5 in the C2/C4 trials (the 5 misses in criterion 4) and 5 in the C5 trials.
+
+The pattern. Criteria 4 and 5 are one problem with several symptoms: a request that takes longer than 30 seconds. Criterion 2 shares the rate-limit waits but its main cause is the MCP start-up. And criteria 1 and the log half of criterion 5 are the same defect seen twice: `requestlog.log_request` is called near the end of `ask()`, so anything that leaves `ask()` early (an exception before the call, or the worker being killed mid-request) leaves no record. In the cache-off run 50 of 60 requests were logged, which is exactly the 60 sent minus the 10 killed.
+
+Note on the first set of hosted trials. I first ran them without `AI201_CACHE=0` actually set on Render (the variable was added afterwards). `suggest_outfit` was answered from the cache on repeated queries, so a request made about one model call instead of three and stayed under the rate limit. Those results (criterion 4 at 10 of 10 in all three trials, criterion 5 at 5 of 5 pairs in all three with 60 of 60 requests logged, criterion 2 at 2, 5 and 2 of 10 by `duration_ms`) are kept in `results/capstone_*_trial?.jsonl` and `results/capstone_render_log.txt`, and I don't count them because they don't match the conditions my criteria name.
+
+**The Improvement**
+
+What I changed: one new file, `gunicorn.conf.py`, containing `timeout = 120`, and one sentence in RUNNING.md saying so. Nothing else. The start command is still `gunicorn serve:app` with the default sync worker, because `mcp_client.call_tool` uses `asyncio.run()`.
+
+Why: the diagnosis put criteria 4 and 5 (and the log half of 5) on gunicorn's 30 second worker timeout killing requests that were waiting out Gemini's per-minute limit. Ten requests were killed in the cache-off run, and each left no log line. Raising the timeout is aimed at exactly that. I considered three other changes and chose this one because it was the only one in scope that touched more than one criterion: stopping the per-request MCP start-up would fix criterion 2 but is a change to the agent and to my Unit 4 work, which I scoped out; handling non-object bodies fixes only criterion 1; and logging from a gunicorn worker-abort hook would record the kills without stopping them.
+
+I redeployed on Render, confirmed the new deploy was live, and ran the hosted trials again with the same harness, three trials each, cache off. Criteria 1 and 3 were not rerun: the change does not touch either code path, and by the end of the run Gemini's daily quota was gone (see below), so I could not send the valid queries criterion 1 needs. The raw records are `results/capstone_*_improved.jsonl` and the Render log is `results/capstone_render_log_improved.txt`.
+
+| Criterion | Target | Before (runs 1, 2, 3) | After (runs 1, 2, 3) | After, verdict |
+|---|---|---|---|---|
+| 2. Warm hosted requests under 5 s | 9 of 10 | 0, 0, 0 of 10 | 0, 0, 0 of 10 | MISSED |
+| 4. The recommendation still works | 9 of 10 | 9, 8, 8 of 10 | 10, 10, 10 of 10 | MET |
+| 5. Concurrent pairs both finish, both logged | 4 of 5 pairs | 3, 4, 2 pairs | 5, 1, 0 pairs (runs 2 and 3 affected by the quota, below) | MISSED |
+
+Did it help? Yes for criterion 4, and not for the other two.
+
+Criterion 4 went from missing to met: 30 of 30 requests returned a card and there were no worker timeouts during those trials. Criterion 2 did not change. Every logged request was still over 5 seconds (fastest 6.8 s), because the MCP start-up is untouched, and the median `duration_ms` per trial was 8058, 8458 and 8405 ms against 6851, 6957 and 6616 before. I have not isolated why it rose; requests that used to be killed now run to the end, and the rerun was the only one to use all three trials back to back.
+
+Criterion 5 is the part I can't call. Trial 1 passed all 5 pairs with 10 of 10 requests logged. Then trial 2 and trial 3 collapsed, and the log shows why, and it is not the timeout change. At 00:11:59 UTC, partway through trial 2, Gemini started returning a different kind of 429, for the per-day limit:
+
+```
+2026-11-16T00:11:59.501170146Z ... Generate content requests per day limit exceeded on Free Tier. Please retry in 7h48m55.645027687s
+```
+
+All 15 `429` errors in that log are the per-day kind, counting down from 7h48m, and the 500 requests a day that the free tier allows had been used up by my own trials (about 200 requests in this round, on top of the earlier ones). A request that hits a daily 429 retries five times at 65 seconds each, which is longer than the new 120 second timeout, so gunicorn killed it (`WORKER TIMEOUT`, 15 times, exactly 120 seconds apart, until 00:41). The requests my harness had already given up on were still queued, and each one tied up the single worker for two minutes in turn. So criterion 5's post-fix trials 2 and 3 are not a measure of the change: the quota ran out and I can't rerun them before the deadline, because it resets at midnight Pacific. As recorded the criterion is MISSED, with 1 and 0 of 5 pairs in runs 2 and 3, and I am reporting it that way.
+
+The trade. Raising the timeout fixed the requests that were being killed during ordinary rate-limit waits, and it did not make the service fail fast when the quota is gone: it turned a quick 500 into a two minute one per request. I also still have no record of the killed requests in the post-fix run; those requests are logged only as `POST /ask 500` access lines.
+
+**What's Still Broken**
+
+Criterion 1, missed. What I'd do: in `serve.py::ask`, check that the parsed body is a dict and treat anything else as the same rejected-input case as an empty query (a 400, written by `log_rejection`). It is a three line change. Why I stopped: I could make only one improvement, I chose the one aimed at three criteria, and I could not rerun the valid-query part of the suite after the quota ran out.
+
+Criterion 2, missed. What I'd do: stop starting a new `mcp_server.py` process for every request, either by keeping one MCP session open for the life of the worker or by using the direct-call fallback `agent.py::_search` already has. Why I stopped: both change the agent and my Unit 4 MCP work, which I put out of scope on day one. I'd also change the target, which I set from local timings: measured on Render, a request takes 6 to 8 seconds even with no waiting, so "9 of 10 under 5 seconds" was a target the system could not hit.
+
+Criterion 4 is met after the change, and only while requests stay under the free tier's rate. Without the change it missed for the reason in the diagnosis.
+
+Criterion 5, missed. What I'd do first: make the service fail fast when Gemini says the quota is gone. If a `429` says to retry in more than about 30 seconds, and certainly if it is the per-day limit, return an error at once instead of sleeping and retrying five times. That is what turned a used-up daily quota into a 30 minute outage of the only worker, and it would also protect the per-minute case. I'd then rerun criterion 5 after the quota resets. Why I stopped: the change is in how `generate.py` backs off, which is starter code I haven't touched, and the quota can't be reset before the deadline.
+
+Criterion 3 is met, but I set the target too low. The 30 minute limit was never close: a fresh clone took 12 to 14 seconds from clone to card on my machine. I'd tighten it to 5 minutes, and note that all of those clones ran on my own machine with Python 3.13, so it can't catch a problem that only appears on someone else's.
+
+Two other things I should say. The hosted service will return "model unavailable" errors until Gemini's daily quota resets at midnight Pacific, so anyone who tries the URL tonight will see that. And my first set of hosted trials ran with the response cache on by mistake, which hid the rate limiter and made criteria 4 and 5 look perfect; running them again with `AI201_CACHE=0` is what showed the real problem.
+
+If I had another unit, the first thing I'd do is the fail-fast change for quota errors, with a test that sends enough requests to trigger a `429` and checks that the service answers within a few seconds and logs the failure. Everything that went wrong in the hosted trials came back to that one gap: nothing in the service decides when to stop waiting.
+
+**How I Used AI**
+
+TODO (yours): two specific moments, each with what you asked, what you got, and what you changed.
