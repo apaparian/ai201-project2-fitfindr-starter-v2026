@@ -734,3 +734,11 @@ Two other things I should say. The hosted service will return "model unavailable
 If I had another unit, the first thing I'd do is the fail-fast change for quota errors, with a test that sends enough requests to trigger a `429` and checks that the service answers within a few seconds and logs the failure. Everything that went wrong in the hosted trials came back to that one gap: nothing in the service decides when to stop waiting.
 
 **How I Used AI**
+
+Moment 1
+
+When I was diagnosing missed criteria after the first round of testing, I used AI as a second set of eyes on my deployment logs. I pasted sections of the Render and application logs and asked it to help identify patterns in the failures. The response pointed out that several missed trials were happening around requests that exceeded Gunicorn's default timeout, but I did not take that conclusion at face value. I went back through the logs myself, compared the timestamps with the failed requests, and confirmed that the failures lined up with worker termination. Based on that review, I increased the Gunicorn timeout to 120 seconds and reran the hosted trials. That change improved Criterion 4 from a miss to a pass, which supported the diagnosis.
+
+Moment 2
+
+Near the end of the project, I noticed that some post-fix trials were still failing even though the timeout change had already addressed the issue I was targeting. I used AI to discuss the remaining failures and pasted the relevant log excerpts. The model initially focused on application behavior, but I noticed from the logs that Gemini usage had reached its quota limit. I used the AI conversation to test that interpretation and compare it against the evidence I was seeing. After reviewing the logs and the timing of the failures, I concluded that the missed targets were being caused by exhausted Gemini quota rather than by the change I had made. I updated the diagnosis to attribute those failures to the external quota limit and explicitly noted that the remaining misses were not evidence that the timeout fix had failed.
