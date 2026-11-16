@@ -1,0 +1,10 @@
+{"http": 200, "seconds": 11.74, "fit_card_ok": true, "note": "", "pair": 1, "which": "A", "query": "vintage graphic tee under $30", "start_gap_s": 0.001, "pair_pass": true}
+{"http": 200, "seconds": 24.21, "fit_card_ok": true, "note": "", "pair": 1, "which": "B", "query": "denim jacket under $50", "start_gap_s": 0.001, "pair_pass": true}
+{"http": null, "seconds": 150.05, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 2, "which": "A", "query": "printed knit tank under $45", "start_gap_s": 0.001, "pair_pass": false}
+{"http": 200, "seconds": 77.95, "fit_card_ok": true, "note": "", "pair": 2, "which": "B", "query": "linen jersey sweat top under $50", "start_gap_s": 0.001, "pair_pass": false}
+{"http": null, "seconds": 150.07, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 3, "which": "A", "query": "corduroy jacket size L under $45", "start_gap_s": 0.002, "pair_pass": false}
+{"http": null, "seconds": 150.07, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 3, "which": "B", "query": "vintage graphic tee under $30", "start_gap_s": 0.002, "pair_pass": false}
+{"http": null, "seconds": 150.21, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 4, "which": "A", "query": "denim jacket under $50", "start_gap_s": 0.001, "pair_pass": false}
+{"http": null, "seconds": 150.21, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 4, "which": "B", "query": "printed knit tank under $45", "start_gap_s": 0.001, "pair_pass": false}
+{"http": null, "seconds": 150.06, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 5, "which": "A", "query": "linen jersey sweat top under $50", "start_gap_s": 0.001, "pair_pass": false}
+{"http": null, "seconds": 150.06, "fit_card_ok": false, "note": "TimeoutError: The read operation timed out", "pair": 5, "which": "B", "query": "corduroy jacket size L under $45", "start_gap_s": 0.001, "pair_pass": false}
