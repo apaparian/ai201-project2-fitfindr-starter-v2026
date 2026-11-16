@@ -18,8 +18,8 @@ def log_request(
     query: str,
     output: str | None = None,
     duration_ms: float | None = None,
-    status: str = "ok",          # TODO: your labels, e.g. ok / agent_error / crashed
-    # TODO: your extra fields here, e.g. selected_item_id, model_calls, tokens
+    status: str = "ok",          # ok | agent_error (agent stopped early, still HTTP 200) | crashed (HTTP 500)
+    # Anything else (model_calls, prompt_tokens, output_tokens, error) arrives through **extra.
     **extra,
 ) -> dict:
     entry = {
@@ -36,8 +36,8 @@ def log_request(
 
 def log_rejection(request_id: str, reason: str, query: str = "",
                   duration_ms: float | None = None, **extra) -> dict:
-    # TODO: mirror Project 4: event="rejected", status="rejected", reason=reason.
-    # Which of the standard fields should still appear so the shapes match?
+    # Same standard fields as log_request (input, output, duration_ms, status), plus event and reason,
+    # so a rejected request has the same shape as every other entry.
 
     return _append({
         "timestamp": _now(),
@@ -53,8 +53,8 @@ def log_rejection(request_id: str, reason: str, query: str = "",
 
 
 def _append(entry: dict) -> dict:
-    # TODO: copy the pattern from Project 4's audit.py _append:
-    # mkdir LOG_DIR, dump to one line, write under the lock.
+    # One JSON object per line. Print it too: Render's log viewer only shows stdout. The lock keeps
+    # two writers from interleaving a line.
     config.LOG_DIR.mkdir(parents=True, exist_ok=True)
     line = json.dumps(entry, ensure_ascii=False)
     print(line, flush=True)                     # Render's log viewer reads stdout
@@ -65,7 +65,7 @@ def _append(entry: dict) -> dict:
 
 
 def read_entries(limit: int | None = None) -> list[dict]:
-    # TODO: Project 4 skips malformed lines instead of raising. Why is that right?
+    # A malformed line is skipped, not raised: a write cut off mid-line shouldn't hide the rest of the log.
     if not config.REQUEST_LOG.exists():
         return []
     entries = []
