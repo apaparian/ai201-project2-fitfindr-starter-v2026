@@ -734,5 +734,3 @@ Two other things I should say. The hosted service will return "model unavailable
 If I had another unit, the first thing I'd do is the fail-fast change for quota errors, with a test that sends enough requests to trigger a `429` and checks that the service answers within a few seconds and logs the failure. Everything that went wrong in the hosted trials came back to that one gap: nothing in the service decides when to stop waiting.
 
 **How I Used AI**
-
-TODO (yours): two specific moments, each with what you asked, what you got, and what you changed.
